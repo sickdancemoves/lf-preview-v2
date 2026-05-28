@@ -1,7 +1,11 @@
 <!-- HERO -->
-  <section class="hero">
-    <div class="hero__inner">
-      <div class="hero__left">
+  <section class="hero hero--fullbleed" aria-label="Conta PJ — LaFinteca">
+    <div class="hero__media" role="img" aria-label="Equipe usando a LaFinteca">
+      <span class="hero__media-fallback" data-lang="pt">Espaço para imagem</span>
+      <span class="hero__media-fallback" data-lang="en">Image placeholder</span>
+    </div>
+    <div class="hero__overlay">
+      <div class="hero__overlay-inner">
         <span class="hero__eyebrow">Conta PJ</span>
         <h1><span data-lang="pt">Quem simplifica,<br>multiplica.</span><span data-lang="en">Simplify it,<br>multiply it.</span></h1>
         <p class="hero__sub"><span data-lang="pt">Conta PJ digital regulada pelo Banco Central. Transferências via TED, agendamentos e visibilidade total sobre as despesas — em uma única plataforma.</span><span data-lang="en">Digital Conta PJ regulated by Brazil's central bank. TED transfers, scheduled payments and full visibility over expenses — all in one platform.</span></p>
@@ -9,9 +13,6 @@
           <button class="btn btn-green" onclick="location.href='/contapj/'"><span><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open Conta PJ</span></span></button>
           <button class="btn btn-ghost" onclick="location.href='/contapj/'"><span><span data-lang="pt">Saiba mais</span><span data-lang="en">Learn more</span></span></button>
         </div>
-      </div>
-      <div class="hero__right">
-        <div class="hero__placeholder"><span data-lang="pt">Espaço para imagem</span><span data-lang="en">Image placeholder</span></div>
       </div>
     </div>
   </section>
@@ -34,7 +35,7 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg>
           </div>
           <h3 class="intro-card__title"><span data-lang="pt">Pague e receba na hora</span><span data-lang="en">Pay and get paid instantly</span></h3>
-          <p class="intro-card__body"><span data-lang="pt">TED, boleto e muito mais — tudo integrado, com confirmação em tempo real.</span><span data-lang="en">TED, boleto and more — fully integrated, with real-time confirmation.</span></p>
+          <p class="intro-card__body"><span data-lang="pt">TED, agendamentos e muito mais — tudo integrado, com confirmação em tempo real.</span><span data-lang="en">TED, scheduled payments and more — fully integrated, with real-time confirmation.</span></p>
         </article>
         <article class="intro-card fade-in-on-scroll" data-stagger="3">
           <div class="intro-card__icon" aria-hidden="true">
@@ -45,17 +46,6 @@
         </article>
       </div>
       <button class="btn btn-primary intro-cta" onclick="location.href='/contapj/'"><span><span data-lang="pt">Saiba mais sobre a Conta PJ</span><span data-lang="en">Learn more about Conta PJ</span></span></button>
-    </div>
-  </section>
-
-  <!-- SIMPLICIDADE -->
-  <section class="home-block home-block--alt">
-    <div class="home-block__inner home-block__inner--center">
-      <h2 class="home-block__title home-block__title--gradient fade-in-on-scroll"><span data-lang="pt">Simplicidade em forma de conta</span><span data-lang="en">Simplicity, account-shaped</span></h2>
-      <div class="home-block__placeholder home-block__placeholder--xl video-placeholder">
-        <span class="video-placeholder__icon" aria-hidden="true">▶</span>
-        <span><span data-lang="pt">Espaço para vídeo</span><span data-lang="en">Video placeholder</span></span>
-      </div>
     </div>
   </section>
 
@@ -90,7 +80,6 @@
                 <div class="dash-mock__logo"><img src="Main%20logo%20white%20(1).svg" alt="LaFinteca"></div>
                 <a class="dash-mock__nav-item is-active"><span data-lang="pt">Home</span><span data-lang="en">Home</span></a>
                 <a class="dash-mock__nav-item">TED</a>
-                <a class="dash-mock__nav-item">Boletos</a>
                 <a class="dash-mock__nav-item"><span data-lang="pt">Extrato</span><span data-lang="en">Statement</span></a>
                 <a class="dash-mock__nav-item"><span data-lang="pt">Agendamentos</span><span data-lang="en">Schedules</span></a>
                 <a class="dash-mock__nav-item"><span data-lang="pt">Comprovantes</span><span data-lang="en">Receipts</span></a>
@@ -110,7 +99,7 @@
                   </div>
                   <div class="dash-mock__rows">
                     <div class="dash-mock__row"><span class="dash-mock__row-name"><span data-lang="pt">TED — Fornecedor MG</span><span data-lang="en">TED — Supplier MG</span></span><span class="dash-mock__row-amt neg">− R$ 8.420,00</span></div>
-                    <div class="dash-mock__row"><span class="dash-mock__row-name"><span data-lang="pt">Boleto pago — Energia</span><span data-lang="en">Boleto paid — Utilities</span></span><span class="dash-mock__row-amt neg">− R$ 1.280,55</span></div>
+                    <div class="dash-mock__row"><span class="dash-mock__row-name"><span data-lang="pt">TED — Folha de pagamento</span><span data-lang="en">TED — Payroll</span></span><span class="dash-mock__row-amt neg">− R$ 18.450,00</span></div>
                     <div class="dash-mock__row"><span class="dash-mock__row-name"><span data-lang="pt">TED recebido — Cliente SP</span><span data-lang="en">TED received — Client SP</span></span><span class="dash-mock__row-amt pos">+ R$ 32.000,00</span></div>
                     <div class="dash-mock__row"><span class="dash-mock__row-name"><span data-lang="pt">Agendamento executado</span><span data-lang="en">Scheduled payment ran</span></span><span class="dash-mock__row-amt neg">− R$ 4.150,00</span></div>
                   </div>
@@ -134,75 +123,6 @@
     </div>
   </section>
 
-  <!-- AVALIAÇÕES -->
-  <section class="home-block reviews">
-    <div class="home-block__inner home-block__inner--center">
-      <span class="home-eyebrow"><span data-lang="pt">Avaliações</span><span data-lang="en">Reviews</span></span>
-      <h2 class="home-block__title fade-in-on-scroll"><span data-lang="pt">Quem já simplificou com LaFinteca</span><span data-lang="en">Who's already simplified with LaFinteca</span></h2>
-      <p class="home-block__sub home-block__sub--center"><span data-lang="pt">Avaliações reais de clientes no Reclame Aqui.</span><span data-lang="en">Real customer reviews on Reclame Aqui.</span></p>
-
-      <div class="reviews__rating" aria-label="Reclame Aqui rating (placeholder)">
-        <img class="reviews__rating-logo-img" src="assets/reclame-aqui-logo.png" alt="Reclame Aqui">
-        <span class="reviews__rating-divider"></span>
-        <div class="reviews__rating-score">
-          <span class="reviews__rating-num">8.2</span>
-          <span class="reviews__rating-label"><span data-lang="pt">de 10 · Ótimo</span><span data-lang="en">of 10 · Great</span></span>
-        </div>
-        <span class="reviews__rating-divider"></span>
-        <span class="reviews__rating-stars">★★★★★</span>
-        <span class="reviews__rating-placeholder">placeholder</span>
-      </div>
-
-      <div class="reviews-carousel js-reviews-carousel">
-        <div class="reviews-carousel__viewport">
-          <div class="reviews-carousel__track">
-            <article class="review-card fade-in-on-scroll" data-stagger="1">
-              <div class="review-card__stars">★★★★★</div>
-              <p class="review-card__quote"><span data-lang="pt">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</span><span data-lang="en">"Fast support and an account that's easy to open. Intuitive platform, super simple to use. I'd recommend it to any business."</span></p>
-              <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
-              <div class="review-card__date"><span data-lang="pt">Março de 2026</span><span data-lang="en">March 2026</span></div>
-            </article>
-            <article class="review-card fade-in-on-scroll" data-stagger="2">
-              <div class="review-card__stars">★★★★★</div>
-              <p class="review-card__quote"><span data-lang="pt">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</span><span data-lang="en">"Fast transfers, support solved my question in minutes. Finally a Conta PJ without red tape. Very happy."</span></p>
-              <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
-              <div class="review-card__date"><span data-lang="pt">Fevereiro de 2026</span><span data-lang="en">February 2026</span></div>
-            </article>
-            <article class="review-card fade-in-on-scroll" data-stagger="3">
-              <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
-              <p class="review-card__quote"><span data-lang="pt">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</span><span data-lang="en">"Great experience. Team-access management made a big difference in our day-to-day operations. Highly recommend!"</span></p>
-              <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
-              <div class="review-card__date"><span data-lang="pt">Janeiro de 2026</span><span data-lang="en">January 2026</span></div>
-            </article>
-            <article class="review-card fade-in-on-scroll" data-stagger="4">
-              <div class="review-card__stars">★★★★★</div>
-              <p class="review-card__quote"><span data-lang="pt">"Os agendamentos de TED economizaram horas da nossa equipe financeira. Visibilidade total sobre cada operação."</span><span data-lang="en">"Scheduled TEDs saved our finance team hours. Total visibility on every operation."</span></p>
-              <div class="review-card__name">Patricia L. <span class="review-card__placeholder">(placeholder)</span></div>
-              <div class="review-card__date"><span data-lang="pt">Dezembro de 2025</span><span data-lang="en">December 2025</span></div>
-            </article>
-            <article class="review-card fade-in-on-scroll" data-stagger="5">
-              <div class="review-card__stars">★★★★★</div>
-              <p class="review-card__quote"><span data-lang="pt">"Extrato com filtros e comprovantes em PNG. Nossa contabilidade nunca foi tão simples de fechar."</span><span data-lang="en">"Filterable statements and PNG receipts. Closing the books has never been easier."</span></p>
-              <div class="review-card__name">João R. <span class="review-card__placeholder">(placeholder)</span></div>
-              <div class="review-card__date"><span data-lang="pt">Novembro de 2025</span><span data-lang="en">November 2025</span></div>
-            </article>
-            <article class="review-card fade-in-on-scroll" data-stagger="6">
-              <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
-              <p class="review-card__quote"><span data-lang="pt">"Onboarding 100% digital, com poucos cliques. Saiu da papelada e ganhamos uma conta PJ que faz sentido."</span><span data-lang="en">"100% digital onboarding in just a few clicks. We swapped paperwork for a Conta PJ that actually makes sense."</span></p>
-              <div class="review-card__name">Marina S. <span class="review-card__placeholder">(placeholder)</span></div>
-              <div class="review-card__date"><span data-lang="pt">Outubro de 2025</span><span data-lang="en">October 2025</span></div>
-            </article>
-          </div>
-        </div>
-        <div class="reviews-carousel__controls">
-          <button class="reviews-carousel__arrow" type="button" data-dir="-1" aria-label="Anterior">‹</button>
-          <div class="reviews-carousel__dots"></div>
-          <button class="reviews-carousel__arrow" type="button" data-dir="1" aria-label="Próxima">›</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ Alguma dúvida? -->
   <section class="home-block home-block--alt faq-split">
     <div class="home-block__inner faq-split__inner">
@@ -219,7 +139,7 @@
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-item__head"><span data-lang="pt">Quais produtos a LaFinteca oferece?</span><span data-lang="en">What products does LaFinteca offer?</span> <span class="faq-item__plus">▼</span></div>
-          <div class="faq-item__content"><span data-lang="pt">Uma plataforma completa de pagamentos cobrindo todos os meios brasileiros: Pix (Direto, Automático, QR), Boleto, TED e Open Finance. Também estamos desenvolvendo uma camada de banco digital pensada para a tesouraria empresarial.</span><span data-lang="en">A complete payment platform covering every Brazilian rail: Pix (Direto, Automático, QR), Boleto, TED, and Open Finance. We are also developing a digital bank layer designed for business treasury.</span></div>
+          <div class="faq-item__content"><span data-lang="pt">Uma Conta PJ digital com TED, extratos com filtros, agendamentos e comprovantes em PNG — tudo integrado, com infraestrutura regulada pelo Banco Central do Brasil.</span><span data-lang="en">A digital Conta PJ with TED, filterable statements, scheduled payments and PNG receipts — all integrated, on infrastructure regulated by the Central Bank of Brazil.</span></div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-item__head"><span data-lang="pt">Como entrar em contato?</span><span data-lang="en">How to contact us?</span> <span class="faq-item__plus">▼</span></div>
