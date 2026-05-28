@@ -709,6 +709,14 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
+  .support-grid--single {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+  .support-card--unified .support-card__tag--featured {
+    font-size: 14px;
+    letter-spacing: 0.6px;
+  }
   .support-card {
     background: var(--dark-2);
     border: 1px solid var(--gray-line);
