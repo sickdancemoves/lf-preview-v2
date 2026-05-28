@@ -1503,6 +1503,54 @@
 
   .reviews__grid--two { grid-template-columns: repeat(2, 1fr); max-width: 960px; margin-left: auto; margin-right: auto; }
 
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 36px auto 0;
+    text-align: left;
+  }
+  .security-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(191, 254, 67, 0.18);
+    border-radius: 16px;
+    padding: 28px 26px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .security-card:hover {
+    border-color: rgba(191, 254, 67, 0.4);
+    transform: translateY(-2px);
+  }
+  .security-card__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(191, 254, 67, 0.12);
+    color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .security-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin: 0 0 8px;
+    letter-spacing: -0.2px;
+  }
+  .security-card__body {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .security-grid { grid-template-columns: 1fr; }
+  }
+
   .contapj-quote {
     font-family: 'IBM Plex Mono', monospace;
     font-style: italic;
