@@ -14,37 +14,19 @@ module.exports = {
       name: 'home',
       route: '/',
       title: 'LaFinteca — Conta PJ digital para empresas no Brasil',
-      description: 'Conta PJ digital com TED, boletos e PIX. Atendimento humano e tarifas transparentes para empresas no Brasil.',
+      description: 'Conta PJ digital com TED e gestão financeira completa. Atendimento humano e tarifas transparentes para empresas no Brasil.',
     },
     {
       name: 'contapj',
       route: '/contapj/',
       title: 'Conta PJ — LaFinteca',
-      description: 'Abra uma Conta PJ digital com TED, boletos, PIX e atendimento dedicado. Sem tarifas escondidas.',
+      description: 'Abra uma Conta PJ digital com TED, extratos com filtros, agendamentos e atendimento dedicado. Sem tarifas escondidas.',
     },
     {
       name: 'about',
       route: '/about/',
       title: 'Sobre nós — LaFinteca',
       description: 'Conheça a LaFinteca: instituição de pagamento autorizada pelo Banco Central, focada em empresas no Brasil.',
-    },
-    {
-      name: 'events',
-      route: '/events/',
-      title: 'Eventos — LaFinteca',
-      description: 'Encontre a equipe da LaFinteca em eventos e fóruns de pagamentos pelo Brasil e América Latina.',
-    },
-    {
-      name: 'blog',
-      route: '/blog/',
-      title: 'Blog — LaFinteca',
-      description: 'Insights, novidades de produto e conteúdo sobre pagamentos B2B no Brasil.',
-    },
-    {
-      name: 'careers',
-      route: '/careers/',
-      title: 'Carreiras — LaFinteca',
-      description: 'Junte-se à LaFinteca. Vagas abertas em produto, engenharia, operações e atendimento.',
     },
     {
       name: 'faqs',
@@ -93,6 +75,12 @@ module.exports = {
       route: '/politicas/seguranca-da-informacao/',
       title: 'Política de Segurança da Informação — LaFinteca',
       description: 'Diretrizes de proteção dos sistemas, redes e informações corporativas da LaFinteca.',
+    },
+    {
+      name: 'politicas/ciberseguranca',
+      route: '/politicas/ciberseguranca/',
+      title: 'Política de Cibersegurança — LaFinteca',
+      description: 'Diretrizes de cibersegurança da LaFinteca — controle contra malware, monitoramento, registro de eventos e gestão de riscos cibernéticos.',
     },
     {
       name: 'politicas/gestao-de-riscos',

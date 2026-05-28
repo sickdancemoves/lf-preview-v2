@@ -894,13 +894,14 @@
     box-sizing: border-box;
   }
   .bacen-badge__icon {
-    width: 24px; height: 24px;
+    height: 24px;
     flex-shrink: 0;
-    border-radius: 50%;
-    background: rgba(191,254,67,0.14);
-    border: 1px solid rgba(191,254,67,0.3);
-    color: var(--green);
     display: flex; align-items: center; justify-content: center;
+  }
+  .bacen-badge__logo {
+    display: block;
+    height: 22px;
+    width: auto;
   }
   .bacen-badge__body {
     display: flex;
@@ -1959,6 +1960,19 @@
     line-height: 1.55;
     color: rgba(255, 255, 255, 0.4);
     white-space: pre-line;
+  }
+  .footer-contact .contact-block__email {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+  .footer-contact .contact-block__email:hover {
+    border-bottom-color: var(--green);
   }
   .footer-bottom {
     display: flex;
