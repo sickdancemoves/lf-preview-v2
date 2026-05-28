@@ -2656,22 +2656,6 @@
     max-width: 720px;
   }
   .policy-scope-note a { color: var(--green); }
-  .policy-pdf-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    padding: 10px 16px;
-    background: transparent;
-    color: var(--gray-text);
-    border: 1px solid var(--gray-line);
-    border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    cursor: not-allowed;
-    opacity: 0.65;
-  }
-  .policy-pdf-btn[disabled] { pointer-events: none; }
 
   .policy-body__inner {
     max-width: 1440px;
@@ -2763,6 +2747,28 @@
   }
   .policy-content strong { color: var(--white); font-weight: 500; }
   .policy-content a { color: var(--green); }
+  .policy-content ul,
+  .policy-content ol {
+    margin: 0 0 18px;
+    padding-left: 22px;
+  }
+  .policy-content ul li,
+  .policy-content ol li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    color: var(--gray-text);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .policy-content ul li::marker { color: var(--gray-line); }
+  .policy-content ol li::marker { color: var(--green); font-family: 'IBM Plex Mono', monospace; }
+  .policy-footnote {
+    margin-top: 32px !important;
+    padding-top: 18px;
+    border-top: 1px solid var(--gray-line);
+    font-size: 12.5px !important;
+    color: var(--gray-line) !important;
+  }
   .policy-list {
     margin: 0 0 18px;
     padding-left: 22px;

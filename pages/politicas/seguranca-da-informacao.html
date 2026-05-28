@@ -5,12 +5,8 @@
         <a class="policy-back" href="/politicas/"><span aria-hidden="true">←</span> <span data-lang="pt">Voltar ao Centro de Políticas</span><span data-lang="en">Back to Policy Center</span></a>
         <h1 style="font-size: 40px; max-width: 1000px; margin-top: 16px;"><span data-lang="pt">Política de Segurança da Informação</span><span data-lang="en">Information Security Policy</span></h1>
         <div class="policy-meta">
-          <span class="policy-meta__item"><span data-lang="pt">Última atualização:</span><span data-lang="en">Last updated:</span> DD/MM/AAAA</span>
+          <span class="policy-meta__item"><span data-lang="pt">Versão 1.0 — Abril de 2026</span><span data-lang="en">Version 1.0 — April 2026</span></span>
         </div>
-        <button class="policy-pdf-btn" disabled type="button" aria-disabled="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span data-lang="pt">Baixar PDF (em breve)</span><span data-lang="en">Download PDF (coming soon)</span>
-        </button>
       </div>
     </div>
   </section>
@@ -20,36 +16,131 @@
       <aside class="policy-toc">
         <p class="policy-toc__label"><span data-lang="pt">Nesta página</span><span data-lang="en">On this page</span></p>
         <ol>
-          <li><a href="#objetivo"><span data-lang="pt">Objetivo</span><span data-lang="en">Objective</span></a></li>
-          <li><a href="#abrangencia"><span data-lang="pt">Abrangência</span><span data-lang="en">Scope</span></a></li>
-          <li><a href="#definicoes"><span data-lang="pt">Definições</span><span data-lang="en">Definitions</span></a></li>
-          <li><a href="#diretrizes"><span data-lang="pt">Diretrizes</span><span data-lang="en">Guidelines</span></a></li>
-          <li><a href="#responsabilidades"><span data-lang="pt">Responsabilidades</span><span data-lang="en">Responsibilities</span></a></li>
-          <li><a href="#disposicoes"><span data-lang="pt">Disposições gerais</span><span data-lang="en">General provisions</span></a></li>
+          <li><a href="#introducao"><span data-lang="pt">Introdução</span><span data-lang="en">Introduction</span></a></li>
+          <li><a href="#governanca"><span data-lang="pt">Governança</span><span data-lang="en">Governance</span></a></li>
+          <li><a href="#politica"><span data-lang="pt">Política</span><span data-lang="en">Policy</span></a></li>
+          <li><a href="#aplicacao"><span data-lang="pt">Aplicação</span><span data-lang="en">Application</span></a></li>
+          <li><a href="#desvio"><span data-lang="pt">Desvio</span><span data-lang="en">Deviation</span></a></li>
+          <li><a href="#revisao"><span data-lang="pt">Revisão</span><span data-lang="en">Review</span></a></li>
         </ol>
       </aside>
 
       <article class="policy-content" id="policy-content">
         <div data-lang="pt" class="policy-content__lang">
-          <div class="policy-placeholder">
-            <p>O conteúdo deste documento será publicado em breve. Caso tenha dúvidas, entre em contato pelo e-mail <a href="mailto:compliance@la-finteca.com">compliance@la-finteca.com</a>.</p>
-          </div>
-          <h2 id="objetivo">1. Objetivo</h2>
-          <p class="policy-placeholder__section"><em>Em breve.</em></p>
-          <h2 id="abrangencia">2. Abrangência</h2>
-          <p class="policy-placeholder__section"><em>Em breve.</em></p>
-          <h2 id="definicoes">3. Definições</h2>
-          <p class="policy-placeholder__section"><em>Em breve.</em></p>
-          <h2 id="diretrizes">4. Diretrizes</h2>
-          <p class="policy-placeholder__section"><em>Em breve.</em></p>
-          <h2 id="responsabilidades">5. Responsabilidades</h2>
-          <p class="policy-placeholder__section"><em>Em breve.</em></p>
-          <h2 id="disposicoes">6. Disposições gerais</h2>
-          <p class="policy-placeholder__section"><em>Em breve.</em></p>
+          <h2 id="introducao">1. Introdução</h2>
+
+          <h3>1.1 Objetivos e metas</h3>
+          <p>A LaFinteca Instituição de Pagamento LTDA ("LaFinteca" ou "a Empresa") é uma empresa de tecnologia financeira especializada em fornecer soluções de pagamento seguras e eficientes em toda a América Latina. A empresa oferece uma plataforma que suporta diversos métodos de pagamento, incluindo transferências bancárias tradicionais, carteiras digitais e criptomoedas.</p>
+          <p>Todos os componentes do ambiente da LaFinteca podem ser afetados por ameaças e vulnerabilidades à continuidade dos negócios: dependência crescente de sistemas de informação, uso de redes externas, mudanças tecnológicas rápidas, fraudes cibernéticas, roubo de informações, espionagem industrial, sabotagem, ataques cibernéticos e manuseio descuidado de informações.</p>
+          <p>Esta política fornece à LaFinteca uma política de segurança da informação documentada e formalizada. Serve também como o principal manual de segurança da informação da organização, abrangendo toda a empresa, definindo as atividades da equipe de segurança e esclarecendo como a equipe aplica as regulamentações do setor e os padrões internacionais.</p>
+          <p>A segurança que pode ser alcançada por meios técnicos é limitada e deve ser complementada por gestão, processos de negócio e procedimentos adequados. A LaFinteca define segurança da informação como a preservação da <strong>confidencialidade, integridade e disponibilidade</strong> da informação e dos sistemas de informação:</p>
+          <ul>
+            <li><strong>Confidencialidade</strong> — garantir que a informação seja acessível apenas a pessoas com autoridade para lidar com ela.</li>
+            <li><strong>Integridade</strong> — salvaguardar a exatidão, integridade e atualidade das informações e do método de processamento.</li>
+            <li><strong>Disponibilidade</strong> — garantir que usuários autorizados tenham acesso às informações em tempo hábil. Essenciais para manter vantagem competitiva, fluxo de caixa, lucratividade, conformidade legal e imagem corporativa.</li>
+          </ul>
+          <p>Os objetivos da LaFinteca são: disponibilidade dos sistemas, minimização de incidentes que exigem correções de código e resiliência operacional.</p>
+
+          <h2 id="governanca">2. Governança</h2>
+          <p>A responsabilidade pela gestão da Política é atribuída ao Gerente de Segurança da LaFinteca, e o documento é submetido ao Diretor Executivo para aprovação final. O Diretor Executivo é informado anualmente sobre assuntos relacionados à Política.</p>
+
+          <h3>2.1 Manutenção, atualização e distribuição</h3>
+          <p>A Política é publicada em formato que não possa ser facilmente alterado, em linguagem acessível ao público-alvo, e disponibilizada a todos os membros da LaFinteca para consulta. O Gerente de Segurança é responsável pela distribuição. Uma nova cópia será distribuída a cada nova versão, com número de versão maior e nova data de revisão. Durante revisões, são considerados: eficiência da política atual, impacto de mudanças tecnológicas, custo e impacto na eficiência do negócio, novas vulnerabilidades, mudanças na estrutura organizacional, novas iniciativas, incidentes de segurança e alterações em regulamentos e leis.</p>
+
+          <h2 id="politica">3. Política</h2>
+          <p>Manter informações cruciais exclusivamente para a LaFinteca é, sobretudo, uma questão de conduta e comportamento, além de contramedidas técnicas. A visão estratégica integra cada vez mais todos os sistemas, e a necessidade de proteger os ativos de informação se torna mais exigente em um ambiente integrado e dinâmico.</p>
+          <p>A LaFinteca pretende criar uma estrutura flexível em que a segurança da informação se torne parte integrante dos processos diários e do comportamento. Engenharia de processos de negócio e treinamento de conscientização da equipe têm alta prioridade, junto com a aplicação dos padrões mínimos de segurança.</p>
+
+          <h3>3.1 Organização da segurança da informação</h3>
+          <p>A LaFinteca estabelece uma estrutura para a organização da segurança da informação, definindo funções e responsabilidades para gerenciar, discutir e aprovar itens relacionados. O Diretor Executivo é responsável pelos riscos de informação em toda a LaFinteca. Será estabelecido um quadro de gestão de riscos e uma organização de segurança da informação.</p>
+
+          <h3>3.2 Gestão de riscos</h3>
+          <p>A LaFinteca identifica, avalia e prioriza as ameaças aos riscos de segurança da informação. A aplicação de medidas de proteção baseia-se nos riscos associados aos ativos e processos de informação e na importância desses ativos para os processos e objetivos da empresa. Avaliações periódicas de risco são programadas para minimizar riscos considerados inaceitáveis (Tratamento de Risco).</p>
+
+          <h3>3.3 Segurança de recursos humanos</h3>
+          <p>Funções e responsabilidades de segurança de funcionários, contratados e terceiros são definidas e documentadas nas descrições de cargo, incluindo a Avaliação de Ativos de Informação e o Relatório de Incidentes. O princípio da segregação de funções é aplicado para evitar uso indevido ou abuso dos recursos.</p>
+          <p>Funcionários e contratados candidatos a cargos que exijam acesso privilegiado a sistemas críticos ou processamento de dados confidenciais são submetidos a verificações de antecedentes, incluindo pessoal temporário e terceirizado.</p>
+          <p>Todos recebem treinamento de conscientização sobre segurança, educação e atualizações regulares sobre políticas e procedimentos pertinentes às suas funções. Um processo disciplinar bem definido é aplicado em caso de descumprimento.</p>
+
+          <h3>3.4 Gestão de ativos de informação</h3>
+          <p>A LaFinteca mantém proteção adequada dos ativos de informação por meio de controles sobre o inventário de ativos, atribuição de propriedade, e classificação e rotulagem adequadas das informações.</p>
+
+          <h3>3.5 Controle de acesso</h3>
+          <p>Implementa-se controles de acesso lógico e físico onde são realizadas atividades de processamento de informações. Direitos de acesso são atribuídos pelo princípio da necessidade de saber e revistos periodicamente. A LaFinteca monitora e reporta atividades maliciosas na rede, analisa registros em busca de anomalias e garante testes de penetração anuais por especialistas terceirizados.</p>
+          <p>Senhas são armazenadas com criptografia unidirecional, em formato não legível por humanos. Requisitos mínimos para contas padrão:</p>
+          <ul>
+            <li>Comprimento mínimo de 8 símbolos</li>
+            <li>Idade máxima de 90 dias</li>
+            <li>Histórico de 10 senhas antigas</li>
+            <li>Três de quatro critérios (maiúsculas, minúsculas, número, caractere especial)</li>
+            <li>Bloqueio de conta após 5 repetições durante 15 minutos</li>
+            <li>Alteração após o login inicial</li>
+            <li>Bloqueio de tela após 15 minutos de inatividade</li>
+          </ul>
+          <p>Mensagens de erro não devem revelar se o nome de usuário ou senha está incorreto. Dicas de senha ou opções de recuperação que possam causar acesso não autorizado não são permitidas. Senhas nunca são exibidas de forma legível e são criptografadas durante a transmissão.</p>
+
+          <h3>3.6 Controle de acesso remoto</h3>
+          <p>Mecanismos de autenticação robustos são implementados para todas as conexões remotas:</p>
+          <ul>
+            <li>Restrito apenas a usuários individuais autorizados.</li>
+            <li>Transmissões protegidas com criptografia suficiente, via VPN.</li>
+            <li>Autenticação multifatorial obrigatória.</li>
+            <li>Bloqueio automático após 5 tentativas incorretas, por 15 minutos.</li>
+            <li>Senhas padrão ou fornecidas são alteradas no primeiro acesso.</li>
+            <li>Conexões remotas são registradas e os registros revisados periodicamente.</li>
+            <li>Equipamentos da empresa protegidos contra roubo com criptografia de disco ou senhas de inicialização.</li>
+          </ul>
+
+          <h3>3.7 Criptografia</h3>
+          <p>A LaFinteca adota controles criptográficos para proteger confidencialidade, autenticidade e/ou integridade das informações: criptografia para informações sensíveis em armazenamento e transmissão; assinatura digital ou MACs para verificar autenticidade ou integridade; técnicas para não repúdio; e autenticação criptográfica de usuários e entidades do sistema.</p>
+
+          <h3>3.8 Segurança física e ambiental</h3>
+          <p>Para evitar acesso físico não autorizado, danos e interferências, a LaFinteca adota controles adequados ao nível de classificação dos dados localizados e processados na empresa. A proteção dos ativos reduz o risco de acesso não autorizado e protege contra perdas ou danos.</p>
+
+          <h3>3.9 Segurança operacional</h3>
+          <p>São criados procedimentos para utilização adequada e segura dos sistemas de processamento de informação, com planejamento de capacidade apropriado. Alterações na organização, processos, instalações e sistemas são controladas. Um Sistema de Monitoramento de Segurança detecta atividades não autorizadas. Existem controles de detecção, prevenção e recuperação contra códigos maliciosos. Cópias de segurança são feitas e testadas regularmente. A gestão de vulnerabilidades inclui análises trimestrais e testes de penetração anuais.</p>
+
+          <h3>3.10 Segurança das comunicações</h3>
+          <p>Redes informáticas são protegidas e informações copiadas para aumentar a disponibilidade. Mecanismos de segurança, níveis de serviço e requisitos de gestão de todos os serviços de rede — internos ou terceirizados — são incluídos nos contratos.</p>
+
+          <h3>3.11 Aquisição, desenvolvimento e manutenção de sistemas</h3>
+          <p>Requisitos de segurança são definidos na fase de análise para o desenvolvimento ou aquisição de software, com critérios de aceitação para sistemas e aplicações. Os ambientes de teste, desenvolvimento e produção são rigorosamente controlados. Informações em comércio eletrônico são protegidas contra atividades fraudulentas, disputas e acesso ou modificação não autorizados.</p>
+
+          <h3>3.12 Relação com terceiros</h3>
+          <p>A LaFinteca acorda com terceiros (especialmente empresas de TIC) requisitos de segurança da informação documentados para mitigar riscos de acesso aos ativos. Todos os requisitos são acordados com cada terceiro que possa acessar, processar, armazenar, comunicar ou fornecer infraestrutura de TI. A prestação de serviços é monitorada, revisada e auditada regularmente.</p>
+
+          <h3>3.13 Gestão de incidentes</h3>
+          <p>A LaFinteca mantém estrutura para gestão de incidentes de segurança com resposta eficaz, fornecendo meios para que todos os funcionários e contratados reportem incidentes e vulnerabilidades. Incidentes reportados são registrados, tratados e lições aprendidas são analisadas.</p>
+
+          <h3>3.14 Continuidade de negócios</h3>
+          <p>A LaFinteca cria e gerencia a estrutura que assegura a continuidade dos processos de negócio. O plano proporciona proteção adequada e recuperação oportuna contra interrupções de serviços críticos, é testado periodicamente e atualizado conforme as mudanças.</p>
+
+          <h3>3.15 Conformidade</h3>
+          <p>A LaFinteca realiza due diligence e considera todos os requisitos legislativos, regulatórios e contratuais aplicáveis. Funcionários agem de acordo com leis, regulamentos, direitos de propriedade intelectual, contratos de licença e políticas internas, sendo responsáveis por proteger as informações da empresa e processá-las conforme níveis de confidencialidade.</p>
+
+          <h2 id="aplicacao">4. Aplicação de políticas</h2>
+          <p>É responsabilidade de todos os funcionários e contratados cumprir as políticas de segurança da informação. Atos resultantes de negligência grave são classificados como incidentes de segurança graves quando resultam em:</p>
+          <ul>
+            <li>Uso de informações e ativos corporativos para fins ilegais;</li>
+            <li>Acesso ou modificação não autorizados de informações;</li>
+            <li>Prejuízo à reputação da LaFinteca;</li>
+            <li>Danos a pessoas ou risco aos proprietários, funcionários, parceiros, clientes e ativos;</li>
+            <li>Exposição consciente a perda real ou potencial.</li>
+          </ul>
+          <p>O descumprimento ou a violação intencional pode resultar em medidas disciplinares — incluindo rescisão contratual —, medidas previstas no direito do trabalho e/ou civil, e recuperação de danos. Toda violação deve ser comunicada imediatamente ao Gerente de Segurança.</p>
+
+          <h2 id="desvio">5. Desvio da política</h2>
+          <p>O desvio é permitido apenas em circunstâncias excepcionais: requisitos legais e regulamentares locais, limitações por localização geográfica, disponibilidade do produto ou outras condições específicas. Em todos os casos, o Gerente de Segurança deve ser comunicado.</p>
+
+          <h2 id="revisao">6. Revisão de políticas</h2>
+          <p>Esta política deve ser revista anualmente ou em caso de alterações significativas, para abordar novas ameaças, tecnologias e requisitos regulamentares.</p>
+
+          <p class="policy-footnote">Em caso de dúvidas, entre em contato pelo e-mail <a href="mailto:compliance@la-finteca.com">compliance@la-finteca.com</a>.</p>
         </div>
+
         <div data-lang="en" class="policy-content__lang">
           <div class="policy-placeholder">
-            <p>The content of this document will be published soon. If you have questions, please contact <a href="mailto:compliance@la-finteca.com">compliance@la-finteca.com</a>.</p>
+            <p>The Portuguese version is the source-of-truth document. An official English translation is being prepared. For questions, contact <a href="mailto:compliance@la-finteca.com">compliance@la-finteca.com</a>.</p>
           </div>
         </div>
       </article>

@@ -1,0 +1,175 @@
+<section class="hero policy-hero" style="padding: 40px 40px 30px; min-height: auto;">
+    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
+      <div>
+        <p class="section-eyebrow"><span data-lang="pt">Home / Centro de Políticas / Política de Cibersegurança</span><span data-lang="en">Home / Policy Center / Cybersecurity Policy</span></p>
+        <a class="policy-back" href="/politicas/"><span aria-hidden="true">←</span> <span data-lang="pt">Voltar ao Centro de Políticas</span><span data-lang="en">Back to Policy Center</span></a>
+        <h1 style="font-size: 40px; max-width: 1000px; margin-top: 16px;"><span data-lang="pt">Política de Cibersegurança</span><span data-lang="en">Cybersecurity Policy</span></h1>
+        <div class="policy-meta">
+          <span class="policy-meta__item"><span data-lang="pt">Versão 1.0 — Maio de 2026</span><span data-lang="en">Version 1.0 — May 2026</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="policy-body" style="padding: 0 40px 80px;">
+    <div class="policy-body__inner">
+      <aside class="policy-toc">
+        <p class="policy-toc__label"><span data-lang="pt">Nesta página</span><span data-lang="en">On this page</span></p>
+        <ol>
+          <li><a href="#introducao"><span data-lang="pt">Introdução</span><span data-lang="en">Introduction</span></a></li>
+          <li><a href="#governanca"><span data-lang="pt">Governança</span><span data-lang="en">Governance</span></a></li>
+          <li><a href="#malware"><span data-lang="pt">Controle contra malware</span><span data-lang="en">Malware control</span></a></li>
+          <li><a href="#dispositivos"><span data-lang="pt">Gestão de dispositivos</span><span data-lang="en">Device management</span></a></li>
+          <li><a href="#monitoramento"><span data-lang="pt">Registro e monitoramento</span><span data-lang="en">Logging &amp; monitoring</span></a></li>
+          <li><a href="#intrusao"><span data-lang="pt">Detecção de intrusão</span><span data-lang="en">Intrusion detection</span></a></li>
+          <li><a href="#terceiros"><span data-lang="pt">Terceiros</span><span data-lang="en">Third parties</span></a></li>
+          <li><a href="#treinamento"><span data-lang="pt">Treinamento</span><span data-lang="en">Training</span></a></li>
+          <li><a href="#revisao"><span data-lang="pt">Revisão</span><span data-lang="en">Review</span></a></li>
+        </ol>
+      </aside>
+
+      <article class="policy-content" id="policy-content">
+        <div data-lang="pt" class="policy-content__lang">
+          <h2 id="introducao">1. Introdução</h2>
+
+          <h3>1.1 Objetivos e metas</h3>
+          <p>O objetivo desta Política é definir as regras de cibersegurança da LaFinteca Instituição de Pagamento LTDA ("LaFinteca" ou "a Empresa"), incluindo controle contra malware, registro e monitoramento, criptografia, detecção de incidentes e segregação de dados.</p>
+
+          <h3>1.2 Escopo</h3>
+          <p>A Política aplica-se à LaFinteca e a todos os funcionários e contratados que utilizem os ativos ou plataformas da empresa. Não se aplica diretamente aos clientes ou a terceiros prestadores de serviços, a menos que especificado em acordos contratuais.</p>
+
+          <h2 id="governanca">2. Governança</h2>
+          <p>A responsabilidade pela gestão deste documento é atribuída ao Gestor de Segurança da LaFinteca. O documento é submetido à aprovação final e revisão anual pelo Diretor Executivo.</p>
+
+          <h3>2.1 Manutenção, atualização e distribuição</h3>
+          <p>A Política é publicada em formato que não possa ser facilmente alterado e em linguagem acessível ao público-alvo, disponibilizada a todos os membros da LaFinteca. O Gerente de Segurança é responsável pela distribuição. Cada nova versão é distribuída com um número de versão mais recente e registro no histórico de alterações.</p>
+
+          <h2 id="malware">3. Controle contra malware</h2>
+          <p>Os principais elementos de proteção exigidos:</p>
+          <ul>
+            <li>Funcionários são responsáveis por manter um ambiente computacional livre de códigos maliciosos para os ativos atribuídos e por reportar qualquer contaminação suspeita.</li>
+            <li>Envio ou download de software, dados e arquivos requer digitalização do material antes de ser salvo.</li>
+            <li>O software antivírus instalado e ativo nos computadores está configurado para varreduras ativas.</li>
+            <li>Responsabilidades para manutenção do antivírus, encaminhamento e comunicação de incidentes são definidas para funcionários, equipe de TI e Gerente de Segurança.</li>
+          </ul>
+
+          <h3>3.1 Responsabilidades do funcionário</h3>
+          <p>Os funcionários não devem adulterar o software antivírus e devem seguir os procedimentos para limitar a atividade de códigos maliciosos. Qualquer contaminação suspeita deve ser reportada à organização apropriada.</p>
+
+          <h3>3.2 Novos arquivos e anexos</h3>
+          <p>O armazenamento autorizado exige digitalização do material. Fontes a serem digitalizadas incluem: e-mail e seus anexos, mídia removível, smartphones, laptops, outros PCs e conteúdo da Internet. Anexos de e-mail criptografados são verificados antes do conteúdo ser acessível. Todo o tráfego HTTP, incluindo conteúdo ativo, é analisado antes da entrega.</p>
+
+          <h3>3.3 Implantação corporativa</h3>
+          <p>Antivírus é obrigatório em todos os portais de acesso à Internet, servidores de infraestrutura e PCs internos. Exceções e desativações exigem aprovação do Gerente de Segurança. Antivírus é instalado em novos sistemas antes da conexão à rede e a qualquer mídia compartilhada. Scanners são instalados em todos os pontos de acesso às redes onde possa haver tráfego com software malicioso.</p>
+
+          <h3>3.4 Recursos do scanner</h3>
+          <p>O antivírus deve realizar varreduras ativas: na inicialização, em PCs e servidores ao menos uma vez por semana (verificação completa), em arquivos abertos, em anexos de e-mail (entrada e saída), em conteúdo web, e após sincronização com dispositivos portáteis. Funcionalidades: varredura manual/automática/programada, limpeza e quarentena de arquivos infectados, atualização automática, registro centralizado e relatórios/alertas via SMS ou e-mail.</p>
+
+          <h3>3.5 Manutenção do antivírus</h3>
+          <p>As configurações só podem ser alteradas por funcionário de TI autorizado, com acesso protegido por senha. Treinamento adequado é fornecido a todos os funcionários de TI. Atualizações automáticas devem ser consideradas; se houver processo de avaliação, este não deve levar mais de um dia útil. Atualizações são implementadas em até 24 horas da disponibilidade do fornecedor.</p>
+
+          <h3>3.6 Escalada e resposta</h3>
+          <p>Procedimentos de notificação e resposta abordam incidentes com base na gravidade. Planos de contingência tratam da recuperação. Quando software malicioso é detectado, o nome, data, hora e método de resolução são registrados e reportados à equipe de TI. Alertas de limpeza bem-sucedida são "silenciosos"; falhas exigem ação ativa do funcionário de TI.</p>
+
+          <h3>3.7 Requisitos de registro</h3>
+          <p>O antivírus deve registrar: detecção de código malicioso, limpeza realizada, atualizações de definição e arquivos colocados em quarentena. O Gerente de Segurança revisa relatórios de incidentes e comunica modificações necessárias em roteadores, firewalls, servidores de e-mail e softwares de terceiros para bloquear fontes indesejáveis. Relatórios mensais são encaminhados ao Diretor Executivo para análise de tendências.</p>
+
+          <h3>3.8 Boatos e avisos</h3>
+          <p>Todos os avisos sobre vírus, worms e outras ameaças à infraestrutura da LaFinteca são provenientes do Gerente de Segurança. Informações externas — especialmente as encaminhadas repetidamente com alertas graves — devem ser consideradas não confiáveis e encaminhadas ao Gerente de Segurança. Comunicados a partes não pertencentes às organizações de segurança são emitidos exclusivamente pela área de Comunicação Corporativa.</p>
+
+          <h2 id="dispositivos">4. Gerenciamento e controle de dispositivos</h2>
+          <p>O acesso aos serviços, sistemas e dados da LaFinteca — seja em dispositivo pessoal ou fornecido pela empresa — é restrito ao usuário autorizado. A LaFinteca implementa controles técnicos para garantir que o dispositivo, seus backups e cópias relacionadas de dados e aplicativos sejam protegidos com criptografia aprovada e política de senhas em conformidade. Usuários cumprem todos os requisitos de senha e estão proibidos de burlar tais requisitos.</p>
+          <p>Os usuários informam o Gerente de Segurança sempre que o dispositivo ou os dados forem expostos a uso ou acesso não autorizado: dispositivo perdido, roubado, antes de reparo/substituição/descarte, ao encerrar relação com a empresa, ou em caso de suspeita de comprometimento. Notificação em até 24 horas.</p>
+          <p>É responsabilidade do usuário manter o dispositivo atualizado com as últimas atualizações e patches de segurança. O acesso a funcionalidades corporativas pode ser desativado se o dispositivo não for mantido conforme os padrões.</p>
+          <p>A utilização da Internet em dispositivos para fins corporativos segue as mesmas políticas estabelecidas para computadores da LaFinteca, incluindo não encaminhar e-mails corporativos para caixas privadas e não armazenar dados corporativos em sistemas não aprovados.</p>
+
+          <h2 id="monitoramento">5. Registro e monitoramento de eventos</h2>
+
+          <h3>5.1 Registros de auditoria</h3>
+          <p>Sistemas e infraestrutura geram registros de auditoria contendo no mínimo: data e hora, ID do usuário, recursos envolvidos, tipo de solicitação, status (sucesso ou falha) e estado inicial/final em mudanças.</p>
+
+          <h3>5.2 Sistemas de auditoria</h3>
+          <p>Sistemas de registro de auditoria são configuráveis e devem permanecer ativos. Usuários sem privilégios de administrador não podem desativá-los. Auditoria obrigatória inclui: ações realizadas por contas privilegiadas, alterações de senha, inicialização e desligamento do sistema. Quando registros automatizados forem insuficientes, registros manuais de uso privilegiado são mantidos.</p>
+
+          <h3>5.3 Auditoria discricionária</h3>
+          <p>Eventos ativados para sistemas multiusuário: login/logout bem-sucedidos e malsucedidos, acesso a estruturas de dados confidenciais. Procedimentos de resposta a incidentes definem quando ampliar a auditoria.</p>
+
+          <h3>5.4 Funcionalidade exigida</h3>
+          <p>O subsistema de auditoria deve oferecer: repositório de tamanho variável, garantia de não desligar o computador ao exceder 80% do espaço, integridade do repositório, limpeza por funcionário autorizado, compressão de dados quando aplicável e sincronização de relógio entre sistemas. O subsistema de análise suporta análise online, relatórios impressos, relatórios programados e estatísticas. Repositórios são protegidos contra modificações ou exclusões não autorizadas.</p>
+
+          <h3>5.5 Proteção e retenção de registros</h3>
+          <p>Os mecanismos de detecção e registro de eventos são resistentes a ataques e fraudes. Procedimentos de backup geram mídias específicas com registros de auditoria. Mídias removíveis com registros são protegidas conforme classificação; relatórios associados a investigação de incidente são classificados como Proprietários. Relatórios são analisados para garantir uso apropriado de privilégios e acesso a recursos sensíveis.</p>
+
+          <h3>5.6 Escopo do monitoramento</h3>
+          <p>Sujeitos a monitoramento contínuo:</p>
+          <ul>
+            <li><strong>Tráfego de rede</strong> — entrada e saída, detectando anomalias como transferências incomuns, tráfego para IPs maliciosos conhecidos ou protocolos não autorizados.</li>
+            <li><strong>Atividade do usuário</strong> — tentativas de login, falhas de autenticação, escalonamento de privilégios e acesso a sistemas ou dados sensíveis.</li>
+            <li><strong>Desempenho do sistema</strong> — servidores, bancos de dados e aplicativos críticos, em busca de padrões de uso anormais, tempo de inatividade ou DoS.</li>
+            <li><strong>Registros de aplicativos</strong> — logs de autenticação, erros e alterações para detectar atividades suspeitas.</li>
+          </ul>
+
+          <h3>5.7 Ferramentas e alertas</h3>
+          <p>São utilizados Sistemas de Detecção de Intrusão (IDS), ferramentas de análise de tráfego, e agregação e análise de logs. Limites de alerta:</p>
+          <ul>
+            <li><strong>Baixo nível</strong> — anomalias menores; registradas, sem ação imediata.</li>
+            <li><strong>Médio nível</strong> — múltiplas tentativas falhas, acesso incomum, transferências inesperadas; analisado pela equipe de TI em até 24 horas.</li>
+            <li><strong>Alto nível</strong> — detecção de malware, acesso não autorizado, alterações significativas; resposta imediata e encaminhamento à equipe de resposta a incidentes.</li>
+          </ul>
+          <p>Todos os registros são agregados e armazenados com segurança por 12 meses, em conformidade com requisitos legais e regulatórios. São revisados semanalmente pela equipe de TI.</p>
+
+          <h3>5.8 Investigação e resposta</h3>
+          <p>Ao detectar alerta de alto nível, a Equipe de Resposta a Incidentes inicia a investigação. Ações de resposta incluem: isolar sistemas afetados, bloquear tráfego malicioso, revogar credenciais comprometidas ou análise forense. Incidentes são documentados no Relatório de Incidentes.</p>
+
+          <h3>5.9 Relatórios</h3>
+          <p>Reuniões semanais revisam alertas, incidentes e tendências. Relatórios mensais para gerência resumem incidentes, tempos de resposta e tendências. Auditorias trimestrais independentes verificam eficácia e abrangência. Atividades de monitoramento são atualizadas com base em lições aprendidas, auditorias e ameaças emergentes.</p>
+
+          <h3>5.10 Controle de acesso às ferramentas</h3>
+          <p>O acesso aos sistemas de monitoramento e aos registros é restrito apenas a pessoal autorizado. O acesso da equipe de segurança é registrado e revisado periodicamente para evitar acesso não autorizado ou adulteração.</p>
+
+          <h2 id="intrusao">6. Detecção de intrusão</h2>
+          <p>Todos os componentes do gateway são monitorados quanto a tentativas de intrusão. O monitoramento rastreia e registra, no mínimo:</p>
+          <ul>
+            <li>Tentativas repetidas e malsucedidas de acessar um recurso.</li>
+            <li>Tentativas repetidas de um usuário legítimo de exceder privilégios autorizados.</li>
+            <li>Padrão suspeito de acesso bem-sucedido (horário ou local incomum).</li>
+            <li>Tentativas deliberadas de burlar controles.</li>
+            <li>Padrões que possam levar a DoS/DDoS são tratados como tentativa de intrusão confirmada.</li>
+          </ul>
+          <p>A equipe de TI realiza revisões diárias dos registros de auditoria em busca de atividades maliciosas, usando relatórios de exceção pré-formatados ou outras formas convenientes.</p>
+
+          <h2 id="terceiros">7. Contratação de terceiros e avaliação de riscos</h2>
+          <p>Fornecedores terceirizados com acesso a dados, sistemas ou processos críticos passam por due diligence e avaliação de risco antes da finalização do contrato. A avaliação considera controles do provedor, histórico de incidentes, práticas de proteção de dados e conformidade regulatória. Contratos incluem cláusulas de cibersegurança: confidencialidade, prazos de notificação de incidentes, SLAs, direitos de auditoria e protocolos de rescisão em caso de descumprimento.</p>
+          <p>Fornecedores de alto risco — com acesso a sistemas de pagamento, dados pessoais ou infraestrutura essencial — passam por revisões periódicas e monitoramento. Quando possível, devem estar em conformidade com padrões como ISO/IEC 27001 ou equivalente. O processo é coordenado com as áreas jurídica, de conformidade e de segurança da informação.</p>
+
+          <h2 id="treinamento">8. Treinamento e conscientização</h2>
+          <p>A conscientização dos funcionários é componente crítico da postura de cibersegurança. O programa contínuo:</p>
+          <ul>
+            <li>Promove compreensão dos riscos, das políticas internas e dos padrões de uso aceitável em todos os níveis.</li>
+            <li>Garante treinamento obrigatório no momento da admissão e atualizações anuais.</li>
+            <li>Oferece treinamento baseado em função (TI, finanças, jurídico, suporte ao cliente).</li>
+            <li>Promove cultura de segurança via campanhas, exercícios de phishing e orientações práticas de reporte de incidentes.</li>
+          </ul>
+          <p>Todas as iniciativas são documentadas e monitoradas para demonstrar conformidade e apoiar a melhoria contínua.</p>
+
+          <h2 id="revisao">9. Revisão e atualização da política</h2>
+          <p>Esta Política é formalmente revista e atualizada:</p>
+          <ul>
+            <li>Pelo menos uma vez por ano, para alinhar com o cenário de ameaças atual, mudanças tecnológicas e melhores práticas.</li>
+            <li>Sempre que ocorrerem mudanças significativas na estrutura, processos, infraestrutura de TI ou relações com terceiros.</li>
+            <li>Em resposta a requisitos legais, regulatórios ou de supervisão novos ou atualizados.</li>
+            <li>Após incidentes graves ou conclusões de auditoria que questionem a adequação dos controles.</li>
+          </ul>
+          <p>O processo é coordenado pelo Gerente de Segurança em cooperação com as equipes de Compliance e Jurídico. Atualizações são documentadas, aprovadas pela alta administração e comunicadas às partes interessadas.</p>
+
+          <p class="policy-footnote">Em caso de dúvidas, entre em contato pelo e-mail <a href="mailto:compliance@la-finteca.com">compliance@la-finteca.com</a>.</p>
+        </div>
+
+        <div data-lang="en" class="policy-content__lang">
+          <div class="policy-placeholder">
+            <p>The Portuguese version is the source-of-truth document. An official English translation is being prepared. For questions, contact <a href="mailto:compliance@la-finteca.com">compliance@la-finteca.com</a>.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
