@@ -690,13 +690,10 @@
     margin-right: 0;
     width: 100%;
   }
-  /* In the full-bleed variant the .laptop-photo__stage must stretch to
-     fill the wider parent — otherwise it keeps its original 1200×800 px
-     box and the right side renders empty. */
-  .laptop-photo--full .laptop-photo__stage {
-    width: 100%;
-    height: 100%;
-  }
+  /* The .laptop-photo__stage keeps its fixed 1200×800 dimensions so the
+     JS scale-transform in site.js (offsetWidth / 1200) still produces a
+     correct fill. Adjusting stage dimensions here would double-shrink
+     the mockup on mobile. */
   /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
@@ -1320,6 +1317,9 @@
     gap: 24px;
     margin-top: 48px;
     text-align: left;
+  }
+  @media (max-width: 720px) {
+    .intro-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
   }
   .intro-card {
     position: relative;
@@ -2417,6 +2417,35 @@
     .header__menu-item.has-submenu { padding-bottom: 0; margin-bottom: 0; }
     .footer-grid { grid-template-columns: 1fr !important; }
     .reviews-carousel__controls { flex-wrap: wrap; }
+
+    /* Header at narrow widths: hide the secondary "Entrar" CTA so logo +
+       lang + primary "Abrir Conta PJ" fit on a single row without wrapping. */
+    .header__actions .login-btn:not(.login-btn--primary) { display: none; }
+    .header__logo-img { height: 22px; }
+    .login-btn { font-size: 11px; padding: 0 14px; height: 38px; letter-spacing: 1px; }
+
+    /* Phone numbers in the Atendimento box — 28 px wrapped awkwardly. */
+    .support-card__phone { font-size: 22px; letter-spacing: -0.4px; }
+
+    /* Compact intro card padding on tight screens. */
+    .intro-card { padding: 26px 22px 24px; }
+
+    /* Conta PJ hero — slightly less vertical space, looser inner padding. */
+    .contapj-hero { padding: 48px 16px; min-height: 360px; }
+    .home-block__title--hero { font-size: clamp(22px, 7vw, 30px); letter-spacing: -0.6px; }
+
+    /* Full-bleed laptop section: give the mockup more relative breathing
+       room. The aspect-ratio 3/2 at 393 px wide is only ~262 px tall,
+       which looks like a stamp — shrink the surrounding padding and
+       drop the contained title size so the laptop feels intentional. */
+    .home-block--full > .home-block__inner { padding: 0 20px; }
+    .laptop-photo--full { aspect-ratio: 4 / 3; }
+    .home-block__title { font-size: clamp(22px, 6.4vw, 28px); }
+
+    /* Hero overlay buttons stack on narrow screens — give the secondary
+       button full width so they sit cleanly. */
+    .hero--fullbleed .hero__buttons { flex-direction: column; align-items: stretch; }
+    .hero--fullbleed .hero__buttons .btn { width: 100%; justify-content: center; }
   }
 
   /* ============================================================
