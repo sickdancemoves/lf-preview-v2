@@ -40,9 +40,13 @@ function markActiveNav(nav, pageName) {
     /<a\s([^>]*?)data-page="([^"]+)"([^>]*)>/g,
     (m, before, dp, after) => {
       if (dp !== pageName) return m;
-      const all = before + after;
+      // Detect an existing class="..." anywhere in the attribute list.
+      // (`before` may start with `class=` directly — no leading whitespace
+      // — so the previous `/\sclass="/` check missed it and we emitted a
+      // duplicate class attribute, which browsers silently drop.)
+      const all = ` ${before} ${after}`;
       if (/\sclass="/.test(all)) {
-        return `<a ${(before + after).replace(/\sclass="([^"]*)"/, ' class="$1 active"')} data-page="${dp}">`;
+        return `<a ${(before + after).replace(/(^|\s)class="([^"]*)"/, '$1class="$2 active"')} data-page="${dp}">`;
       }
       return `<a class="active" ${before}data-page="${dp}"${after}>`;
     }

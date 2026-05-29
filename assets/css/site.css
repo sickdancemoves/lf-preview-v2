@@ -2579,7 +2579,8 @@
     transition: color 0.15s ease;
   }
   .mobile-drawer__link:hover,
-  .mobile-drawer__link:active { color: var(--green); }
+  .mobile-drawer__link:active,
+  .mobile-drawer__link.active { color: var(--green); }
   .mobile-drawer__lang {
     display: flex;
     align-items: center;
