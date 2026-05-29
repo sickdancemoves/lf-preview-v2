@@ -674,6 +674,16 @@
     background: var(--dark);
   }
   .home-block--alt { background: #1f1f23; }
+  /* Full-bleed inner: lets the laptop mockup span edge-to-edge while the
+     centered title/sub above it stays at the regular max-width. */
+  .home-block--full { padding-left: 0; padding-right: 0; }
+  .home-block--full > .home-block__inner { padding: 0 40px; }
+  .laptop-photo--full {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
   /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
@@ -1846,6 +1856,7 @@
     max-width: 240px;
   }
   .social { display: flex; gap: 10px; align-items: center; }
+  .footer-brand .social { margin-top: 18px; }
   .social-btn {
     width: 40px; height: 40px;
     border-radius: 999px;
