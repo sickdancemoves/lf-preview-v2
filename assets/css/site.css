@@ -684,6 +684,13 @@
     margin-right: 0;
     width: 100%;
   }
+  /* In the full-bleed variant the .laptop-photo__stage must stretch to
+     fill the wider parent — otherwise it keeps its original 1200×800 px
+     box and the right side renders empty. */
+  .laptop-photo--full .laptop-photo__stage {
+    width: 100%;
+    height: 100%;
+  }
   /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
