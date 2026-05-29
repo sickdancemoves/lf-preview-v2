@@ -2405,8 +2405,27 @@
     .cta-banner__inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 32px; }
     .contapj-hero { padding: 64px 20px; min-height: 420px; }
     .contapj-cnpj { flex-direction: column; gap: 12px; background: transparent; padding: 0; }
-    .contapj-cnpj input { border-radius: 999px; padding: 0 24px; height: 64px; font-size: 16px; }
-    .contapj-cnpj .btn { border-radius: 999px; width: 100%; height: 44px; }
+    .contapj-cnpj input {
+      border-radius: 999px;
+      padding: 0 26px;
+      min-height: 72px;
+      height: 72px;
+      font-size: 16px;
+      font-weight: 500;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      appearance: none;
+      line-height: 1;
+    }
+    .contapj-cnpj .btn {
+      border-radius: 999px;
+      width: 100%;
+      height: 44px;
+      min-height: 44px;
+      font-size: 12px;
+      padding: 0 20px;
+    }
+    .contapj-cnpj .btn span { font-size: 12px; }
     .compare-table { display: block; overflow-x: auto; }
     .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
@@ -2467,7 +2486,7 @@
     .footer-grid { grid-template-columns: 1fr !important; }
     .reviews-carousel__controls { flex-wrap: wrap; }
 
-    .header__logo-img { height: 22px; }
+    .header__logo-img { height: 18px; }
 
     /* Phone numbers in the Atendimento box — 28 px wrapped awkwardly. */
     .support-card__phone { font-size: 22px; letter-spacing: -0.4px; }
