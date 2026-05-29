@@ -359,17 +359,23 @@
     background-size: cover;
     background-position: center 35%;
   }
+  /* Hero placeholder hint — corner label so it doesn't fight the headline.
+     Matches the convention used by .home-block--bg::after on other sections. */
   .hero__media-fallback {
     position: absolute;
-    inset: 0;
-    display: none;
+    top: auto;
+    bottom: 24px;
+    right: 32px;
+    left: auto;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    z-index: 1;
+    pointer-events: none;
   }
   .hero--fullbleed .hero__overlay {
     position: relative;
@@ -920,6 +926,90 @@
   }
   .support-card__libras:hover { color: var(--green); border-color: var(--green); }
   .support-card__email { font-size: 14px; }
+
+  /* Unified Atendimento container — single soft-bordered block that holds the
+     primary contact channels (left column) and the secondary blocks
+     Redes sociais + Ouvidoria (right column). Wider and airier than the
+     v1 ".support-card" treatment. */
+  .support-unified {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, var(--dark-2) 0%, #1f1f23 100%);
+    border: 1px solid var(--gray-line);
+    border-radius: 20px;
+    padding: 48px 56px;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+  }
+  .support-unified__head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .support-unified__tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--green);
+    background: rgba(191, 254, 67, 0.1);
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    padding: 8px 18px;
+  }
+  .support-unified__hours {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--gray-text);
+    margin: 0;
+  }
+  .support-unified__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+  }
+  .support-unified__primary {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .support-unified__secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-left: 48px;
+    border-left: 1px solid var(--gray-line);
+  }
+  .support-unified__group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .support-unified__group-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin: 0;
+  }
+  .support-unified__group-copy {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gray-text);
+    margin: 0;
+  }
+  @media (max-width: 880px) {
+    .support-unified { padding: 32px 24px; border-radius: 16px; }
+    .support-unified__grid { grid-template-columns: 1fr; gap: 36px; }
+    .support-unified__secondary { padding-left: 0; border-left: none; padding-top: 32px; border-top: 1px solid var(--gray-line); }
+  }
 
   .support-extras {
     max-width: 1080px;
