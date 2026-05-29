@@ -12,6 +12,53 @@
   wraps.forEach(w => { sync(w); ro.observe(w); });
 })();
 
+// Mobile drawer — hamburger toggles a full-screen overlay nav. Inspired by
+// the Stripe/Stone mobile pattern: hamburger top-right, full-bleed dark
+// overlay slides in from above with large hit-area links + CTAs.
+(function () {
+  const btn = document.getElementById('headerHamburger');
+  const drawer = document.getElementById('mobileDrawer');
+  if (!btn || !drawer) return;
+
+  function open() {
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  function toggle() {
+    if (drawer.classList.contains('is-open')) close(); else open();
+  }
+
+  btn.addEventListener('click', toggle);
+  // Close when a nav link is clicked (drawer dismisses before navigation)
+  drawer.querySelectorAll('.mobile-drawer__link, .mobile-drawer__btn').forEach(el => {
+    el.addEventListener('click', () => setTimeout(close, 0));
+  });
+  // Lang buttons inside drawer mirror the header lang switch
+  drawer.querySelectorAll('.mobile-drawer__lang-btn').forEach(el => {
+    el.addEventListener('click', () => {
+      const lang = el.getAttribute('data-lang-set');
+      const main = document.querySelector('.lang-switch__option[data-lang-set="' + lang + '"]');
+      if (main) main.click();
+      close();
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) close();
+  });
+  // If viewport grows past mobile while drawer is open, close it
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && drawer.classList.contains('is-open')) close();
+  });
+})();
+
 // Header dropdown menus — JS-driven open/close (hover + click + ESC + click-outside)
 (function () {
   const items = document.querySelectorAll('.header__menu-item.has-submenu');

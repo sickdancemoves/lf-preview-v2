@@ -2404,13 +2404,62 @@
     .faq-split__inner { grid-template-columns: 1fr; gap: 32px; }
     .cta-banner__inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 32px; }
     .contapj-hero { padding: 64px 20px; min-height: 420px; }
-    .contapj-cnpj { flex-direction: column; gap: 10px; background: transparent; padding: 0; }
-    .contapj-cnpj input { border-radius: 999px; padding: 0 22px; }
-    .contapj-cnpj .btn { border-radius: 999px; width: 100%; }
+    .contapj-cnpj { flex-direction: column; gap: 12px; background: transparent; padding: 0; }
+    .contapj-cnpj input { border-radius: 999px; padding: 0 24px; height: 64px; font-size: 16px; }
+    .contapj-cnpj .btn { border-radius: 999px; width: 100%; height: 44px; }
     .compare-table { display: block; overflow-x: auto; }
     .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
     .laptop-photo { margin-top: 32px; }
+  }
+
+  /* ============================================================
+     Comparison table — true mobile layout (≤ 720 px).
+     Drop the horizontal-scroll table and render each row as a card.
+     Each card: row label as header, then 3 stacked rows showing the
+     column name (LaFinteca / Banco tradicional / Planilha) + value.
+     ============================================================ */
+  @media (max-width: 720px) {
+    .compare-frame { background: transparent; border: 0; padding: 0; max-width: 100%; margin-top: 24px; }
+    .compare-table { display: block; overflow: visible; border: 0; }
+    .compare-table thead { display: none; }
+    .compare-table tbody { display: flex; flex-direction: column; gap: 16px; }
+    .compare-table tr { display: block; background: var(--dark-2); border: 1px solid var(--gray-line); border-radius: 14px; padding: 18px 18px 8px; }
+    .compare-table tr:hover { background: var(--dark-2); }
+    .compare-table tr:hover td.compare-table__hero { background: transparent; }
+    .compare-table td { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); width: 100%; }
+    .compare-table td:last-child { border-bottom: 0; padding-bottom: 6px; }
+    .compare-table td .compare-cell { flex: 0 0 auto; text-align: right; }
+
+    .compare-table td.compare-table__row-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--white);
+      letter-spacing: -0.2px;
+      text-transform: uppercase;
+      padding: 0 0 12px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--gray-line);
+      background: transparent;
+    }
+
+    .compare-table td:not(.compare-table__row-label)::before {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--gray-text);
+    }
+    body[data-lang="pt"] .compare-table td:nth-child(2)::before,
+    body[data-lang="en"] .compare-table td:nth-child(2)::before { content: "LaFinteca"; color: var(--green); }
+    body[data-lang="pt"] .compare-table td:nth-child(3)::before { content: "Banco tradicional"; }
+    body[data-lang="en"] .compare-table td:nth-child(3)::before { content: "Traditional bank"; }
+    body[data-lang="pt"] .compare-table td:nth-child(4)::before { content: "Planilha"; }
+    body[data-lang="en"] .compare-table td:nth-child(4)::before { content: "Spreadsheet"; }
+
+    .compare-table tbody td.compare-table__hero { background: transparent; border-right: 0; border-left: 0; }
   }
 
   @media (max-width: 560px) {
@@ -2418,11 +2467,7 @@
     .footer-grid { grid-template-columns: 1fr !important; }
     .reviews-carousel__controls { flex-wrap: wrap; }
 
-    /* Header at narrow widths: hide the secondary "Entrar" CTA so logo +
-       lang + primary "Abrir Conta PJ" fit on a single row without wrapping. */
-    .header__actions .login-btn:not(.login-btn--primary) { display: none; }
     .header__logo-img { height: 22px; }
-    .login-btn { font-size: 11px; padding: 0 14px; height: 38px; letter-spacing: 1px; }
 
     /* Phone numbers in the Atendimento box — 28 px wrapped awkwardly. */
     .support-card__phone { font-size: 22px; letter-spacing: -0.4px; }
@@ -2434,10 +2479,7 @@
     .contapj-hero { padding: 48px 16px; min-height: 360px; }
     .home-block__title--hero { font-size: clamp(22px, 7vw, 30px); letter-spacing: -0.6px; }
 
-    /* Full-bleed laptop section: give the mockup more relative breathing
-       room. The aspect-ratio 3/2 at 393 px wide is only ~262 px tall,
-       which looks like a stamp — shrink the surrounding padding and
-       drop the contained title size so the laptop feels intentional. */
+    /* Full-bleed laptop section padding tightens on mobile. */
     .home-block--full > .home-block__inner { padding: 0 20px; }
     .laptop-photo--full { aspect-ratio: 4 / 3; }
     .home-block__title { font-size: clamp(22px, 6.4vw, 28px); }
@@ -2446,6 +2488,119 @@
        button full width so they sit cleanly. */
     .hero--fullbleed .hero__buttons { flex-direction: column; align-items: stretch; }
     .hero--fullbleed .hero__buttons .btn { width: 100%; justify-content: center; }
+  }
+
+  /* ============================================================
+     Mobile drawer (hamburger menu) — Stripe/Stone pattern.
+     Hidden on desktop; hamburger button + full-bleed overlay below 900 px.
+     ============================================================ */
+  .header__hamburger {
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+    z-index: 1010;
+  }
+  .header__hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    transform-origin: center;
+  }
+  .header__hamburger[aria-expanded="true"] .header__hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .header__hamburger[aria-expanded="true"] .header__hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .header__hamburger[aria-expanded="true"] .header__hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-drawer {
+    position: fixed;
+    inset: 0;
+    background: var(--dark);
+    z-index: 1000;
+    padding: 96px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    overflow-y: auto;
+  }
+  .mobile-drawer.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .mobile-drawer__nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-drawer__link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--white);
+    text-decoration: none;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: -0.3px;
+    transition: color 0.15s ease;
+  }
+  .mobile-drawer__link:hover,
+  .mobile-drawer__link:active { color: var(--green); }
+  .mobile-drawer__lang {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+  }
+  .mobile-drawer__lang-btn {
+    background: transparent;
+    border: 0;
+    color: rgba(255,255,255,0.55);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 6px;
+    text-transform: uppercase;
+  }
+  .mobile-drawer__lang-btn:hover { color: var(--green); }
+  .mobile-drawer__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .mobile-drawer__btn {
+    width: 100%;
+    justify-content: center;
+    height: 52px;
+  }
+
+  @media (max-width: 900px) {
+    .header__hamburger { display: flex; }
+    .header__actions { display: none; }
   }
 
   /* ============================================================

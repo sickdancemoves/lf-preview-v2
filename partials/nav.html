@@ -23,4 +23,27 @@
     <button class="login-btn"><span data-lang="pt">Entrar</span><span data-lang="en">Log in</span></button>
     <button class="login-btn login-btn--primary" onclick="location.href='/contapj/'"><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open Conta PJ</span></button>
   </div>
+  <button class="header__hamburger" id="headerHamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+    <span class="header__hamburger-line"></span>
+    <span class="header__hamburger-line"></span>
+    <span class="header__hamburger-line"></span>
+  </button>
 </header>
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <nav class="mobile-drawer__nav">
+    <a class="mobile-drawer__link" data-page="contapj" href="/contapj/">Conta PJ</a>
+    <a class="mobile-drawer__link" data-page="about" href="/about/"><span data-lang="pt">Sobre nós</span><span data-lang="en">About us</span></a>
+    <a class="mobile-drawer__link" data-page="contact" href="/contact/"><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span></a>
+    <a class="mobile-drawer__link" href="/faqs/">FAQs</a>
+    <a class="mobile-drawer__link" href="/politicas/"><span data-lang="pt">Centro de Políticas</span><span data-lang="en">Policy Center</span></a>
+  </nav>
+  <div class="mobile-drawer__lang">
+    <button type="button" class="mobile-drawer__lang-btn" data-lang-set="pt">PT</button>
+    <span aria-hidden="true">·</span>
+    <button type="button" class="mobile-drawer__lang-btn" data-lang-set="en">EN</button>
+  </div>
+  <div class="mobile-drawer__actions">
+    <button class="btn btn-ghost mobile-drawer__btn" type="button"><span><span data-lang="pt">Entrar</span><span data-lang="en">Log in</span></span></button>
+    <button class="btn btn-green mobile-drawer__btn" onclick="location.href='/contapj/'" type="button"><span><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open Conta PJ</span></span></button>
+  </div>
+</div>
