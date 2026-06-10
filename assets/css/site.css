@@ -1088,6 +1088,8 @@
     display: block;
     height: 22px;
     width: auto;
+    /* Source SVG ships with dark paths; recolor to white for the dark footer. */
+    filter: brightness(0) invert(1);
   }
   .bacen-badge__body {
     display: flex;
@@ -3144,4 +3146,154 @@
       padding: 18px 0 0;
     }
     .policy-content h2 { font-size: 20px; }
+  }
+
+  /* ===================== Abrir Conta — onboarding form ===================== */
+  .abrir-page { background: var(--dark); }
+  .abrir-wrap { max-width: 760px; margin: 0 auto; }
+  .abrir-head { text-align: center; margin-bottom: 40px; }
+  .abrir-head__sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .abrir-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 20px;
+  }
+  .abrir-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .abrir-field--full { grid-column: 1 / -1; }
+
+  .abrir-field label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gray-text);
+  }
+  .abrir-req { color: var(--green); }
+
+  .abrir-field input,
+  .abrir-field select {
+    height: 50px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-line);
+    background: var(--dark-2);
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s var(--ease-out);
+  }
+  .abrir-field select { appearance: none; cursor: pointer; }
+  .abrir-field input::placeholder { color: #6c6f76; }
+  .abrir-field input:focus,
+  .abrir-field select:focus { border-color: var(--green); }
+  .abrir-field input:disabled { opacity: 0.45; cursor: not-allowed; }
+  .abrir-field input.is-invalid,
+  .abrir-field select.is-invalid { border-color: #ff6b6b; background: rgba(255, 107, 107, 0.06); }
+  .abrir-field input[type="date"] { color-scheme: dark; }
+  .abrir-field input[type="file"] {
+    height: auto;
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--gray-text);
+    cursor: pointer;
+  }
+  .abrir-field input[type="file"]::file-selector-button {
+    margin-right: 14px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-line);
+    background: var(--dark-3);
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .abrir-field input[type="file"]::file-selector-button:hover { border-color: var(--green); color: var(--green); }
+
+  .abrir-help { font-size: 12px; line-height: 1.5; color: #8a8d93; }
+
+  .abrir-field--checkbox { justify-content: flex-end; }
+  .abrir-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--white);
+    cursor: pointer;
+    min-height: 50px;
+  }
+  .abrir-check input { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; }
+
+  .abrir-consent {
+    margin: 26px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gray-text);
+  }
+  .abrir-consent a { color: var(--green); }
+
+  .abrir-form__error {
+    margin: 16px 0 0;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 107, 107, 0.4);
+    background: rgba(255, 107, 107, 0.08);
+    color: #ff9b9b;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .abrir-actions { margin-top: 28px; }
+  .abrir-actions--center { display: flex; justify-content: center; }
+  .abrir-actions .btn { width: 100%; height: 54px; }
+  .abrir-actions--center .btn { width: auto; }
+
+  /* Success state */
+  .abrir-success { text-align: center; max-width: 560px; margin: 20px auto; }
+  .abrir-success__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(191, 254, 67, 0.12);
+    border: 1px solid var(--green);
+    color: var(--green);
+    margin-bottom: 24px;
+  }
+  .abrir-success__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: clamp(22px, 3vw, 30px);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    margin: 0 0 16px;
+  }
+  .abrir-success__body {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-text);
+    margin: 0;
+  }
+  .abrir-success__email { color: var(--green); }
+
+  @media (max-width: 680px) {
+    .abrir-grid { grid-template-columns: 1fr; gap: 18px; }
+    .abrir-field--checkbox { justify-content: flex-start; }
+    .abrir-check { min-height: 0; }
   }

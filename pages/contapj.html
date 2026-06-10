@@ -7,7 +7,7 @@
       <span class="home-eyebrow">Conta PJ</span>
       <h1 class="home-block__title home-block__title--hero"><span data-lang="pt">A conta PJ feita para simplificar a rotina financeira da sua empresa.</span><span data-lang="en">The Conta PJ built to simplify your company's day-to-day finance.</span></h1>
       <p class="home-block__sub home-block__sub--center"><span data-lang="pt">TED, extratos com filtros e agendamentos — tudo em um só lugar.</span><span data-lang="en">TED, filterable statements and scheduled payments — all in one place.</span></p>
-      <form class="contapj-cnpj" onsubmit="event.preventDefault();">
+      <form class="contapj-cnpj" onsubmit="event.preventDefault(); location.href='/abrir-conta/' + (this.cnpj.value.trim() ? '?cnpj=' + encodeURIComponent(this.cnpj.value.trim()) : '');">
         <input type="text" id="contapj-cnpj-input" name="cnpj" placeholder="Digite o CNPJ da sua empresa" data-placeholder-pt="Digite o CNPJ da sua empresa" data-placeholder-en="Enter your company's CNPJ" autocomplete="off">
         <button class="btn btn-green" type="submit"><span><span data-lang="pt">Abrir conta</span><span data-lang="en">Open account</span></span></button>
       </form>
@@ -55,6 +55,13 @@
           </div>
           <h3 class="intro-card__title"><span data-lang="pt">Comprovantes e relatórios</span><span data-lang="en">Receipts and reports</span></h3>
           <p class="intro-card__body"><span data-lang="pt">Exporte extratos e baixe comprovantes em PNG para a contabilidade.</span><span data-lang="en">Export statements and download PNG receipts for accounting.</span></p>
+        </article>
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L3 13V3h10l7.59 7.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <h3 class="intro-card__title"><span data-lang="pt">Conta PJ gratuita</span><span data-lang="en">Free Conta PJ</span></h3>
+          <p class="intro-card__body"><span data-lang="pt">Nossa Conta PJ é gratuita. Você só paga R$5 por TED.</span><span data-lang="en">Our Conta PJ is free. You only pay R$5 per TED.</span></p>
         </article>
       </div>
     </div>
@@ -122,61 +129,8 @@
     </div>
   </section>
 
-  <!-- COMPARISON -->
-  <section class="home-block home-block--alt">
-    <div class="home-block__inner home-block__inner--center">
-      <span class="home-eyebrow"><span data-lang="pt">Comparação</span><span data-lang="en">Comparison</span></span>
-      <h2 class="home-block__title fade-in-on-scroll"><span data-lang="pt">Clareza onde antes havia complicação.</span><span data-lang="en">Clarity where there used to be complication.</span></h2>
-      <p class="home-block__sub home-block__sub--center"><span data-lang="pt">Não é sobre comparar. É sobre entender o que muda.</span><span data-lang="en">It's not about comparing. It's about understanding what changes.</span></p>
-      <div class="compare-frame">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="compare-table__hero"><img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="compare-table__logo"></th>
-              <th><span data-lang="pt">Banco tradicional</span><span data-lang="en">Traditional bank</span></th>
-              <th><span data-lang="pt">Planilha</span><span data-lang="en">Spreadsheet</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="compare-table__row-label"><span data-lang="pt">Acesso à conta</span><span data-lang="en">Account access</span></td>
-              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span>Web banking 24/7</span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span><span data-lang="pt">Limitado</span><span data-lang="en">Limited</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>—</span></td>
-            </tr>
-            <tr>
-              <td class="compare-table__row-label">TED</td>
-              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span><span data-lang="pt">Direto</span><span data-lang="en">Direct</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span><span data-lang="pt">Complexo</span><span data-lang="en">Complex</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span><span data-lang="pt">Manual</span><span data-lang="en">Manual</span></span></td>
-            </tr>
-            <tr>
-              <td class="compare-table__row-label"><span data-lang="pt">Extrato com filtros</span><span data-lang="en">Filterable statements</span></td>
-              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span><span data-lang="pt">Nativo</span><span data-lang="en">Native</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span><span data-lang="pt">Limitado</span><span data-lang="en">Limited</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span><span data-lang="pt">Manual</span><span data-lang="en">Manual</span></span></td>
-            </tr>
-            <tr>
-              <td class="compare-table__row-label"><span data-lang="pt">Agendamentos</span><span data-lang="en">Scheduled payments</span></td>
-              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span><span data-lang="pt">Sim</span><span data-lang="en">Yes</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span><span data-lang="pt">Burocracia</span><span data-lang="en">Red tape</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span><span data-lang="pt">Manual</span><span data-lang="en">Manual</span></span></td>
-            </tr>
-            <tr>
-              <td class="compare-table__row-label"><span data-lang="pt">Comprovantes</span><span data-lang="en">Receipts</span></td>
-              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span><span data-lang="pt">PNG exportável</span><span data-lang="en">PNG export</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span><span data-lang="pt">Variável</span><span data-lang="en">Varies</span></span></td>
-              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span><span data-lang="pt">Inexistente</span><span data-lang="en">None</span></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <!-- SECURITY -->
-  <section class="home-block home-block--bg home-block--bg-security">
+  <section class="home-block">
     <div class="home-block__inner home-block__inner--center">
       <span class="home-eyebrow"><span data-lang="pt">Segurança</span><span data-lang="en">Security</span></span>
       <h2 class="home-block__title fade-in-on-scroll"><span data-lang="pt">Construída sobre fundamentos sólidos.</span><span data-lang="en">Built on solid foundations.</span></h2>
@@ -211,7 +165,6 @@
           <p class="security-card__body"><span data-lang="pt">Acessos atribuídos por necessidade, revisados periodicamente e registrados para auditoria. Equipes treinadas em segurança e processos formais de resposta a incidentes.</span><span data-lang="en">Access granted on a need-to-know basis, reviewed periodically and logged for audit. Teams trained in security with formal incident-response processes.</span></p>
         </article>
       </div>
-      <p class="contapj-quote"><span data-lang="pt">"Simples por fora. Sólido por dentro."</span><span data-lang="en">"Simple on the outside. Solid on the inside."</span></p>
     </div>
   </section>
 
@@ -251,7 +204,7 @@
       <div class="cta-banner__copy">
         <h2 class="cta-banner__title"><span data-lang="pt">Sua empresa merece uma conta que simplesmente funciona.</span><span data-lang="en">Your business deserves an account that just works.</span></h2>
         <p class="cta-banner__sub"><span data-lang="pt">Abra sua Conta PJ LaFinteca e gerencie o dinheiro com clareza.</span><span data-lang="en">Open your LaFinteca Conta PJ and manage money with clarity.</span></p>
-        <button class="btn btn-green"><span><span data-lang="pt">Abrir minha Conta PJ agora</span><span data-lang="en">Open my Conta PJ now</span></span></button>
+        <button class="btn btn-green" onclick="location.href='/abrir-conta/'"><span><span data-lang="pt">Abrir minha Conta PJ agora</span><span data-lang="en">Open my Conta PJ now</span></span></button>
       </div>
       <div class="cta-banner__visual"><span data-lang="pt">Espaço para imagem</span><span data-lang="en">Image placeholder</span></div>
     </div>

@@ -23,6 +23,12 @@ module.exports = {
       description: 'Abra uma Conta PJ digital com TED, extratos com filtros, agendamentos e atendimento dedicado. Sem tarifas escondidas.',
     },
     {
+      name: 'abrir-conta',
+      route: '/abrir-conta/',
+      title: 'Abrir Conta PJ — LaFinteca',
+      description: 'Abra sua Conta PJ digital na LaFinteca. Preencha o cadastro e envie seus documentos para análise da nossa equipe.',
+    },
+    {
       name: 'about',
       route: '/about/',
       title: 'Sobre nós — LaFinteca',

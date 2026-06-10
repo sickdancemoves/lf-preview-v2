@@ -296,3 +296,117 @@
     observer.observe(dash);
   }
 })();
+
+// Abrir Conta — account-opening request form.
+// Validates the "Primeiros passos" fields + at least one document, then hands the
+// payload to submitAbrirConta(). The submit is a STUB: it logs + saves a summary to
+// localStorage so demo submissions aren't lost. Plug a real backend in the marked block.
+(function () {
+  const form = document.getElementById('abrir-conta-form');
+  if (!form) return;
+
+  const cnpj = form.querySelector('#abrir-cnpj');
+  const celular = form.querySelector('#abrir-celular');
+  const email = form.querySelector('#abrir-email');
+  const ieField = form.querySelector('#abrir-ie');
+  const isenta = form.querySelector('#abrir-ie-isenta');
+  const errorEl = document.getElementById('abrir-form-error');
+
+  // ---- Input masks ----
+  function maskCNPJ(value) {
+    const d = value.replace(/\D/g, '').slice(0, 14);
+    let out = d.slice(0, 2);
+    if (d.length > 2) out += '.' + d.slice(2, 5);
+    if (d.length > 5) out += '.' + d.slice(5, 8);
+    if (d.length > 8) out += '/' + d.slice(8, 12);
+    if (d.length > 12) out += '-' + d.slice(12, 14);
+    return out;
+  }
+  function maskPhone(value) {
+    const d = value.replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 2) return d ? '(' + d : d;
+    if (d.length <= 7) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
+  }
+  if (cnpj) cnpj.addEventListener('input', () => { cnpj.value = maskCNPJ(cnpj.value); });
+  if (celular) celular.addEventListener('input', () => { celular.value = maskPhone(celular.value); });
+
+  // Prefill CNPJ from the Conta PJ hero (?cnpj=...).
+  const cnpjParam = new URLSearchParams(location.search).get('cnpj');
+  if (cnpj && cnpjParam) cnpj.value = maskCNPJ(cnpjParam);
+
+  // "Inscrição Estadual Isenta" disables + clears the IE field.
+  if (isenta && ieField) {
+    isenta.addEventListener('change', () => {
+      ieField.disabled = isenta.checked;
+      if (isenta.checked) { ieField.value = ''; ieField.classList.remove('is-invalid'); }
+    });
+  }
+
+  // Clear the invalid flag as the user fixes a field.
+  form.addEventListener('input', e => {
+    if (e.target.classList) e.target.classList.remove('is-invalid');
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const invalid = [];
+    form.querySelectorAll('[required]').forEach(el => {
+      if (el.disabled) return;
+      if (el.type === 'file') { if (!el.files.length) invalid.push(el); }
+      else if (!el.value.trim()) invalid.push(el);
+    });
+    if (email && email.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
+      if (invalid.indexOf(email) === -1) invalid.push(email);
+    }
+
+    form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+    if (invalid.length) {
+      invalid.forEach(el => el.classList.add('is-invalid'));
+      if (errorEl) errorEl.hidden = false;
+      invalid[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      invalid[0].focus({ preventScroll: true });
+      return;
+    }
+    if (errorEl) errorEl.hidden = true;
+
+    submitAbrirConta(new FormData(form));
+  });
+
+  function submitAbrirConta(formData) {
+    // Summarise text fields + file names (files themselves stay in formData).
+    const summary = {};
+    formData.forEach((v, k) => { if (!(v instanceof File)) summary[k] = v; });
+    summary._files = formData.getAll('documentos')
+      .filter(f => f && f.name).map(f => f.name);
+    summary._submittedAt = new Date().toISOString();
+
+    // === BACKEND: plug your real endpoint here ====================================
+    // Replace the localStorage stub below with a real submission, e.g.:
+    //   • Formspree/Web3Forms: fetch('https://formspree.io/f/XXXX', { method:'POST', body: formData })
+    //   • Cloudflare Worker:   fetch('https://api.la-finteca.com/abrir-conta', { method:'POST', body: formData })
+    //   • Apps Script:         fetch(APPS_SCRIPT_URL, { method:'POST', body: formData })
+    // Use FormData (multipart) so the uploaded documents are sent with the fields.
+    // Await the response, then call showSuccess(summary.email). Show errorEl on failure.
+    try {
+      const all = JSON.parse(localStorage.getItem('abrir-conta-submissions') || '[]');
+      all.push(summary);
+      localStorage.setItem('abrir-conta-submissions', JSON.stringify(all));
+    } catch (_) { /* storage unavailable — non-fatal for the demo */ }
+    console.log('[abrir-conta] submission (stub, not persisted server-side):', summary);
+    // ============================================================================
+
+    showSuccess(summary.email || '');
+  }
+
+  function showSuccess(addr) {
+    form.hidden = true;
+    const panel = document.getElementById('abrir-success');
+    if (!panel) return;
+    const emailEl = panel.querySelector('.abrir-success__email');
+    if (emailEl) emailEl.textContent = addr;
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+})();

@@ -1,0 +1,136 @@
+<!-- ABRIR CONTA — simplified onboarding request form.
+     Fields mirror the "Primeiros passos" onboarding tab. Submission is wired to a
+     stub in site.js (logs + localStorage). See the BACKEND block there to plug a real
+     endpoint (Formspree / Cloudflare Worker / Apps Script). -->
+  <section class="home-block abrir-page">
+    <div class="abrir-wrap">
+      <div class="abrir-head">
+        <span class="home-eyebrow"><span data-lang="pt">Abertura de Conta</span><span data-lang="en">Account opening</span></span>
+        <h1 class="home-block__title"><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open your Conta PJ</span></h1>
+        <p class="abrir-head__sub"><span data-lang="pt">Preencha o cadastro abaixo e anexe os seus documentos. Esta é uma versão inicial e simplificada do processo de abertura — a nossa equipe dá sequência a partir daqui.</span><span data-lang="en">Fill out the form below and attach your documents. This is an early, simplified version of the onboarding flow — our team takes it from here.</span></p>
+      </div>
+
+      <!-- ============================ FORM ============================ -->
+      <form id="abrir-conta-form" class="abrir-form" novalidate enctype="multipart/form-data">
+        <div class="abrir-grid">
+
+          <div class="abrir-field abrir-field--full">
+            <label for="abrir-cnpj"><span data-lang="pt">CNPJ</span><span data-lang="en">CNPJ</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="text" id="abrir-cnpj" name="cnpj" inputmode="numeric" required
+                   placeholder="00.000.000/0000-00" autocomplete="off">
+          </div>
+
+          <div class="abrir-field abrir-field--full">
+            <label for="abrir-razao"><span data-lang="pt">Razão social</span><span data-lang="en">Legal name</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="text" id="abrir-razao" name="razao_social" required autocomplete="organization">
+            <small class="abrir-help"><span data-lang="pt">Informe a razão social da mesma forma que é exibida no cartão CNPJ.</span><span data-lang="en">Enter the legal name exactly as shown on the CNPJ card.</span></small>
+          </div>
+
+          <div class="abrir-field abrir-field--full">
+            <label for="abrir-fantasia"><span data-lang="pt">Nome fantasia</span><span data-lang="en">Trade name</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="text" id="abrir-fantasia" name="nome_fantasia" required autocomplete="off">
+            <small class="abrir-help"><span data-lang="pt">Caso não tenha nome fantasia, utilize a razão social neste campo.</span><span data-lang="en">If you don't have a trade name, use the legal name in this field.</span></small>
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-email"><span data-lang="pt">E-mail corporativo</span><span data-lang="en">Corporate email</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="email" id="abrir-email" name="email" required autocomplete="email"
+                   placeholder="nome@empresa.com.br">
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-celular"><span data-lang="pt">Celular</span><span data-lang="en">Mobile</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="tel" id="abrir-celular" name="celular" required inputmode="numeric"
+                   placeholder="(00) 00000-0000" autocomplete="tel">
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-faturamento"><span data-lang="pt">Faturamento médio mensal</span><span data-lang="en">Average monthly revenue</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="text" id="abrir-faturamento" name="faturamento_medio_mensal" required
+                   placeholder="R$" autocomplete="off">
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-abertura"><span data-lang="pt">Quando sua empresa foi aberta?</span><span data-lang="en">When was your company founded?</span></label>
+            <input type="date" id="abrir-abertura" name="data_abertura" autocomplete="off">
+          </div>
+
+          <div class="abrir-field abrir-field--full">
+            <label for="abrir-ramo"><span data-lang="pt">Ramo de atividade</span><span data-lang="en">Industry</span></label>
+            <select id="abrir-ramo" name="ramo_atividade">
+              <option value="" disabled selected data-placeholder-pt="Selecione" data-placeholder-en="Select">Selecione</option>
+              <option value="comercio">Comércio</option>
+              <option value="servicos">Serviços</option>
+              <option value="industria">Indústria</option>
+              <option value="tecnologia">Tecnologia</option>
+              <option value="saude">Saúde</option>
+              <option value="educacao">Educação</option>
+              <option value="construcao">Construção</option>
+              <option value="alimentacao">Alimentação</option>
+              <option value="outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-categoria"><span data-lang="pt">Categoria da empresa</span><span data-lang="en">Company category</span></label>
+            <select id="abrir-categoria" name="categoria_empresa">
+              <option value="" disabled selected data-placeholder-pt="Selecione" data-placeholder-en="Select">Selecione</option>
+              <option value="mei">MEI</option>
+              <option value="me">ME (Microempresa)</option>
+              <option value="epp">EPP</option>
+              <option value="empresario-individual">Empresário Individual</option>
+              <option value="ltda">LTDA</option>
+              <option value="sa">S.A.</option>
+              <option value="outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-cnae"><span data-lang="pt">CNAE</span><span data-lang="en">CNAE</span></label>
+            <input type="text" id="abrir-cnae" name="cnae" autocomplete="off">
+          </div>
+
+          <div class="abrir-field">
+            <label for="abrir-ie"><span data-lang="pt">Inscrição Estadual</span><span data-lang="en">State registration</span></label>
+            <input type="text" id="abrir-ie" name="inscricao_estadual" autocomplete="off">
+          </div>
+
+          <div class="abrir-field abrir-field--checkbox">
+            <label class="abrir-check">
+              <input type="checkbox" id="abrir-ie-isenta" name="inscricao_estadual_isenta" value="sim">
+              <span><span data-lang="pt">Inscrição Estadual Isenta</span><span data-lang="en">Exempt from state registration</span></span>
+            </label>
+          </div>
+
+          <div class="abrir-field abrir-field--full">
+            <label for="abrir-docs"><span data-lang="pt">Documentos</span><span data-lang="en">Documents</span> <span class="abrir-req" aria-hidden="true">*</span></label>
+            <input type="file" id="abrir-docs" name="documentos" required multiple
+                   accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+            <small class="abrir-help"><span data-lang="pt">Anexe: contrato social / estatuto / requerimento; cartão CNPJ (status Ativo); RG ou CNH dos sócios e representantes; comprovante de faturamento (12 meses); comprovante de endereço da empresa e dos sócios.</span><span data-lang="en">Attach: articles of association / bylaws / application; CNPJ card (Active status); RG or CNH of partners and representatives; revenue statement (12 months); proof of address for the company and partners.</span></small>
+          </div>
+
+        </div>
+
+        <p class="abrir-consent"><span data-lang="pt">Ao enviar a sua solicitação, você autoriza a LaFinteca a coletar os seus dados de acordo com a nossa <a href="/politicas/privacidade-de-dados/">Política de Privacidade</a>, com o objetivo de comunicar informações sobre o processo de abertura da sua conta.</span><span data-lang="en">By submitting your request, you authorize LaFinteca to collect your data in accordance with our <a href="/politicas/privacidade-de-dados/">Privacy Policy</a>, in order to communicate information about your account-opening process.</span></p>
+
+        <p class="abrir-form__error" id="abrir-form-error" role="alert" hidden><span data-lang="pt">Confira os campos destacados: preencha os obrigatórios e anexe ao menos um documento.</span><span data-lang="en">Please check the highlighted fields: complete the required ones and attach at least one document.</span></p>
+
+        <div class="abrir-actions">
+          <button type="submit" class="btn btn-green"><span><span data-lang="pt">Enviar solicitação</span><span data-lang="en">Submit request</span></span></button>
+        </div>
+      </form>
+
+      <!-- ========================== SUCCESS ========================== -->
+      <div class="abrir-success" id="abrir-success" hidden>
+        <span class="abrir-success__icon" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+        </span>
+        <h2 class="abrir-success__title"><span data-lang="pt">Recebemos a sua solicitação</span><span data-lang="en">We've received your request</span></h2>
+        <p class="abrir-success__body"><span data-lang="pt">Que bom que você quer fazer parte da LaFinteca. Vamos analisar a sua solicitação e entrar em contato em até 24 horas no e-mail </span><span data-lang="en">We're glad you want to be part of LaFinteca. We'll review your request and contact you within 24 hours at </span><strong class="abrir-success__email"></strong>.</p>
+        <div class="abrir-actions abrir-actions--center">
+          <button type="button" class="btn btn-primary" onclick="location.href='/'"><span><span data-lang="pt">Voltar ao início</span><span data-lang="en">Back to home</span></span></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
