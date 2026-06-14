@@ -13,6 +13,11 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  /* Smooth in-page anchor scroll, offset for the sticky header. */
+  html { scroll-padding-top: 90px; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
   body {
     font-family: 'IBM Plex Mono', 'IBM Plex Sans', -apple-system, monospace;
     color: var(--white);
@@ -36,9 +41,22 @@
     background: var(--dark);
     padding: 22px 60px;
     display: flex; align-items: center; justify-content: space-between;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     max-width: 1440px;
     margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    transition: background 0.25s ease, border-color 0.25s ease, padding 0.25s ease;
+  }
+  /* Scrolled state — toggled by site.js. Adds separation from page content. */
+  .header.is-scrolled {
+    background: rgba(24, 24, 24, 0.82);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--gray-line);
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
   .header__logo {
     display: inline-flex;
@@ -218,8 +236,10 @@
     background: var(--green);
     color: var(--dark);
     border-color: var(--green);
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(191, 254, 67, 0.18);
   }
-  .login-btn--primary:hover { background: var(--white); color: var(--dark); border-color: var(--white); }
+  .login-btn--primary:hover { background: var(--white); color: var(--dark); border-color: var(--white); box-shadow: 0 8px 22px rgba(255, 255, 255, 0.16); }
 
   /* ==== PAGES ==== */
   /* ==== HERO ==== */
@@ -247,7 +267,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin: 0 0 24px;
+    margin: 0 0 20px;
   }
   .hero h1 {
     font-family: 'IBM Plex Mono', monospace;
@@ -766,7 +786,7 @@
   .home-block__sub--center { margin-left: auto; margin-right: auto; }
   .home-block__placeholder {
     background: var(--dark);
-    border: 1px solid var(--gray-line);
+    border: 1px dashed var(--gray-line);
     background-image:
       linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
@@ -1558,27 +1578,25 @@
     border-color: rgba(191,254,67,0.4);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
-  /* Unified pill: icon + tag in one bubble */
+  /* Icon slot stacked above the audience label. */
   .forwho-card__head {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(191,254,67,0.12);
-    border: 1px solid var(--green);
-    border-radius: 999px;
-    padding: 3px 14px 3px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
     margin-bottom: 16px;
   }
   .forwho-card__icon {
-    width: 22px; height: 22px;
-    background: rgba(191,254,67,0.22);
+    width: 28px; height: 28px;
+    background: rgba(191,254,67,0.14);
     color: var(--green);
-    border-radius: 999px;
+    border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
+  .forwho-card__icon svg { width: 16px; height: 16px; }
   .forwho-card__tag {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
@@ -1681,13 +1699,16 @@
   .security-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(191, 254, 67, 0.18);
-    border-radius: 16px;
+    border-left: 3px solid var(--green);
+    border-radius: 6px 16px 16px 6px;
     padding: 28px 26px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
   .security-card:hover {
     border-color: rgba(191, 254, 67, 0.4);
+    border-left-color: var(--green);
     transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
   .security-card__icon {
     width: 42px;
@@ -1776,7 +1797,7 @@
   .cta-banner__visual {
     min-height: 360px;
     background: var(--dark-2);
-    border: 1px solid var(--gray-line);
+    border: 1px dashed var(--gray-line);
     background-image:
       linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
@@ -3406,4 +3427,178 @@
   @media (max-width: 900px) {
     .tarifas { grid-template-columns: 1fr; gap: 28px; }
     .tarifas__aside { position: static; }
+  }
+
+  /* =================== UI POLISH SPRINT (June 29 launch) =================== */
+
+  /* Generic placeholder treatment — must be easy to spot and replace. */
+  .is-placeholder {
+    color: var(--purple) !important;
+    background: rgba(195, 171, 255, 0.08);
+    border: 1px dashed rgba(195, 171, 255, 0.5);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---- Hero: secondary text link + BCB trust badge (items 2) ---- */
+  .hero__textlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0 6px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .hero__textlink:hover { color: var(--green); border-bottom-color: var(--green); }
+  .hero__buttons { align-items: center; }
+
+  .hero__trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0 0;
+  }
+  .hero__trust-logo { height: 22px; width: auto; opacity: 0.7; flex-shrink: 0; }
+  .hero__trust-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.4;
+  }
+
+  /* ---- Trust bar (item 3) — placeholder metrics strip ---- */
+  .trust-bar {
+    background: var(--dark-2);
+    border-top: 1px solid var(--gray-line);
+    border-bottom: 1px solid var(--gray-line);
+    padding: 28px 40px;
+  }
+  .trust-bar__inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .trust-bar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    padding: 4px 20px;
+    border-left: 1px solid var(--gray-line);
+  }
+  .trust-bar__item:first-child { border-left: none; }
+  .trust-bar__metric { font-size: 15px; }
+  .trust-bar__label { font-size: 11px; }
+
+  /* ---- Micro-stat line under feature cards (item 4) ---- */
+  .intro-card__stat {
+    display: inline-block;
+    margin: 16px 0 0;
+    font-size: 12px;
+  }
+
+  /* ---- Contained CTA inset (items 6 + 7d) ---- */
+  .cta-inset {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  }
+  .cta-inset__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: clamp(24px, 3.4vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 16px;
+  }
+  .cta-inset__title.is-placeholder { display: inline-block; }
+  .cta-inset__sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    max-width: 540px;
+    margin: 0 auto 28px;
+  }
+  .cta-inset__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-inset__link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .cta-inset__link:not(.is-placeholder):hover { color: var(--green); border-bottom-color: var(--green); }
+
+  /* ---- Pricing highlight card (item 7a) ---- */
+  .intro-card--pricing {
+    background: linear-gradient(160deg, rgba(191, 254, 67, 0.10) 0%, var(--dark-2) 60%);
+    border-color: rgba(191, 254, 67, 0.5);
+    box-shadow: 0 0 0 1px rgba(191, 254, 67, 0.18), 0 16px 40px rgba(0, 0, 0, 0.3);
+  }
+  .intro-card--pricing::before { background: var(--green); }
+  .intro-card__badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    z-index: 2;
+    background: var(--green);
+    color: var(--dark);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .intro-card--pricing .intro-card__icon { background: rgba(191, 254, 67, 0.22); }
+
+  /* ---- Emphasized section headline (item 7c) ---- */
+  .home-block__title--emphasis {
+    font-size: clamp(30px, 4.4vw, 48px);
+    font-weight: 500;
+  }
+
+  /* ---- Mobile (item 10) ---- */
+  @media (max-width: 720px) {
+    .trust-bar { padding: 8px 24px; }
+    .trust-bar__inner { grid-template-columns: 1fr; }
+    .trust-bar__item {
+      border-left: none;
+      border-top: 1px solid var(--gray-line);
+      padding: 18px 0;
+    }
+    .trust-bar__item:first-child { border-top: none; }
+    .hero__trust { margin-top: 18px; }
+    .cta-inset { padding: 36px 24px; }
+    .cta-inset__actions { flex-direction: column; gap: 16px; }
+    .cta-inset__actions .btn { width: 100%; justify-content: center; }
   }
