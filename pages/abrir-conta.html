@@ -7,7 +7,7 @@
       <div class="abrir-head">
         <span class="home-eyebrow"><span data-lang="pt">Abertura de Conta</span><span data-lang="en">Account opening</span></span>
         <h1 class="home-block__title"><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open your Conta PJ</span></h1>
-        <p class="abrir-head__sub"><span data-lang="pt">Preencha o cadastro abaixo e anexe os seus documentos. Esta é uma versão inicial e simplificada do processo de abertura — a nossa equipe dá sequência a partir daqui.</span><span data-lang="en">Fill out the form below and attach your documents. This is an early, simplified version of the onboarding flow — our team takes it from here.</span></p>
+        <p class="abrir-head__sub"><span data-lang="pt">Preencha o cadastro abaixo e anexe os seus documentos. A nossa equipe entrará em contato para dar sequência a partir daqui.</span><span data-lang="en">Fill out the form below and attach your documents. Our team will be in touch to take it from here.</span></p>
       </div>
 
       <!-- ============================ FORM ============================ -->
@@ -102,11 +102,45 @@
             </label>
           </div>
 
-          <div class="abrir-field abrir-field--full">
-            <label for="abrir-docs"><span data-lang="pt">Documentos</span><span data-lang="en">Documents</span> <span class="abrir-req" aria-hidden="true">*</span></label>
-            <input type="file" id="abrir-docs" name="documentos" required multiple
-                   accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
-            <small class="abrir-help"><span data-lang="pt">Anexe: contrato social / estatuto / requerimento; cartão CNPJ (status Ativo); RG ou CNH dos sócios e representantes; comprovante de faturamento (12 meses); comprovante de endereço da empresa e dos sócios.</span><span data-lang="en">Attach: articles of association / bylaws / application; CNPJ card (Active status); RG or CNH of partners and representatives; revenue statement (12 months); proof of address for the company and partners.</span></small>
+          <!-- Documents: one labeled box per document type. Each accepts multiple
+               files (e.g. RG/CNH and comprovantes for several sócios). -->
+          <div class="abrir-field abrir-field--full abrir-field--docs">
+            <span class="abrir-docs__legend"><span data-lang="pt">Documentos</span><span data-lang="en">Documents</span> <span class="abrir-req" aria-hidden="true">*</span></span>
+
+            <div class="abrir-doc">
+              <label for="abrir-doc-constituicao"><span data-lang="pt">Documento de constituição</span><span data-lang="en">Incorporation document</span></label>
+              <input type="file" id="abrir-doc-constituicao" name="doc_constituicao" required multiple
+                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <small class="abrir-help"><span data-lang="pt">Contrato Social (última alteração), Estatuto Social ou Requerimento de Empresário/MEI.</span><span data-lang="en">Articles of Association (latest amendment), Bylaws, or Sole-Trader/MEI application.</span></small>
+            </div>
+
+            <div class="abrir-doc">
+              <label for="abrir-doc-cnpj"><span data-lang="pt">Cartão CNPJ</span><span data-lang="en">CNPJ card</span></label>
+              <input type="file" id="abrir-doc-cnpj" name="doc_cnpj" required multiple
+                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <small class="abrir-help"><span data-lang="pt">Comprovante de Inscrição e Situação Cadastral com status “Ativo”.</span><span data-lang="en">Registration and status certificate showing “Active”.</span></small>
+            </div>
+
+            <div class="abrir-doc">
+              <label for="abrir-doc-identificacao"><span data-lang="pt">Documento de identificação</span><span data-lang="en">ID document</span></label>
+              <input type="file" id="abrir-doc-identificacao" name="doc_identificacao" required multiple
+                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <small class="abrir-help"><span data-lang="pt">RG ou CNH (dentro da validade) de todos os sócios e representantes legais.</span><span data-lang="en">Valid RG or CNH for all partners and legal representatives.</span></small>
+            </div>
+
+            <div class="abrir-doc">
+              <label for="abrir-doc-faturamento"><span data-lang="pt">Comprovante de faturamento</span><span data-lang="en">Revenue statement</span></label>
+              <input type="file" id="abrir-doc-faturamento" name="doc_faturamento" required multiple
+                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <small class="abrir-help"><span data-lang="pt">Relatório dos últimos 12 meses, assinado pelo contador ou representante legal.</span><span data-lang="en">Last 12 months, signed by the accountant or legal representative.</span></small>
+            </div>
+
+            <div class="abrir-doc">
+              <label for="abrir-doc-endereco"><span data-lang="pt">Comprovante de endereço</span><span data-lang="en">Proof of address</span></label>
+              <input type="file" id="abrir-doc-endereco" name="doc_endereco" required multiple
+                     accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+              <small class="abrir-help"><span data-lang="pt">Da empresa e dos sócios que compõem o quadro societário.</span><span data-lang="en">For the company and the partners in the ownership structure.</span></small>
+            </div>
           </div>
 
         </div>
