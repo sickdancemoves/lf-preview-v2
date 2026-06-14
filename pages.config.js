@@ -106,5 +106,11 @@ module.exports = {
       title: 'Manual Operacional de PLD/CFT — LaFinteca',
       description: 'Procedimentos de prevenção à lavagem de dinheiro e ao financiamento do terrorismo na LaFinteca.',
     },
+    {
+      name: 'politicas/tabela-de-tarifas',
+      route: '/politicas/tabela-de-tarifas/',
+      title: 'Tabela Geral de Tarifas — LaFinteca',
+      description: 'Tabela geral de tarifas dos serviços da LaFinteca — Conta PJ gratuita, TED e demais operações, conforme a Resolução 3.919 do Banco Central.',
+    },
   ],
 };

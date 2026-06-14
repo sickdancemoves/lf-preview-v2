@@ -3222,6 +3222,52 @@
 
   .abrir-help { font-size: 12px; line-height: 1.5; color: #8a8d93; }
 
+  /* Documents — one labeled box per document type. */
+  .abrir-field--docs { gap: 14px; }
+  .abrir-docs__legend {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--white);
+  }
+  .abrir-doc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid var(--gray-line);
+    border-radius: 12px;
+    background: var(--dark-3);
+  }
+  .abrir-doc label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--white);
+  }
+  .abrir-doc input[type="file"] {
+    height: auto;
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--gray-text);
+    border: 1px solid var(--gray-line);
+    border-radius: 10px;
+    background: var(--dark-2, var(--dark));
+    cursor: pointer;
+  }
+  .abrir-doc input[type="file"]::file-selector-button {
+    margin-right: 14px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-line);
+    background: var(--dark-3);
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .abrir-doc input[type="file"]::file-selector-button:hover { border-color: var(--green); color: var(--green); }
+  .abrir-doc input[type="file"]:focus { border-color: var(--green); }
+  .abrir-doc input[type="file"].is-invalid { border-color: #ff6b6b; background: rgba(255, 107, 107, 0.06); }
+
   .abrir-field--checkbox { justify-content: flex-end; }
   .abrir-check {
     display: flex;
@@ -3296,4 +3342,68 @@
     .abrir-grid { grid-template-columns: 1fr; gap: 18px; }
     .abrir-field--checkbox { justify-content: flex-start; }
     .abrir-check { min-height: 0; }
+  }
+
+  /* ===================== TABELA GERAL DE TARIFAS ===================== */
+  /* Two-panel layout (style ref: FitBank). Left = legal note, right = table. */
+  .tarifas {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: 60px;
+    align-items: start;
+  }
+  .tarifas__aside { position: sticky; top: 100px; align-self: start; }
+  .tarifas__legal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--gray-text);
+  }
+  .tarifas__legal p + p { margin-top: 14px; }
+
+  .tarifas__table-wrap { min-width: 0; }
+  .tarifas__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--gray-line);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 15px;
+  }
+  .tarifas__table th {
+    text-align: left;
+    padding: 16px 20px;
+    background: var(--dark-3);
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .tarifas__table th:last-child,
+  .tarifas__table td:last-child { text-align: right; white-space: nowrap; }
+  .tarifas__table td {
+    padding: 14px 20px;
+    color: var(--white);
+    border-top: 1px solid var(--gray-line);
+  }
+  .tarifas__table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+  .tarifas__pending {
+    color: var(--gray-text);
+    font-style: italic;
+    font-size: 13px;
+  }
+  .tarifas__note {
+    margin-top: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--gray-text);
+  }
+
+  @media (max-width: 900px) {
+    .tarifas { grid-template-columns: 1fr; gap: 28px; }
+    .tarifas__aside { position: static; }
   }

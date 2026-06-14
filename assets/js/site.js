@@ -378,8 +378,13 @@
     // Summarise text fields + file names (files themselves stay in formData).
     const summary = {};
     formData.forEach((v, k) => { if (!(v instanceof File)) summary[k] = v; });
-    summary._files = formData.getAll('documentos')
-      .filter(f => f && f.name).map(f => f.name);
+    // Files come from five separate upload boxes (one per document type).
+    const DOC_FIELDS = ['doc_constituicao', 'doc_cnpj', 'doc_identificacao', 'doc_faturamento', 'doc_endereco'];
+    summary._files = DOC_FIELDS.reduce((acc, field) => {
+      const names = formData.getAll(field).filter(f => f && f.name).map(f => f.name);
+      if (names.length) acc[field] = names;
+      return acc;
+    }, {});
     summary._submittedAt = new Date().toISOString();
 
     // === BACKEND: plug your real endpoint here ====================================
