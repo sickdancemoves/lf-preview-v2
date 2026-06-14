@@ -415,3 +415,19 @@
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 })();
+
+// Sticky nav: add .is-scrolled once the page scrolls past a small threshold,
+// giving the header a translucent blurred backdrop + border for separation.
+(function () {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  let ticking = false;
+  function update() {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();

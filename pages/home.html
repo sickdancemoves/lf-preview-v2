@@ -11,14 +11,36 @@
         <p class="hero__sub"><span data-lang="pt">Conta PJ digital regulada pelo Banco Central. Transferências via TED, agendamentos e visibilidade total sobre as despesas — em uma única plataforma.</span><span data-lang="en">Digital Conta PJ regulated by Brazil's central bank. TED transfers, scheduled payments and full visibility over expenses — all in one platform.</span></p>
         <div class="hero__buttons">
           <button class="btn btn-green" onclick="location.href='/abrir-conta/'"><span><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open Conta PJ</span></span></button>
-          <button class="btn btn-ghost" onclick="location.href='/contapj/'"><span><span data-lang="pt">Saiba mais</span><span data-lang="en">Learn more</span></span></button>
+          <a class="hero__textlink" href="#features"><span data-lang="pt">Saiba mais</span><span data-lang="en">Learn more</span> <span aria-hidden="true">↓</span></a>
         </div>
+        <p class="hero__trust">
+          <img class="hero__trust-logo" src="assets/bacen-logo.svg" alt="">
+          <span class="hero__trust-text"><span data-lang="pt">Autorizada pelo Banco Central do Brasil</span><span data-lang="en">Authorized by the Central Bank of Brazil</span></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR — placeholder metrics; replace [..._PLACEHOLDER] before launch. -->
+  <section class="trust-bar" aria-label="Trust signals">
+    <div class="trust-bar__inner">
+      <div class="trust-bar__item">
+        <span class="trust-bar__metric is-placeholder">[METRIC_PLACEHOLDER]</span>
+        <span class="trust-bar__label is-placeholder">[LABEL_PLACEHOLDER]</span>
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__metric is-placeholder">[METRIC_PLACEHOLDER]</span>
+        <span class="trust-bar__label is-placeholder">[LABEL_PLACEHOLDER]</span>
+      </div>
+      <div class="trust-bar__item">
+        <span class="trust-bar__metric is-placeholder">[METRIC_PLACEHOLDER]</span>
+        <span class="trust-bar__label is-placeholder">[LABEL_PLACEHOLDER]</span>
       </div>
     </div>
   </section>
 
   <!-- INTRO: A conta PJ mais simples que existe -->
-  <section class="home-block">
+  <section class="home-block" id="features">
     <div class="home-block__inner home-block__inner--center">
       <span class="home-eyebrow">LaFinteca</span>
       <h2 class="home-block__title fade-in-on-scroll"><span data-lang="pt">A conta PJ mais simples que existe</span><span data-lang="en">The simplest Conta PJ out there</span></h2>
@@ -29,6 +51,7 @@
           </div>
           <h3 class="intro-card__title"><span data-lang="pt">Abra em minutos</span><span data-lang="en">Open in minutes</span></h3>
           <p class="intro-card__body"><span data-lang="pt">Envie seu CNPJ, confirme seus dados e sua conta está ativa. Sem filas, sem papelada, sem espera.</span><span data-lang="en">Send your CNPJ, confirm your details and your account is active. No queues, no paperwork, no waiting.</span></p>
+          <p class="intro-card__stat is-placeholder">[STAT_PLACEHOLDER]</p>
         </article>
         <article class="intro-card fade-in-on-scroll" data-stagger="2">
           <div class="intro-card__icon" aria-hidden="true">
@@ -36,6 +59,7 @@
           </div>
           <h3 class="intro-card__title"><span data-lang="pt">Pague e receba na hora</span><span data-lang="en">Pay and get paid instantly</span></h3>
           <p class="intro-card__body"><span data-lang="pt">TED, agendamentos e muito mais — tudo integrado, com confirmação em tempo real.</span><span data-lang="en">TED, scheduled payments and more — fully integrated, with real-time confirmation.</span></p>
+          <p class="intro-card__stat is-placeholder">[STAT_PLACEHOLDER]</p>
         </article>
         <article class="intro-card fade-in-on-scroll" data-stagger="3">
           <div class="intro-card__icon" aria-hidden="true">
@@ -43,6 +67,7 @@
           </div>
           <h3 class="intro-card__title"><span data-lang="pt">Controle total, sem complexidade</span><span data-lang="en">Total control, no complexity</span></h3>
           <p class="intro-card__body"><span data-lang="pt">Acompanhe saldo, extrato e movimentações em um painel pensado para quem cuida do financeiro a sério.</span><span data-lang="en">Track balance, statement and activity in a dashboard built for serious finance teams.</span></p>
+          <p class="intro-card__stat is-placeholder">[STAT_PLACEHOLDER]</p>
         </article>
       </div>
       <button class="btn btn-primary intro-cta" onclick="location.href='/contapj/'"><span><span data-lang="pt">Saiba mais sobre a Conta PJ</span><span data-lang="en">Learn more about Conta PJ</span></span></button>
@@ -120,6 +145,17 @@
           </div>
         </div>
         </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA — placeholder copy; replace [CTA_*_PLACEHOLDER] before launch. -->
+  <section class="home-block">
+    <div class="cta-inset fade-in-on-scroll">
+      <h2 class="cta-inset__title is-placeholder">[CTA_HEADLINE_PLACEHOLDER]</h2>
+      <div class="cta-inset__actions">
+        <button class="btn btn-green" onclick="location.href='/abrir-conta/'"><span><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open Conta PJ</span></span></button>
+        <a class="cta-inset__link is-placeholder" href="#">[CTA_SECONDARY_LINK_PLACEHOLDER]</a>
+      </div>
     </div>
   </section>
 
