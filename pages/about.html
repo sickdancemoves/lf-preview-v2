@@ -1,82 +1,84 @@
-<section class="hero" style="padding: 40px 40px 60px; min-height: auto;">
-    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
-      <div>
-        <p class="section-eyebrow"><span data-lang="pt">Home / Empresa / Sobre nós</span><span data-lang="en">Home / Company / About us</span></p>
-        <h1 style="font-size: 48px; max-width: 1000px;"><span data-lang="pt">A voz dos <span class="underline">pagamentos<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span></span><span data-lang="en">Voice of <span class="underline">payments<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span></span></h1>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--gray-text); max-width: 720px; line-height: 1.65; margin-top: 24px;"><span data-lang="pt">A jornada por todas as soluções de pagamento no Brasil começa aqui — com ideias ousadas, pesquisa profunda do setor financeiro e as histórias e conquistas reais dos nossos clientes.</span><span data-lang="en">The journey to all payment solutions in Brazil starts here — with bold ideas, deep research into the financial industry, and the actual stories and successes of our customers.</span></p>
+<!-- HERO (matches /contapj/ hero pattern: eyebrow + display H1 + sub) -->
+  <section class="hero about-hero">
+    <div class="about-hero__inner">
+      <span class="home-eyebrow"><span data-lang="pt">Sobre nós</span><span data-lang="en">About us</span></span>
+      <h1 class="home-block__title home-block__title--hero"><span data-lang="pt">A base regulada da operação financeira da sua empresa.</span><span data-lang="en">The regulated foundation of your company's financial operation.</span></h1>
+      <p class="home-block__sub home-block__sub--center about-hero__sub"><span data-lang="pt">Somos uma instituição de pagamento autorizada pelo Banco Central do Brasil. Construímos infraestrutura para empresas que precisam mover dinheiro com controle, registro e comprovação.</span><span data-lang="en">We are a payment institution authorized by the Central Bank of Brazil. We build infrastructure for businesses that need to move money with control, record and proof.</span></p>
+    </div>
+  </section>
+
+  <!-- QUEM SOMOS -->
+  <section class="home-block">
+    <div class="home-block__inner about-narrow">
+      <hr class="section-divider">
+      <h2 class="home-block__title fade-in-on-scroll"><span data-lang="pt">Quem somos</span><span data-lang="en">Who we are</span></h2>
+      <p class="about-prose"><span data-lang="pt">Nossa missão é dar a cada empresa com CNPJ controle e comprovação totais sobre o dinheiro que sai. Sem burocracia, sem letras miúdas, sem surpresas.</span><span data-lang="en">Our mission is to give every CNPJ full control and proof over money leaving the company. No bureaucracy, no fine print, no surprises.</span></p>
+      <p class="about-prose"><span data-lang="pt">Oferecemos uma Conta PJ digital regulada pelo Banco Central do Brasil, com TED, agendamentos, extratos com filtros e comprovantes em PNG. Fundada em 2025.</span><span data-lang="en">We offer a BCB-regulated digital Conta PJ with TED, scheduled payments, filterable statements and PNG receipts. Founded in 2025.</span></p>
+    </div>
+  </section>
+
+  <!-- NOSSO JEITO - values as cards -->
+  <section class="home-block home-block--alt">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow"><span data-lang="pt">Valores</span><span data-lang="en">Values</span></span>
+      <h2 class="home-block__title fade-in-on-scroll"><span data-lang="pt">Nosso jeito</span><span data-lang="en">Our way</span></h2>
+      <p class="home-block__sub home-block__sub--center"><span data-lang="pt">Os princípios que orientam como o time da LaFinteca constrói, entrega e atende no Brasil.</span><span data-lang="en">The principles that guide how the LaFinteca team builds, ships, and serves in Brazil.</span></p>
+      <div class="values-grid">
+        <article class="intro-card value-card">
+          <span class="value-card__num" aria-hidden="true">①</span>
+          <h3 class="intro-card__title"><span data-lang="pt">Simplicidade em primeiro lugar</span><span data-lang="en">Simplicity first</span></h3>
+          <p class="intro-card__body"><span data-lang="pt">O complicado fica do nosso lado, nunca do seu.</span><span data-lang="en">The complicated stays on our side, never yours.</span></p>
+        </article>
+        <article class="intro-card value-card">
+          <span class="value-card__num" aria-hidden="true">②</span>
+          <h3 class="intro-card__title"><span data-lang="pt">Transparência sempre</span><span data-lang="en">Always transparent</span></h3>
+          <p class="intro-card__body"><span data-lang="pt">Falamos a verdade, sem letras miúdas ou surpresas.</span><span data-lang="en">We tell the truth, no fine print or surprises.</span></p>
+        </article>
+        <article class="intro-card value-card">
+          <span class="value-card__num" aria-hidden="true">③</span>
+          <h3 class="intro-card__title"><span data-lang="pt">Inovação com propósito</span><span data-lang="en">Innovation with purpose</span></h3>
+          <p class="intro-card__body"><span data-lang="pt">Usamos tecnologia para resolver problemas reais.</span><span data-lang="en">We use technology to solve real problems.</span></p>
+        </article>
+        <article class="intro-card value-card">
+          <span class="value-card__num" aria-hidden="true">④</span>
+          <h3 class="intro-card__title"><span data-lang="pt">Respeito por quem opera</span><span data-lang="en">Respect for operators</span></h3>
+          <p class="intro-card__body"><span data-lang="pt">Construímos com empatia por quem cuida do financeiro da empresa.</span><span data-lang="en">We build with empathy for those who manage company finances.</span></p>
+        </article>
+        <article class="intro-card value-card">
+          <span class="value-card__num" aria-hidden="true">⑤</span>
+          <h3 class="intro-card__title"><span data-lang="pt">Melhoria contínua</span><span data-lang="en">Continuous improvement</span></h3>
+          <p class="intro-card__body"><span data-lang="pt">Cada versão entregue é melhor do que a anterior.</span><span data-lang="en">Every version shipped is better than the last.</span></p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section style="padding: 40px 40px 60px; background: var(--dark);">
-    <div class="platform__inner">
-      <div class="platform__card">
-        <h2 class="fade-in-on-scroll"><span data-lang="pt">Quem somos</span><span data-lang="en">Who we are</span></h2>
-        <p><span data-lang="pt">Nossa missão é simplificar a vida financeira de quem toca um negócio. Abrir e gerir uma conta para a sua empresa não precisa ser burocrático, caro ou complicado — cada funcionalidade que construímos nasce de uma pergunta simples: como tornar isso mais fácil?</span><span data-lang="en">Our mission is to simplify financial life for people running a business. Opening and managing an account for your company shouldn't be bureaucratic, expensive or complicated — every feature we build starts from one simple question: how do we make this easier?</span></p>
-        <p style="margin-top: 18px;"><span data-lang="pt">Oferecemos uma Conta PJ digital regulada pelo Banco Central do Brasil, com TED, extratos com filtros e agendamentos — para você gastar menos tempo com tarefas operacionais e mais tempo no crescimento da empresa. Fundada em 2024.</span><span data-lang="en">We offer a digital Conta PJ regulated by the Central Bank of Brazil, with TED, filterable statements and scheduled payments — so you spend less time on operational tasks and more on growing your company. Founded in 2024.</span></p>
+  <!-- ECOSSISTEMA + RELAÇÕES -->
+  <section class="home-block">
+    <div class="home-block__inner about-narrow">
+      <hr class="section-divider">
+      <h2 class="about-subhead fade-in-on-scroll"><span data-lang="pt">Nosso ecossistema de parceiros</span><span data-lang="en">Our ecosystem of partners</span></h2>
+      <p class="about-prose"><span data-lang="pt">Ampliamos nossas capacidades tecnológicas e de negócio com um ecossistema forte de líderes de mercado e inovadores em todo o cenário regulado de pagamentos do Brasil.</span><span data-lang="en">We enhance our technological and business capacities through a strong ecosystem of market leaders and innovators across Brazil's regulated payments landscape.</span></p>
+      <div class="about-pills">
+        <span class="about-pill">Banco Central</span>
+        <span class="about-pill"><span data-lang="pt">Parceiros Pix</span><span data-lang="en">Pix Partners</span></span>
+        <span class="about-pill">Open Finance</span>
+      </div>
+
+      <div class="about-callout">
+        <span class="about-callout__stat"><span data-lang="pt">2018 → 2026 · Licença EMI</span><span data-lang="en">2018 → 2026 · EMI License</span></span>
+        <h3 class="about-callout__title"><span data-lang="pt">Relações baseadas em resultados</span><span data-lang="en">Results-based relationships</span></h3>
+        <p class="about-callout__body"><span data-lang="pt">Desde o lançamento do nosso primeiro projeto de pagamentos no Leste Europeu em 2018 até nos tornarmos uma instituição licenciada EMI no Brasil, não apenas aproveitamos oportunidades. Nós as criamos. Dados financeiros concretos importam muito mais do que métricas vagas, e acreditamos em construir o futuro em vez do presente.</span><span data-lang="en">From the launch of our first payment solutions project in Eastern Europe in 2018 to becoming an EMI-licensed institution in Brazil, we don't just seize opportunities. We create them. Hard financial data is far more important than soft metrics, and we believe in building the future rather than the present.</span></p>
       </div>
     </div>
   </section>
 
-  <section class="industries" style="padding: 60px 40px;">
-    <div class="industries__inner">
-      <h2 class="fade-in-on-scroll"><span data-lang="pt">Nosso jeito</span><span data-lang="en">Our way</span></h2>
-      <p class="industries__lede"><span data-lang="pt">Os valores que orientam como o time da LaFinteca constrói, entrega e atende clientes no Brasil.</span><span data-lang="en">The values that shape how the LaFinteca team builds, ships, and serves clients in Brazil.</span></p>
-    </div>
-    <div class="industries__grid" style="max-width: 1440px; margin: 0 auto; grid-template-columns: repeat(5, 1fr);">
-      <div class="industry-card">
-        <div class="industry-card__icon">①</div>
-        <p class="industry-card__name"><span data-lang="pt">Simplicidade em primeiro lugar — o complicado fica do nosso lado, nunca do seu</span><span data-lang="en">Simplicity first — the complicated stays on our side, never yours</span></p>
+  <!-- BOTTOM CTA - mirrors the /contapj/ bottom CTA inset -->
+  <section class="home-block">
+    <div class="cta-inset fade-in-on-scroll">
+      <h2 class="cta-inset__title"><span data-lang="pt">Comece a mover dinheiro com controle.</span><span data-lang="en">Start moving money with control.</span></h2>
+      <div class="cta-inset__actions">
+        <button class="btn btn-green" onclick="location.href='/contact/'"><span><span data-lang="pt">Fale com a gente ›</span><span data-lang="en">Contact us ›</span></span></button>
       </div>
-      <div class="industry-card">
-        <div class="industry-card__icon">②</div>
-        <p class="industry-card__name"><span data-lang="pt">Transparência sempre — falamos a verdade, sem letras miúdas ou surpresas</span><span data-lang="en">Always transparent — we tell the truth, no fine print or surprises</span></p>
-      </div>
-      <div class="industry-card">
-        <div class="industry-card__icon">③</div>
-        <p class="industry-card__name"><span data-lang="pt">Inovação com propósito — usamos tecnologia para resolver problemas reais</span><span data-lang="en">Innovation with purpose — we use technology to solve real problems</span></p>
-      </div>
-      <div class="industry-card">
-        <div class="industry-card__icon">④</div>
-        <p class="industry-card__name"><span data-lang="pt">Respeito por quem empreende — construímos com empatia por quem toca um negócio</span><span data-lang="en">Respect for business owners — we build with empathy for those running a business</span></p>
-      </div>
-      <div class="industry-card">
-        <div class="industry-card__icon">⑤</div>
-        <p class="industry-card__name"><span data-lang="pt">Evolução constante — aprendemos e melhoramos a cada dia</span><span data-lang="en">Constant evolution — we learn and improve every day</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="action-section" style="padding: 80px 40px;">
-    <div class="action-cards">
-      <div class="action-card">
-        <div>
-          <h3><span data-lang="pt">Nosso ecossistema de parceiros</span><span data-lang="en">Our ecosystem of partners</span></h3>
-          <p><span data-lang="pt">Ampliamos nossas capacidades tecnológicas e de negócio com um ecossistema forte de líderes de mercado e inovadores em todo o cenário regulado de pagamentos do Brasil.</span><span data-lang="en">We enhance our technological and business capacities through a strong ecosystem of market leaders and innovators across Brazil's regulated payments landscape.</span></p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">Banco Central</span>
-          <span class="purple-pill" style="top: 80px; right: 40px;"><span data-lang="pt">Parceiros Pix</span><span data-lang="en">Pix Partners</span></span>
-          <span class="white-pill" style="bottom: 30px; left: 60px;">Open Finance</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3><span data-lang="pt">Relações baseadas em resultados</span><span data-lang="en">Results-based relationships</span></h3>
-          <p><span data-lang="pt">Desde o lançamento do nosso primeiro projeto de pagamentos no Leste Europeu em 2018 até nos tornarmos uma instituição licenciada EMI no Brasil, não apenas aproveitamos oportunidades — nós as criamos. Dados financeiros concretos importam muito mais do que métricas vagas, e acreditamos em construir o futuro em vez do presente.</span><span data-lang="en">From the launch of our first payment solutions project in Eastern Europe in 2018 to becoming an EMI-licensed institution in Brazil, we don't just seize opportunities — we create them. Hard financial data is far more important than soft metrics, and we believe in building the future rather than the present.</span></p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">2018 → 2026</span>
-          <span class="purple-pill" style="top: 80px; left: 50%;"><span data-lang="pt">Licença EMI</span><span data-lang="en">EMI License</span></span>
-          <span class="white-pill" style="bottom: 30px; right: 40px;">$5,782.00</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="cta__inner">
-      <h2 class="fade-in-on-scroll"><span data-lang="pt">Vamos conectar as<br>soluções de pagamento que você precisa</span><span data-lang="en">Let's connect the payment<br>solutions you need</span></h2>
-      <button class="btn btn-dark" onclick="location.href='/contact/'"><span><span data-lang="pt">Fale com a gente ›</span><span data-lang="en">Contact us ›</span></span></button>
     </div>
   </section>
