@@ -3637,27 +3637,28 @@
     margin: 0 0 16px;
   }
 
-  /* Values — 2-col grid reusing the feature-card (.intro-card) treatment */
+  /* Values — 5 compact tiles in a row, reusing the feature-card treatment */
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    max-width: 1040px;
-    margin: 48px auto 0;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 1120px;
+    margin: 44px auto 0;
     text-align: left;
   }
-  .value-card { padding-top: 28px; }
-  .value-card__num {
+  .value-card { padding: 22px 18px 20px; }
+  .value-card__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px; height: 34px;
+    width: 36px; height: 36px;
     border-radius: 10px;
     background: rgba(191, 254, 67, 0.14);
     color: var(--green);
-    font-size: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
+  .value-card .intro-card__title { font-size: 15px; margin-bottom: 8px; }
+  .value-card .intro-card__body { font-size: 12.5px; line-height: 1.55; }
 
   /* Partner pills (minimal border, no fill) */
   .about-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
@@ -3709,8 +3710,13 @@
     margin: 0;
   }
 
+  @media (max-width: 1000px) {
+    .values-grid { grid-template-columns: repeat(3, 1fr); max-width: 680px; }
+  }
+  @media (max-width: 560px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 720px) {
-    .values-grid { grid-template-columns: 1fr; }
     .about-hero { padding: 48px 20px 40px; }
     .about-callout { padding: 24px; }
   }
