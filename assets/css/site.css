@@ -64,7 +64,7 @@
     cursor: pointer;
   }
   .header__logo-img { display: block; height: 22px; width: auto; }
-  .header__menu { display: flex; gap: 36px; align-items: center; flex: 1; min-width: 0; padding: 0 36px 0 60px; }
+  .header__menu { display: flex; gap: 28px; align-items: center; flex: 1; min-width: 0; padding: 0 24px 0 40px; }
   .header__menu-spacer { flex: 1; min-width: 24px; }
   .header__menu a {
     color: var(--white); text-decoration: none;
@@ -73,6 +73,7 @@
     text-transform: uppercase; letter-spacing: 1px;
     cursor: pointer; transition: color 0.15s;
     display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap;
   }
   .header__menu a:hover, .header__menu a.active { color: var(--green); }
   .header__menu a.active {
@@ -173,6 +174,13 @@
   }
   .login-btn:hover { background: var(--white); color: var(--dark); }
   .header__actions { display: flex; gap: 10px; align-items: center; }
+  /* Tighten the nav in the 1101–1280px range so the full menu (incl. FAQs)
+     fits comfortably above the ≤1100px hamburger threshold. */
+  @media (min-width: 1101px) and (max-width: 1280px) {
+    .header__menu { gap: 18px; padding: 0 14px 0 24px; }
+    .header__actions { gap: 8px; }
+    .login-btn { padding: 0 16px; }
+  }
 
   /* Language switcher */
   .lang-switch { position: relative; }
@@ -2395,7 +2403,10 @@
   }
   @media (max-width: 1100px) {
     .header { padding: 22px 32px; }
-    .header__menu { gap: 24px; padding: 0 24px 0 36px; }
+    /* Collapse to hamburger earlier — the full nav (incl. FAQs) needs >1100px.
+       (hamburger display:flex lives in the dedicated block below — it must come
+       after the base .header__hamburger rule to win on source order.) */
+    .header__menu { display: none; }
     .home-block { padding: 64px 32px; }
     .hero { padding: 48px 32px 64px; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2403,6 +2414,8 @@
     .faq-split__inner { gap: 48px; }
     .industries__grid--four { grid-template-columns: repeat(2, 1fr); }
     .compare-table th, .compare-table td { padding: 14px 16px; font-size: 12px; }
+    /* Footer: drop the cramped 5-col before it overlaps on tablets. */
+    .footer-grid { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 900px) {
@@ -2414,7 +2427,8 @@
     .industries__grid, .industries__grid--four { grid-template-columns: 1fr; }
     .action-card { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
-    .forwho-grid { grid-template-columns: 1fr; }
+    /* Para quem: keep tiles grouped 2×2 (square) — never a single column. */
+    .forwho-grid { grid-template-columns: repeat(2, 1fr); }
     .hero, section, .platform { padding: 48px 20px; }
     .contact-layout, .newsletter { grid-template-columns: 1fr; gap: 32px; padding: 32px 20px; }
     .list-row--blog, .list-row--event, .list-row--job { grid-template-columns: 1fr; gap: 8px; }
@@ -2530,6 +2544,8 @@
        button full width so they sit cleanly. */
     .hero--fullbleed .hero__buttons { flex-direction: column; align-items: stretch; }
     .hero--fullbleed .hero__buttons .btn { width: 100%; justify-content: center; }
+    .hero--fullbleed .hero__buttons .hero__textlink { justify-content: center; }
+    .bacen-badge--hero { align-self: center; }
   }
 
   /* ============================================================
@@ -2641,7 +2657,7 @@
     height: 52px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .header__hamburger { display: flex; }
     .header__actions { display: none; }
   }
@@ -3461,20 +3477,8 @@
   .hero__textlink:hover { color: var(--green); border-bottom-color: var(--green); }
   .hero__buttons { align-items: center; }
 
-  .hero__trust {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 22px 0 0;
-  }
-  .hero__trust-logo { height: 22px; width: auto; opacity: 0.7; flex-shrink: 0; }
-  .hero__trust-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.55);
-    line-height: 1.4;
-  }
+  /* BCB authorization stamp in the hero — reuses the footer .bacen-badge. */
+  .bacen-badge--hero { margin-top: 22px; }
 
   /* ---- Trust bar (item 3) — placeholder metrics strip ---- */
   .trust-bar {
