@@ -3682,12 +3682,38 @@
     margin: 0 0 16px;
   }
 
-  /* Values — 5 compact tiles in a row, reusing the feature-card treatment */
+  /* Mission & Vision — two labeled statements side by side */
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    max-width: 1080px;
+  }
+  .mv-item__label {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin: 0 0 14px;
+  }
+  .mv-item__text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    color: var(--white);
+    margin: 0;
+  }
+
+  /* Values — 6 compact tiles (3×2), reusing the feature-card treatment */
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    max-width: 1120px;
+    max-width: 1000px;
     margin: 44px auto 0;
     text-align: left;
   }
@@ -3764,4 +3790,5 @@
   @media (max-width: 720px) {
     .about-hero { padding: 48px 20px 40px; }
     .about-callout { padding: 24px; }
+    .mv-grid { grid-template-columns: 1fr; gap: 32px; }
   }
