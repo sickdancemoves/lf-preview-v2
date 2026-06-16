@@ -783,6 +783,12 @@
     background-clip: text;
     color: transparent;
   }
+  /* One-line heading: slightly smaller measure so a longer line holds to a
+     single row on desktop. Falls back to natural wrap on narrow viewports. */
+  .home-block__title--oneline {
+    font-size: clamp(22px, 3.1vw, 34px);
+    letter-spacing: -0.8px;
+  }
   .home-block__sub {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 15px;
@@ -1821,6 +1827,36 @@
     align-items: center;
     justify-content: center;
   }
+  /* Centered closing band: single column, no empty visual. A thin green top
+     hairline + faint radial glow set it apart as the page's final CTA. */
+  .cta-banner--centered {
+    border-top: 1px solid rgba(191, 254, 67, 0.22);
+    background:
+      radial-gradient(120% 140% at 50% 0%, rgba(191, 254, 67, 0.06) 0%, transparent 55%),
+      var(--dark);
+  }
+  .cta-banner--centered .cta-banner__inner {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    padding: 96px 40px;
+    gap: 0;
+    text-align: center;
+    justify-items: center;
+  }
+  .cta-banner--centered .home-eyebrow { margin-bottom: 22px; }
+  .cta-banner--centered .cta-banner__sub {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+  }
+  .cta-banner__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
 
   /* ==== FAQs page ==== */
   .faqs-page { padding: 80px 40px 120px; background: var(--dark); }
@@ -2442,6 +2478,9 @@
     .reviews__rating { flex-wrap: wrap; gap: 16px; padding: 16px 20px; }
     .faq-split__inner { grid-template-columns: 1fr; gap: 32px; }
     .cta-banner__inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 32px; }
+    .cta-banner--centered .cta-banner__inner { padding: 64px 20px; }
+    .cta-banner__actions { flex-direction: column; gap: 14px; width: 100%; }
+    .cta-banner__actions .btn { width: 100%; justify-content: center; }
     .contapj-hero { padding: 64px 20px; min-height: 420px; }
     .contapj-cnpj { flex-direction: column; gap: 12px; background: transparent; padding: 0; }
     .contapj-cnpj input {
