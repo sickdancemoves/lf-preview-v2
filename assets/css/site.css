@@ -1000,29 +1000,25 @@
     color: var(--gray-text);
     margin: 0;
   }
+  /* Two equal channel columns (SAC | Ouvidoria) split by a centered hairline. */
   .support-unified__grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 56px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
   }
-  .support-unified__primary {
+  /* One shared template for every contact channel — identical structure means
+     SAC and Ouvidoria render identically. */
+  .support-channel {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 14px;
   }
-  .support-unified__secondary {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-left: 48px;
+  .support-channel:first-child { padding-right: 56px; }
+  .support-channel + .support-channel {
     border-left: 1px solid var(--gray-line);
+    padding-left: 56px;
   }
-  .support-unified__group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .support-unified__group-title {
+  .support-channel__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 600;
     font-size: 13px;
@@ -1031,17 +1027,73 @@
     color: var(--green);
     margin: 0;
   }
-  .support-unified__group-copy {
+  .support-channel__hours {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--gray-text);
     margin: 0;
+    max-width: 42ch;
+  }
+  .support-channel__phones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 2px 0;
+  }
+  .support-channel__phone-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .support-channel__phone {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .support-channel__phone:hover { color: var(--green); }
+  .support-channel__phone-area {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-text);
+  }
+  .support-channel__email {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--white);
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-line);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .support-channel__email:hover { border-color: var(--green); color: var(--green); }
+  /* Social row sits below both channels, separated by a full-width hairline. */
+  .support-unified__social {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-line);
   }
   @media (max-width: 880px) {
     .support-unified { padding: 32px 24px; border-radius: 16px; }
     .support-unified__grid { grid-template-columns: 1fr; gap: 36px; }
-    .support-unified__secondary { padding-left: 0; border-left: none; padding-top: 32px; border-top: 1px solid var(--gray-line); }
+    .support-channel:first-child { padding-right: 0; }
+    .support-channel + .support-channel {
+      padding-left: 0; border-left: none;
+      padding-top: 36px; border-top: 1px solid var(--gray-line);
+    }
   }
 
   .support-extras {
