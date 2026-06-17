@@ -381,9 +381,10 @@
     background-image:
       linear-gradient(180deg, rgba(20,20,24,0.10) 0%, rgba(20,20,24,0.55) 70%, rgba(20,20,24,0.85) 100%),
       url('assets/hero-home.jpg');
-    /* Gradient covers; the photo is zoomed slightly past cover to bring the
-       subject closer without going up-close. */
-    background-size: cover, 122%;
+    /* cover always fills both axes (a single-% size left the photo short and
+       it tiled on tall/narrow viewports); no-repeat guarantees one clean fill. */
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: center top;
   }
   /* Hero placeholder hint — corner label so it doesn't fight the headline.
@@ -422,6 +423,11 @@
   @media (max-width: 880px) {
     .hero--fullbleed {
       min-height: 78vh;
+    }
+    /* Narrow viewport shows a vertical slice of the wide photo — bias the
+       position to the right so the subject stays in frame, not the window. */
+    .hero--fullbleed .hero__media {
+      background-position: 62% top;
     }
     .hero--fullbleed .hero__overlay {
       padding: 0 24px 56px;
