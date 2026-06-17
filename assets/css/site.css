@@ -384,7 +384,7 @@
     /* Gradient covers; the photo is zoomed slightly past cover to bring the
        subject closer without going up-close. */
     background-size: cover, 122%;
-    background-position: center 12%;
+    background-position: center top;
   }
   /* Hero placeholder hint — corner label so it doesn't fight the headline.
      Matches the convention used by .home-block--bg::after on other sections. */
