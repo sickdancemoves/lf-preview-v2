@@ -1,17 +1,3 @@
-// Scale the MacBook photo stage (fixed 1200×800 with matrix3d) to fit its responsive wrapper
-(function () {
-  const wraps = document.querySelectorAll('.laptop-photo');
-  if (!wraps.length) return;
-  function sync(wrap) {
-    const stage = wrap.querySelector('.laptop-photo__stage');
-    if (!stage) return;
-    const scale = wrap.offsetWidth / 1200;
-    stage.style.transform = 'scale(' + scale + ')';
-  }
-  const ro = new ResizeObserver(entries => entries.forEach(e => sync(e.target)));
-  wraps.forEach(w => { sync(w); ro.observe(w); });
-})();
-
 // Mobile drawer — hamburger toggles a full-screen overlay nav. Inspired by
 // the Stripe/Stone mobile pattern: hamburger top-right, full-bleed dark
 // overlay slides in from above with large hit-area links + CTAs.
@@ -171,116 +157,33 @@
   });
 })();
 
-// Scroll-triggered animations: fade-in for tagged elements + dashboard
-// count-up sequence. Single IntersectionObserver handles both, with
-// per-element thresholds. Each target fires once and is unobserved.
+// Scroll-triggered fade-in for tagged elements. Each element fades in once
+// when it enters the viewport, then is unobserved.
 (function () {
   const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
-  const dash = document.querySelector('.dash-mock');
-  if (!fadeEls.length && !dash) return;
+  if (!fadeEls.length) return;
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasIO = 'IntersectionObserver' in window;
 
-  // Brazilian currency formatter (created once, reused per frame).
-  const BRL = new Intl.NumberFormat('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-
-  // ---- Dashboard helpers ----
-  function setBalanceTo(rootEl, value) {
-    const intEl = rootEl.querySelector('.dash-mock__balance-int');
-    const centsEl = rootEl.querySelector('.dash-mock__cents');
-    const fixed = value.toFixed(2);
-    const [intPart, decPart] = fixed.split('.');
-    if (intEl) intEl.textContent = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    if (centsEl) centsEl.textContent = ',' + decPart;
-  }
-
-  function setStatTo(el, value) {
-    const prefix = el.dataset.prefix || '';
-    el.textContent = prefix + BRL.format(value);
-  }
-
-  // ease-out cubic
-  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
-  function countUp(el, target, duration, writeFn) {
-    const start = performance.now();
-    function tick(now) {
-      const t = Math.min(1, (now - start) / duration);
-      writeFn(el, target * easeOut(t));
-      if (t < 1) requestAnimationFrame(tick);
-      else writeFn(el, target); // snap to exact final value
-    }
-    requestAnimationFrame(tick);
-  }
-
-  function runDashboardSequence(root) {
-    const balance = root.querySelector('.dash-mock__balance');
-    const stats = root.querySelectorAll('.dash-mock__stat[data-count-up]');
-    const rows = root.querySelector('.dash-mock__rows');
-
-    if (reduced) {
-      // Show final values instantly, skip pulse (handled by reduced-motion CSS).
-      if (balance) {
-        setBalanceTo(balance, parseFloat(balance.dataset.countUp));
-        balance.classList.add('is-counting');
-      }
-      stats.forEach(s => {
-        setStatTo(s, parseFloat(s.dataset.countUp));
-        s.classList.add('is-counting');
-      });
-      if (rows) rows.classList.add('is-revealed');
-      return;
-    }
-
-    // Balance: start at zero, count up over 1.2s, then add .is-live for pulse.
-    if (balance) {
-      setBalanceTo(balance, 0);
-      balance.classList.add('is-counting');
-      countUp(balance, parseFloat(balance.dataset.countUp), 1200, setBalanceTo);
-      setTimeout(() => balance.classList.add('is-live'), 1200);
-    }
-
-    // Transaction rows: CSS handles the per-child 150ms stagger.
-    if (rows) rows.classList.add('is-revealed');
-
-    // Stat cards: kick off 800ms after dashboard enters viewport.
-    setTimeout(() => {
-      stats.forEach(s => {
-        setStatTo(s, 0);
-        s.classList.add('is-counting');
-        countUp(s, parseFloat(s.dataset.countUp), 1200, setStatTo);
-      });
-    }, 800);
-  }
-
-  // ---- Fallbacks (reduced-motion or no IntersectionObserver) ----
+  // ---- Fallback (reduced-motion or no IntersectionObserver) ----
   if (reduced || !hasIO) {
     fadeEls.forEach(el => el.classList.add('is-visible'));
-    if (dash) runDashboardSequence(dash);
     return;
   }
 
-  // ---- Single observer with multiple thresholds ----
   const viewportH = window.innerHeight;
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const required = parseFloat(entry.target.dataset.observeThreshold || '0.15');
       if (entry.intersectionRatio < required) return;
-      if (entry.target === dash) {
-        runDashboardSequence(entry.target);
-      } else {
-        entry.target.classList.add('is-visible');
-      }
+      entry.target.classList.add('is-visible');
       obs.unobserve(entry.target);
     });
   }, { threshold: [0.15, 0.3] });
 
-  // Observe fade-in elements (default threshold 0.15).
+  // Elements already near the top on load skip the animation.
   fadeEls.forEach(el => {
     const rect = el.getBoundingClientRect();
     if (rect.top < viewportH * 0.9) {
@@ -289,12 +192,6 @@
     }
     observer.observe(el);
   });
-
-  // Observe dashboard (threshold 0.3).
-  if (dash) {
-    dash.dataset.observeThreshold = '0.3';
-    observer.observe(dash);
-  }
 })();
 
 // Abrir Conta — account-opening request form.

@@ -712,16 +712,6 @@
      centered title/sub above it stays at the regular max-width. */
   .home-block--full { padding-left: 0; padding-right: 0; }
   .home-block--full > .home-block__inner { padding: 0 40px; }
-  .laptop-photo--full {
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-  /* The .laptop-photo__stage keeps its fixed 1200×800 dimensions so the
-     JS scale-transform in site.js (offsetWidth / 1200) still produces a
-     correct fill. Adjusting stage dimensions here would double-shrink
-     the mockup on mobile. */
   /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
@@ -831,139 +821,8 @@
     border-radius: 8px;
   }
 
-  /* Contact / Suporte page */
-  .support-grid {
-    max-width: 1080px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .support-grid--single {
-    grid-template-columns: 1fr;
-    max-width: 720px;
-  }
-  .support-card--unified .support-card__tag--featured {
-    font-size: 14px;
-    letter-spacing: 0.6px;
-  }
-  .support-card {
-    background: var(--dark-2);
-    border: 1px solid var(--gray-line);
-    border-radius: 16px;
-    padding: 36px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .support-card--featured {
-    background: linear-gradient(160deg, var(--dark-2) 0%, #1f1f23 100%);
-    border-color: rgba(191, 254, 67, 0.25);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-  .support-card__tag {
-    display: inline-block;
-    align-self: flex-start;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gray-text);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--gray-line);
-    border-radius: 999px;
-    padding: 6px 14px;
-  }
-  .support-card__tag--featured {
-    color: var(--green);
-    background: rgba(191, 254, 67, 0.1);
-    border-color: var(--green);
-  }
-  .support-card__hours {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    line-height: 1.55;
-    color: var(--gray-text);
-    margin: 0;
-  }
-  .support-card__phone {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-    transition: color 0.15s;
-  }
-  .support-card__phone:hover { color: var(--green); }
-  .support-card__meta {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--gray-text);
-    margin: -12px 0 0;
-  }
-  .support-card__phones {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .support-card__phone-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .support-card__phone-label {
-    flex-shrink: 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--green);
-    width: 50px;
-    padding-top: 8px;
-  }
-  .support-card__phone-row > div { display: flex; flex-direction: column; gap: 2px; }
-  .support-card__phone-area {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-text);
-  }
-  .support-card__whatsapp,
-  .support-card__libras,
-  .support-card__email {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    color: var(--white);
-    text-decoration: none;
-    cursor: pointer;
-    padding: 12px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--gray-line);
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
-    align-self: flex-start;
-  }
-  .support-card__whatsapp:hover,
-  .support-card__libras:hover,
-  .support-card__email:hover {
-    border-color: var(--green);
-    color: var(--green);
-  }
-  .support-card__libras {
-    border-color: var(--purple);
-    color: var(--purple);
-  }
-  .support-card__libras:hover { color: var(--green); border-color: var(--green); }
-  .support-card__email { font-size: 14px; }
-
-  /* Unified Atendimento container — single soft-bordered block that holds the
-     primary contact channels (left column) and the secondary blocks
-     Redes sociais + Ouvidoria (right column). Wider and airier than the
-     v1 ".support-card" treatment. */
+  /* Unified Atendimento container — one soft-bordered block holding two equal
+     channel columns (SAC | Ouvidoria) with a Redes sociais row beneath. */
   .support-unified {
     max-width: 1080px;
     margin: 0 auto;
@@ -992,13 +851,6 @@
     border: 1px solid var(--green);
     border-radius: 999px;
     padding: 8px 18px;
-  }
-  .support-unified__hours {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--gray-text);
-    margin: 0;
   }
   /* Two equal channel columns (SAC | Ouvidoria) split by a centered hairline. */
   .support-unified__grid {
@@ -1096,15 +948,6 @@
     }
   }
 
-  .support-extras {
-    max-width: 1080px;
-    margin: 40px auto 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    padding-top: 40px;
-    border-top: 1px solid var(--gray-line);
-  }
   .contact-hero__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
@@ -1123,37 +966,6 @@
     max-width: 640px;
     margin: 0 auto;
   }
-  .support-extras__col {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .support-extras__title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--white);
-    margin: 0;
-  }
-  .support-extras__copy {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    line-height: 1.55;
-    color: var(--gray-text);
-    margin: 0;
-  }
-  .support-extras__link {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--green);
-    cursor: pointer;
-  }
-  .support-extras__link:hover { color: var(--white); }
-  @media (max-width: 900px) {
-    .support-grid { grid-template-columns: 1fr; }
-    .support-extras { grid-template-columns: 1fr; gap: 28px; }
-  }
-
   /* Bacen authorization badge (footer) — sits on its own row below socials, left-aligned with first icon */
   .bacen-badge {
     display: inline-flex;
@@ -1218,165 +1030,6 @@
     width: 100%;
     height: auto;
     filter: drop-shadow(0 36px 64px rgba(0, 0, 0, 0.55));
-  }
-
-  /* Dashboard mock (A nova home da sua equipe) */
-  .dash-mock {
-    background: #0f1015;
-    border: 1px solid var(--gray-line);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: left;
-  }
-  .dash-mock__chrome {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--gray-line);
-    background: #16181f;
-  }
-  .dash-mock__dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: #444;
-  }
-  .dash-mock__dot:nth-child(2) { background: var(--green); }
-  .dash-mock__dot:nth-child(3) { background: var(--purple); }
-  .dash-mock__url {
-    margin-left: 14px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--gray-text);
-    letter-spacing: 0.5px;
-  }
-  .dash-mock__grid {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    min-height: 380px;
-  }
-  .dash-mock__nav {
-    background: #15161c;
-    padding: 20px 14px;
-    border-right: 1px solid var(--gray-line);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .dash-mock__logo {
-    padding: 4px 8px 16px;
-  }
-  .dash-mock__logo img { height: 18px; width: auto; display: block; }
-  .dash-mock__nav-item {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.6px;
-    color: var(--gray-text);
-    padding: 9px 12px;
-    border-radius: 6px;
-    cursor: default;
-  }
-  .dash-mock__nav-item.is-active {
-    background: rgba(191, 254, 67, 0.12);
-    color: var(--green);
-    border: 1px solid rgba(191, 254, 67, 0.3);
-  }
-  .dash-mock__main {
-    padding: 24px;
-    display: grid;
-    gap: 14px;
-    align-content: start;
-  }
-  .dash-mock__card {
-    background: var(--dark-2);
-    border: 1px solid var(--gray-line);
-    border-radius: 10px;
-    padding: 18px 20px;
-  }
-  .dash-mock__card--hero {
-    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-2) 100%);
-    color: var(--dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-  }
-  .dash-mock__card--hero .dash-mock__label { color: rgba(0,0,0,0.65); }
-  .dash-mock__label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gray-text);
-  }
-  .dash-mock__balance {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--dark);
-    margin-top: 6px;
-    letter-spacing: -0.5px;
-  }
-  .dash-mock__currency { font-size: 14px; opacity: 0.6; margin-right: 6px; }
-  .dash-mock__cents { font-size: 18px; opacity: 0.8; }
-  .dash-mock__chip {
-    background: var(--green);
-    color: var(--dark);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .dash-mock__card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-  }
-  .dash-mock__filter {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--gray-text);
-    letter-spacing: 0.5px;
-  }
-  .dash-mock__rows { display: flex; flex-direction: column; }
-  .dash-mock__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--gray-line);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-  }
-  .dash-mock__row:last-child { border-bottom: none; }
-  .dash-mock__row-name { color: var(--white); }
-  .dash-mock__row-amt { font-weight: 600; }
-  .dash-mock__row-amt.pos { color: var(--green); }
-  .dash-mock__row-amt.neg { color: var(--gray-text); }
-  .dash-mock__split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .dash-mock__stat {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 6px;
-    letter-spacing: -0.3px;
-  }
-  .dash-mock__stat--pos { color: var(--green); }
-  .dash-mock__stat--neg { color: var(--purple); }
-  @media (max-width: 900px) {
-    .dash-mock__grid { grid-template-columns: 1fr; }
-    .dash-mock__nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--gray-line); }
-    .dash-mock__logo { width: 100%; }
-    .dash-mock__split { grid-template-columns: 1fr; }
   }
 
   /* Intro cards (under "A conta PJ mais simples que existe") */
@@ -2536,9 +2189,7 @@
     }
     .contapj-cnpj .btn span { font-size: 12px; }
     .compare-table { display: block; overflow-x: auto; }
-    .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
-    .laptop-photo { margin-top: 32px; }
   }
 
   /* ============================================================
@@ -2597,9 +2248,6 @@
 
     .header__logo-img { height: 18px; }
 
-    /* Phone numbers in the Atendimento box — 28 px wrapped awkwardly. */
-    .support-card__phone { font-size: 22px; letter-spacing: -0.4px; }
-
     /* Compact intro card padding on tight screens. */
     .intro-card { padding: 26px 22px 24px; }
 
@@ -2611,7 +2259,6 @@
     .home-block--full > .home-block__inner { padding: 0 20px; }
     .laptop-shot { padding: 0 20px; margin-top: 28px; }
     .laptop-shot__img { filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.5)); }
-    .laptop-photo--full { aspect-ratio: 4 / 3; }
     .home-block__title { font-size: clamp(22px, 6.4vw, 28px); }
 
     /* Hero overlay buttons stack on narrow screens — give the secondary
@@ -2888,79 +2535,6 @@
       transition: none;
     }
     .fade-in-on-scroll[data-stagger] { transition-delay: 0ms; }
-  }
-
-  /* ============================================================
-     Dashboard mockup — count-up balance, transaction stagger,
-     live-pulse on balance, URL bar cursor blink. JS-gated.
-     ============================================================ */
-
-  /* Hide numbers until the dashboard enters viewport (JS reveals
-     by adding .is-counting). Without JS, numbers stay visible. */
-  .js-enabled .dash-mock__balance,
-  .js-enabled .dash-mock__stat {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-  }
-  .js-enabled .dash-mock__balance.is-counting,
-  .js-enabled .dash-mock__stat.is-counting {
-    opacity: 1;
-  }
-
-  /* Transaction-row stagger: hidden initially, revealed all-at-once
-     by JS via .is-revealed on the parent .dash-mock__rows; each row
-     animates with its own transition-delay. */
-  .js-enabled .dash-mock__rows .dash-mock__row {
-    opacity: 0;
-    transform: translateY(8px);
-    transition:
-      opacity 0.4s ease-out,
-      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(1) { transition-delay: 0ms; }
-  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(2) { transition-delay: 150ms; }
-  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(3) { transition-delay: 300ms; }
-  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(4) { transition-delay: 450ms; }
-
-  /* Subtle live pulse: opacity 1 -> 0.85 -> 1 over the first 2s of
-     a 4s cycle, then steady at 1 for 2s. Triggered after count-up. */
-  @keyframes dash-balance-pulse {
-    0%, 50%, 100% { opacity: 1; }
-    25% { opacity: 0.85; }
-  }
-  .dash-mock__balance.is-live {
-    animation: dash-balance-pulse 4s ease-in-out infinite;
-  }
-
-  /* URL-bar blinking cursor */
-  .dash-mock__url::after {
-    content: '▍';
-    display: inline-block;
-    margin-left: 2px;
-    color: inherit;
-    animation: dash-cursor-blink 1s steps(1) infinite;
-  }
-  @keyframes dash-cursor-blink {
-    50% { opacity: 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .js-enabled .dash-mock__balance,
-    .js-enabled .dash-mock__stat {
-      opacity: 1;
-      transition: none;
-    }
-    .js-enabled .dash-mock__rows .dash-mock__row {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-    .dash-mock__balance.is-live { animation: none; }
-    .dash-mock__url::after { animation: none; opacity: 1; }
   }
 
   /* ==== Policy Center ==== */
