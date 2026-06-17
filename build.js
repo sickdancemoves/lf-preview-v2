@@ -70,7 +70,6 @@ function escapeAttr(s) {
 //   href="/X/"               -> href="{base}/X/"
 //   src="/assets/X"          -> src="{base}/assets/X"
 //   src="assets/X"           -> src="{base}/assets/X"   (relative refs that assumed root)
-//   src="Main%20logo..."     -> src="{base}/Main%20logo..."
 // Skips external (http://, https://, //, mailto:, tel:, #anchor) and the canonical/og:url tags (already absolute).
 function rewriteHtmlUrls(html, base) {
   if (!base) {
@@ -81,7 +80,6 @@ function rewriteHtmlUrls(html, base) {
   html = html.replace(/(\s(?:href|src)=")\/(?!\/)/g, `$1${base}/`);
   // Common relative assets that we know live at the dist root
   html = html.replace(/(\s(?:href|src)=")(assets\/)/g, `$1${base}/$2`);
-  html = html.replace(/(\s(?:href|src)=")(Main%20)/g, `$1${base}/$2`);
   // window.location.href='/X/' inside onclick attributes (CTA buttons)
   html = html.replace(/(location\.href=')\/(?!\/)/g, `$1${base}/`);
   return html;
@@ -115,12 +113,6 @@ copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 // Rewrite CSS url() refs after copy.
 const cssOut = path.join(DIST, 'assets/css/site.css');
 fs.writeFileSync(cssOut, rewriteCssUrls(fs.readFileSync(cssOut, 'utf8'), basePath));
-
-// Root-level logo (has spaces in filename)
-const logo = 'Main logo white (1).svg';
-if (fs.existsSync(path.join(ROOT, logo))) {
-  fs.copyFileSync(path.join(ROOT, logo), path.join(DIST, logo));
-}
 
 // .nojekyll prevents GitHub Pages from running Jekyll on the output.
 fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
