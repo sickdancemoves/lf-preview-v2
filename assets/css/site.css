@@ -39,24 +39,21 @@
   /* ==== HEADER ==== */
   .header {
     background: var(--dark);
-    padding: 22px 60px;
+    /* Full-width sticky bar; content stays centered within 1440 via auto side
+       padding. (max-width + margin auto left the bar narrower than the
+       full-bleed hero, so scrolled content peeked beside it on wide screens.) */
+    padding: 22px max(60px, calc((100% - 1440px) / 2));
     display: flex; align-items: center; justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
-    max-width: 1440px;
-    margin: 0 auto;
     border-bottom: 1px solid transparent;
-    transition: background 0.25s ease, border-color 0.25s ease, padding 0.25s ease;
+    transition: border-color 0.25s ease;
   }
-  /* Scrolled state — toggled by site.js. Adds separation from page content. */
+  /* Scrolled state — solid dark always (no translucency/blur, so the hero photo
+     never bleeds through); just a hairline appears for separation. */
   .header.is-scrolled {
-    background: rgba(24, 24, 24, 0.82);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
     border-bottom-color: var(--gray-line);
-    padding-top: 14px;
-    padding-bottom: 14px;
   }
   .header__logo {
     display: inline-flex;
@@ -1465,7 +1462,7 @@
     display: block;
     width: 100%;
     min-width: 0; /* let the 1fr grid track shrink below the image's intrinsic width */
-    aspect-ratio: 1200 / 630; /* native ratio: whole photo shows, centered, no crop */
+    aspect-ratio: 1090 / 630; /* native ratio of the recentered photo: whole frame shows, no crop */
     object-fit: cover;
     border-radius: 12px;
   }
