@@ -292,18 +292,6 @@
     max-width: 520px;
     margin: 0 0 36px;
   }
-  .hero__placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.4);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
   .hero h1 .underline {
     position: relative; white-space: nowrap; display: inline-block;
   }
@@ -386,24 +374,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
-  }
-  /* Hero placeholder hint — corner label so it doesn't fight the headline.
-     Matches the convention used by .home-block--bg::after on other sections. */
-  .hero__media-fallback {
-    position: absolute;
-    top: auto;
-    bottom: 24px;
-    right: 32px;
-    left: auto;
-    display: inline-flex;
-    align-items: center;
-    color: rgba(255,255,255,0.35);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    z-index: 1;
-    pointer-events: none;
   }
   .hero--fullbleed .hero__overlay {
     position: relative;
@@ -819,16 +789,7 @@
   }
   .home-block--alt .home-block__placeholder { background-color: var(--dark-2); }
   .home-block__placeholder--md { min-height: 360px; }
-  .home-block__placeholder--lg { min-height: 460px; }
   .home-block__placeholder--xl { min-height: 560px; }
-  .home-block__image {
-    display: block;
-    margin: 32px auto 0;
-    max-width: 1080px;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
 
   /* Unified Atendimento container — one soft-bordered block holding two equal
      channel columns (SAC | Ouvidoria) with a Redes sociais row beneath. */
@@ -1511,23 +1472,6 @@
     line-height: 1.6;
     color: var(--gray-text);
     margin: 0 0 32px;
-  }
-  .cta-banner__visual {
-    min-height: 360px;
-    background: var(--dark-2);
-    border: 1px dashed var(--gray-line);
-    background-image:
-      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 40px 40px;
-    color: rgba(255,255,255,0.4);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   /* Centered closing band over a full-bleed photo. Layer order (front→back):
      green glow, dark overlay for text contrast, then the photo. */
