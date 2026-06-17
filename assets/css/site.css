@@ -384,7 +384,9 @@
     background-image:
       linear-gradient(180deg, rgba(20,20,24,0.10) 0%, rgba(20,20,24,0.55) 70%, rgba(20,20,24,0.85) 100%),
       url('assets/hero-home.jpg');
-    background-size: cover;
+    /* Gradient covers; the photo is zoomed slightly past cover to bring the
+       subject closer without going up-close. */
+    background-size: cover, 122%;
     background-position: center 12%;
   }
   /* Hero placeholder hint — corner label so it doesn't fight the headline.
@@ -708,6 +710,10 @@
     background: var(--dark);
   }
   .home-block--alt { background: #1f1f23; }
+  /* Pull the mid-page CTA up toward the laptop shot (the PNG already carries
+     transparent headroom below the laptops, so the default 80px gap is too much). */
+  .home-block--flush-bottom { padding-bottom: 0; }
+  .home-block--flush-top { padding-top: 8px; }
   /* Full-bleed inner: lets the laptop mockup span edge-to-edge while the
      centered title/sub above it stays at the regular max-width. */
   .home-block--full { padding-left: 0; padding-right: 0; }
@@ -1459,7 +1465,7 @@
     display: block;
     width: 100%;
     min-width: 0; /* let the 1fr grid track shrink below the image's intrinsic width */
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1200 / 630; /* native ratio: whole photo shows, centered, no crop */
     object-fit: cover;
     border-radius: 12px;
   }
@@ -1528,7 +1534,7 @@
       linear-gradient(180deg, rgba(13, 13, 15, 0.66) 0%, rgba(13, 13, 15, 0.52) 50%, rgba(13, 13, 15, 0.66) 100%),
       url('assets/home-cta.jpg');
     background-size: cover;
-    background-position: center 42%;
+    background-position: center 26%;
   }
   .cta-banner--centered .cta-banner__inner {
     grid-template-columns: 1fr;
