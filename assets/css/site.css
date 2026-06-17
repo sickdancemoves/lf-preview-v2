@@ -1737,7 +1737,7 @@
     color: var(--dark);
     border-color: var(--green);
   }
-  .footer-col h4 {
+  .footer-col h2 {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     font-weight: 700;
