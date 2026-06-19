@@ -369,7 +369,9 @@
        it tiled on tall/narrow viewports); no-repeat guarantees one clean fill. */
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    /* Bias toward the top so the subject's head keeps headroom under the nav
+       on wide/short viewports (instead of being cropped). */
+    background-position: center 15%;
   }
   .hero--fullbleed .hero__overlay {
     position: relative;
@@ -697,6 +699,30 @@
   .home-block--laptop {
     background: var(--dark) url('assets/laptop-bg.png') center / cover no-repeat;
   }
+  /* CTA integrated into the laptop section — sits on the burst bg (no inset box),
+     with the last line accented green, per the design reference. */
+  .laptop-cta {
+    margin-top: 56px;
+    text-align: center;
+  }
+  .laptop-cta__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: clamp(24px, 3.8vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 28px;
+  }
+  .laptop-cta__accent { color: var(--green); }
+  .laptop-cta__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
   /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
@@ -920,7 +946,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
+    gap: 20px;
+  }
+  /* Email reads as a plain green link (like the footer) so its first line aligns
+     with the company name in the left column — no floating pill. */
+  .support-info__contact .support-channel__email {
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    color: var(--green);
+  }
+  .support-info__contact .support-channel__email:hover {
+    color: var(--green);
+    border-color: transparent;
+    text-decoration: underline;
   }
   .support-info__lines {
     display: flex;
@@ -1522,7 +1562,7 @@
       linear-gradient(180deg, rgba(13, 13, 15, 0.70) 0%, rgba(13, 13, 15, 0.55) 50%, rgba(13, 13, 15, 0.72) 100%),
       url('assets/home-cta.jpg');
     background-size: cover;
-    background-position: center 38%;
+    background-position: center 22%;
   }
   .cta-banner--centered .cta-banner__inner {
     grid-template-columns: 1fr;
