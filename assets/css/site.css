@@ -260,20 +260,6 @@
     min-height: 460px;
   }
   .hero__left { position: relative; padding-top: 40px; }
-  .hero__eyebrow {
-    display: inline-block;
-    background: rgba(191, 254, 67, 0.12);
-    color: var(--green);
-    border: 1px solid var(--green);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin: 0 0 20px;
-  }
   .hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
@@ -292,10 +278,12 @@
     max-width: 520px;
     margin: 0 0 36px;
   }
-  .hero h1 .underline {
+  .hero h1 .underline,
+  .faqs-hero h1 .underline {
     position: relative; white-space: nowrap; display: inline-block;
   }
-  .hero h1 .underline svg {
+  .hero h1 .underline svg,
+  .faqs-hero h1 .underline svg {
     position: absolute; left: 0; bottom: -10px;
     width: 100%; height: 18px;
     pointer-events: none;
@@ -309,6 +297,12 @@
     cursor: pointer; border: none;
     display: inline-flex; align-items: center; gap: 10px;
     transition: all 0.2s;
+  }
+  /* Submitting / disabled state (e.g. Abrir Conta while the request is sending) */
+  .btn:disabled, .btn.is-loading {
+    opacity: 0.6;
+    cursor: progress;
+    pointer-events: none;
   }
   .btn-primary {
     background: var(--white); color: var(--dark);
@@ -736,6 +730,17 @@
     text-transform: uppercase;
     margin: 0 0 20px;
   }
+  /* Logo variant of the eyebrow chip: the LaFinteca wordmark sits inside the
+     pill in place of text (used on the About hero). */
+  .home-eyebrow--logo {
+    padding: 7px 14px;
+    line-height: 0;
+  }
+  .home-eyebrow__logo {
+    display: block;
+    height: 13px;
+    width: auto;
+  }
   .home-block__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
@@ -745,12 +750,6 @@
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 24px;
-  }
-  .home-block__title--gradient {
-    background: linear-gradient(95deg, var(--green) 0%, var(--purple) 18%, var(--purple-2) 70%, var(--purple) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
   }
   /* One-line heading: slightly smaller measure so a longer line holds to a
      single row on desktop. Falls back to natural wrap on narrow viewports. */
@@ -801,26 +800,6 @@
     border-radius: 20px;
     padding: 48px 56px;
     box-shadow: 0 24px 70px rgba(0,0,0,0.28);
-  }
-  .support-unified__head {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 36px;
-  }
-  .support-unified__tag {
-    display: inline-block;
-    align-self: flex-start;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    color: var(--green);
-    background: rgba(191, 254, 67, 0.1);
-    border: 1px solid var(--green);
-    border-radius: 999px;
-    padding: 8px 18px;
   }
   /* Two equal channel columns (SAC | Ouvidoria) split by a centered hairline. */
   .support-unified__grid {
@@ -899,14 +878,41 @@
     transition: border-color 0.15s, color 0.15s;
   }
   .support-channel__email:hover { border-color: var(--green); color: var(--green); }
-  /* Social row sits below both channels, separated by a full-width hairline. */
-  .support-unified__social {
+  /* General-information row sits below both channels, separated by a
+     full-width hairline: legal entity, CNPJ, address, info@ email + social. */
+  .support-unified__info {
     display: flex;
     flex-direction: column;
     gap: 14px;
     margin-top: 40px;
     padding-top: 32px;
     border-top: 1px solid var(--gray-line);
+  }
+  .support-info__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    font-style: normal;
+    color: var(--gray-text);
+    max-width: 52ch;
+  }
+  .support-info__company { color: var(--white); font-weight: 500; }
+  .support-info__social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .support-info__sublabel {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
   }
   @media (max-width: 880px) {
     .support-unified { padding: 32px 24px; border-radius: 16px; }
@@ -1510,20 +1516,6 @@
   /* ==== FAQs page ==== */
   .faqs-page { padding: 80px 40px 120px; background: var(--dark); }
   .faqs-hero { max-width: 720px; margin: 0 auto 40px; text-align: center; }
-  .faqs-hero__label {
-    display: inline-block;
-    background: rgba(191, 254, 67, 0.12);
-    color: var(--green);
-    border: 1px solid var(--green);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin: 0 0 20px;
-  }
   .faqs-hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
@@ -1687,13 +1679,15 @@
     color: var(--dark);
     border-color: var(--green);
   }
+  /* Column titles: the single top tier of the footer. Brighter than links so
+     they read as headings, ALL CAPS, consistent across every column. */
   .footer-col h2 {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.62);
+    color: rgba(255, 255, 255, 0.92);
     margin: 0 0 20px;
   }
   .footer-col ul {
@@ -1713,12 +1707,16 @@
   }
   .footer-col a:hover { color: var(--green); }
   .footer-contact .contact-block { margin-bottom: 20px; }
+  /* SAC / Ouvidoria: a quiet sub-label tier between the column title and the
+     body lines — small, uppercase, muted. Clearly subordinate to the H2. */
   .footer-contact .contact-block .label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 4px;
-    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 6px;
+    font-weight: 600;
   }
   .footer-contact .contact-block .lines {
     font-family: 'IBM Plex Mono', monospace;
@@ -1727,18 +1725,19 @@
     color: rgba(255, 255, 255, 0.62);
     white-space: pre-line;
   }
+  /* Emails are links, so they take the same link color as every other footer
+     link (green only on hover) — one link color sitewide. */
   .footer-contact .contact-block__email {
     display: inline-block;
     margin-top: 6px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 14px;
-    color: var(--green);
+    color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.15s ease;
+    transition: color 0.2s;
   }
   .footer-contact .contact-block__email:hover {
-    border-bottom-color: var(--green);
+    color: var(--green);
   }
   .footer-bottom {
     display: flex;
@@ -2084,10 +2083,8 @@
   }
   .newsletter-form input::placeholder { color: rgba(0,0,0,0.5); }
 
-  /* Intermediate (tablet-to-laptop) */
-  @media (max-width: 1280px) {
-    .forwho-grid { grid-template-columns: repeat(3, 1fr); }
-  }
+  /* Para quem: 4-across on desktop, then straight to a 2×2 block at the
+     hamburger breakpoint — no 3+1 orphan row in between. */
   @media (max-width: 1100px) {
     .header { padding: 22px 32px; }
     /* Collapse to hamburger earlier — the full nav (incl. FAQs) needs >1100px.
@@ -3222,15 +3219,15 @@
   }
 
   /* ===================== ABOUT PAGE ===================== */
-  .about-hero { padding: 72px 40px 56px; background: var(--dark); }
+  .about-hero { padding: 72px 40px 32px; background: var(--dark); }
   .about-hero__inner { max-width: 860px; margin: 0 auto; text-align: center; }
-  .about-hero__sub { margin-top: 24px; }
+  .about-hero__sub { margin-top: 30px; }
 
   /* Section divider between About sections */
   .section-divider {
     border: 0;
     border-top: 1px solid var(--gray-line);
-    margin: 0 0 40px;
+    margin: 0 0 28px;
   }
   /* Constrain body prose to standard reading width */
   .about-narrow { max-width: 760px; }
@@ -3240,6 +3237,7 @@
     line-height: 1.7;
     color: var(--gray-text);
     margin: 0 0 18px;
+    text-align: justify;
   }
   .about-subhead {
     font-family: 'IBM Plex Mono', monospace;

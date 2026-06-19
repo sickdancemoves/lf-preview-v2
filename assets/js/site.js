@@ -271,35 +271,104 @@
     submitAbrirConta(new FormData(form));
   });
 
-  function submitAbrirConta(formData) {
-    // Summarise text fields + file names (files themselves stay in formData).
-    const summary = {};
-    formData.forEach((v, k) => { if (!(v instanceof File)) summary[k] = v; });
-    // Files come from five separate upload boxes (one per document type).
-    const DOC_FIELDS = ['doc_constituicao', 'doc_cnpj', 'doc_identificacao', 'doc_faturamento', 'doc_endereco'];
-    summary._files = DOC_FIELDS.reduce((acc, field) => {
-      const names = formData.getAll(field).filter(f => f && f.name).map(f => f.name);
-      if (names.length) acc[field] = names;
-      return acc;
-    }, {});
-    summary._submittedAt = new Date().toISOString();
+  // === BACKEND ENDPOINT =========================================================
+  // Paste the Apps Script web-app URL here after deploying crm/Code.gs
+  //   (Deploy → New deployment → Web app → Execute as: Me → Access: Anyone).
+  // Leave '' to run in local-demo mode (saves to localStorage only, no network).
+  const ENDPOINT = '';
+  // ==============================================================================
 
-    // === BACKEND: plug your real endpoint here ====================================
-    // Replace the localStorage stub below with a real submission, e.g.:
-    //   • Formspree/Web3Forms: fetch('https://formspree.io/f/XXXX', { method:'POST', body: formData })
-    //   • Cloudflare Worker:   fetch('https://api.la-finteca.com/abrir-conta', { method:'POST', body: formData })
-    //   • Apps Script:         fetch(APPS_SCRIPT_URL, { method:'POST', body: formData })
-    // Use FormData (multipart) so the uploaded documents are sent with the fields.
-    // Await the response, then call showSuccess(summary.email). Show errorEl on failure.
+  const DOC_FIELDS = ['doc_constituicao', 'doc_cnpj', 'doc_identificacao', 'doc_faturamento', 'doc_endereco'];
+
+  // Read a File as a bare base64 string (no "data:...;base64," prefix).
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => { const r = String(reader.result); resolve(r.slice(r.indexOf(',') + 1)); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function newSubmissionId() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'lf-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  }
+
+  // Local safety-net copy (without file bytes) in case the network call fails.
+  function backupLocally(record) {
     try {
       const all = JSON.parse(localStorage.getItem('abrir-conta-submissions') || '[]');
-      all.push(summary);
+      all.push(record);
       localStorage.setItem('abrir-conta-submissions', JSON.stringify(all));
-    } catch (_) { /* storage unavailable — non-fatal for the demo */ }
-    console.log('[abrir-conta] submission (stub, not persisted server-side):', summary);
-    // ============================================================================
+    } catch (_) { /* storage unavailable — non-fatal */ }
+  }
 
-    showSuccess(summary.email || '');
+  function setSubmitting(on) {
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = on; btn.classList.toggle('is-loading', on); }
+  }
+
+  function showSubmitError() {
+    if (!errorEl) return;
+    // Rebuild the message as a network error (bilingual), using DOM nodes so the
+    // language switcher's [data-lang] CSS keeps working and nothing is injected.
+    const msgs = { pt: 'Não foi possível enviar agora. Verifique a sua conexão e tente novamente.',
+                   en: 'We couldn\'t submit right now. Please check your connection and try again.' };
+    errorEl.textContent = '';
+    Object.keys(msgs).forEach(lang => {
+      const span = document.createElement('span');
+      span.setAttribute('data-lang', lang);
+      span.textContent = msgs[lang];
+      errorEl.appendChild(span);
+    });
+    errorEl.hidden = false;
+    errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function submitAbrirConta(formData) {
+    // 1) Text fields.
+    const fields = {};
+    formData.forEach((v, k) => { if (!(v instanceof File)) fields[k] = v; });
+
+    // 2) Documents → base64, grouped by upload box (one box per document type).
+    const files = [];
+    for (const field of DOC_FIELDS) {
+      const list = formData.getAll(field).filter(f => f && f.name && f.size > 0);
+      for (const file of list) {
+        files.push({ field: field, name: file.name, mimeType: file.type || 'application/octet-stream', dataBase64: await fileToBase64(file) });
+      }
+    }
+
+    const payload = { id: newSubmissionId(), submittedAt: new Date().toISOString(), fields: fields, files: files };
+    backupLocally({ id: payload.id, submittedAt: payload.submittedAt, fields: fields, files: files.map(f => ({ field: f.field, name: f.name })) });
+
+    // Local-demo mode (no endpoint wired yet).
+    if (!ENDPOINT) {
+      console.log('[abrir-conta] demo mode — saved to localStorage only:', payload.id);
+      showSuccess(fields.email || '');
+      return;
+    }
+
+    // 3) Deliver to the Apps Script web app. Posting text/plain with no custom
+    //    headers keeps this a CORS "simple request" (no preflight); no-cors mode
+    //    means we don't read the (opaque) response. The server is idempotent on
+    //    payload.id, so a re-send never creates a duplicate folder or row.
+    setSubmitting(true);
+    try {
+      await fetch(ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+      });
+      showSuccess(fields.email || '');
+    } catch (err) {
+      console.error('[abrir-conta] submission failed:', err);
+      showSubmitError();
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function showSuccess(addr) {
