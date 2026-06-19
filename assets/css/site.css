@@ -345,7 +345,7 @@
     min-height: min(85vh, 720px);
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
   .hero--fullbleed .hero__media {
     position: absolute;
@@ -361,19 +361,21 @@
      Mobile keeps the focal point centered via object-fit: cover semantics. */
   .hero--fullbleed .hero__media {
     background-image:
-      linear-gradient(180deg, rgba(20,20,24,0.10) 0%, rgba(20,20,24,0.55) 70%, rgba(20,20,24,0.85) 100%),
+      /* Left-side scrim so the centered copy stays legible over the cityscape,
+         fading to clear on the right where the subject is. */
+      linear-gradient(90deg, rgba(18,18,22,0.82) 0%, rgba(18,18,22,0.45) 38%, rgba(18,18,22,0) 68%),
       url('assets/hero-home.jpg');
     /* cover always fills both axes (a single-% size left the photo short and
        it tiled on tall/narrow viewports); no-repeat guarantees one clean fill. */
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center;
   }
   .hero--fullbleed .hero__overlay {
     position: relative;
     z-index: 1;
     width: 100%;
-    padding: 0 40px 80px;
+    padding: 48px 40px;
   }
   .hero--fullbleed .hero__overlay-inner {
     max-width: 640px;
@@ -392,9 +394,14 @@
        position to the right so the subject stays in frame, not the window. */
     .hero--fullbleed .hero__media {
       background-position: 62% top;
+      /* Centered copy sits over the photo on mobile — use a full vertical veil
+         instead of the desktop left-scrim. */
+      background-image:
+        linear-gradient(180deg, rgba(18,18,22,0.40) 0%, rgba(18,18,22,0.68) 100%),
+        url('assets/hero-home.jpg');
     }
     .hero--fullbleed .hero__overlay {
-      padding: 0 24px 56px;
+      padding: 48px 24px;
       text-align: center;
     }
     .hero--fullbleed .hero__overlay-inner {
@@ -685,6 +692,11 @@
      centered title/sub above it stays at the regular max-width. */
   .home-block--full { padding-left: 0; padding-right: 0; }
   .home-block--full > .home-block__inner { padding: 0 40px; }
+  /* Laptop "painel de pagamentos" section: dark radiating-line burst behind
+     the (transparent) MacBook mockups, matching the design reference. */
+  .home-block--laptop {
+    background: var(--dark) url('assets/laptop-bg.png') center / cover no-repeat;
+  }
   /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
@@ -750,6 +762,13 @@
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 24px;
+  }
+  /* Purple display gradient — used on the laptop/"painel de pagamentos" heading. */
+  .home-block__title--gradient {
+    background: linear-gradient(95deg, var(--green) 0%, var(--purple) 18%, var(--purple-2) 70%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   /* One-line heading: slightly smaller measure so a longer line holds to a
      single row on desktop. Falls back to natural wrap on narrow viewports. */
@@ -888,6 +907,21 @@
     padding-top: 32px;
     border-top: 1px solid var(--gray-line);
   }
+  /* Two columns across the full box width: legal/address on the left, email +
+     social on the right (collapses to one column on mobile). */
+  .support-info__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+    align-items: start;
+    margin-top: 4px;
+  }
+  .support-info__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
   .support-info__lines {
     display: flex;
     flex-direction: column;
@@ -897,14 +931,15 @@
     line-height: 1.6;
     font-style: normal;
     color: var(--gray-text);
-    max-width: 52ch;
   }
   .support-info__company { color: var(--white); font-weight: 500; }
   .support-info__social {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 8px;
+  }
+  @media (max-width: 880px) {
+    .support-info__body { grid-template-columns: 1fr; gap: 20px; }
   }
   .support-info__sublabel {
     font-family: 'IBM Plex Mono', monospace;
@@ -1482,13 +1517,12 @@
   /* Centered closing band over a full-bleed photo. Layer order (front→back):
      green glow, dark overlay for text contrast, then the photo. */
   .cta-banner--centered {
-    border-top: 1px solid rgba(191, 254, 67, 0.22);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     background:
-      radial-gradient(120% 140% at 50% 0%, rgba(191, 254, 67, 0.10) 0%, transparent 55%),
-      linear-gradient(180deg, rgba(13, 13, 15, 0.66) 0%, rgba(13, 13, 15, 0.52) 50%, rgba(13, 13, 15, 0.66) 100%),
+      linear-gradient(180deg, rgba(13, 13, 15, 0.70) 0%, rgba(13, 13, 15, 0.55) 50%, rgba(13, 13, 15, 0.72) 100%),
       url('assets/home-cta.jpg');
     background-size: cover;
-    background-position: center 26%;
+    background-position: center 38%;
   }
   .cta-banner--centered .cta-banner__inner {
     grid-template-columns: 1fr;
@@ -1707,16 +1741,15 @@
   }
   .footer-col a:hover { color: var(--green); }
   .footer-contact .contact-block { margin-bottom: 20px; }
-  /* SAC / Ouvidoria: a quiet sub-label tier between the column title and the
-     body lines — small, uppercase, muted. Clearly subordinate to the H2. */
+  /* SAC / Ouvidoria: same size as the body lines, set apart by bold weight. */
   .footer-contact .contact-block .label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-size: 14px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.88);
     margin-bottom: 6px;
-    font-weight: 600;
+    font-weight: 700;
   }
   .footer-contact .contact-block .lines {
     font-family: 'IBM Plex Mono', monospace;
@@ -1725,19 +1758,19 @@
     color: rgba(255, 255, 255, 0.62);
     white-space: pre-line;
   }
-  /* Emails are links, so they take the same link color as every other footer
-     link (green only on hover) — one link color sitewide. */
+  /* Contact emails: green, with an underline reveal on hover. */
   .footer-contact .contact-block__email {
     display: inline-block;
     margin-top: 6px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--green);
     text-decoration: none;
-    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
   }
   .footer-contact .contact-block__email:hover {
-    color: var(--green);
+    border-bottom-color: var(--green);
   }
   .footer-bottom {
     display: flex;
@@ -1751,7 +1784,8 @@
     font-size: 13px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.58);
-    max-width: 720px;
+    flex: 1;
+    max-width: none;
   }
   .footer-bottom .copy {
     font-family: 'IBM Plex Mono', monospace;
