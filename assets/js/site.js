@@ -272,10 +272,9 @@
   });
 
   // === BACKEND ENDPOINT =========================================================
-  // Paste the Apps Script web-app URL here after deploying crm/Code.gs
-  //   (Deploy → New deployment → Web app → Execute as: Me → Access: Anyone).
+  // Apps Script web-app URL (crm/Code.gs deployed as a Web App, access: Anyone).
   // Leave '' to run in local-demo mode (saves to localStorage only, no network).
-  const ENDPOINT = '';
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzx4JAHiE_yFkmpOoKJ1SdLGAwhltSGOh-HXJtCbhCfLkFOilvubx1kxbf-ceIfX3jN/exec';
   // ==============================================================================
 
   const DOC_FIELDS = ['doc_constituicao', 'doc_cnpj', 'doc_identificacao', 'doc_faturamento', 'doc_endereco'];
