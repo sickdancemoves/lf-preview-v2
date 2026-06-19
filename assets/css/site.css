@@ -342,7 +342,14 @@
   .hero--fullbleed {
     padding: 0;
     position: relative;
-    min-height: min(85vh, 720px);
+    width: 100%;
+    /* Lock the section to (about) the photo's own aspect ratio so the image
+       fills with near-constant framing as the width changes — instead of the
+       height capping and the photo zooming differently at each resolution.
+       min/max-height only kick in at the extremes. */
+    aspect-ratio: 2560 / 1244;
+    min-height: 560px;
+    max-height: 880px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -390,7 +397,9 @@
   }
   @media (max-width: 880px) {
     .hero--fullbleed {
+      aspect-ratio: auto;
       min-height: 78vh;
+      max-height: none;
     }
     /* Narrow viewport shows a vertical slice of the wide photo — bias the
        position to the right so the subject stays in frame, not the window. */
@@ -925,22 +934,22 @@
   .support-channel__email:hover { border-color: var(--green); color: var(--green); }
   /* General-information row sits below both channels, separated by a
      full-width hairline: legal entity, CNPJ, address, info@ email + social. */
+  /* Two columns: title + legal/address on the left, email + social on the
+     right. align-items:start makes the right column top-align with the
+     "Informações gerais" title. Collapses to one column on mobile. */
   .support-unified__info {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 40px;
-    padding-top: 32px;
-    border-top: 1px solid var(--gray-line);
-  }
-  /* Two columns across the full box width: legal/address on the left, email +
-     social on the right (collapses to one column on mobile). */
-  .support-info__body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px 48px;
     align-items: start;
-    margin-top: 4px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-line);
+  }
+  .support-info__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
   .support-info__contact {
     display: flex;
@@ -979,7 +988,7 @@
     gap: 12px;
   }
   @media (max-width: 880px) {
-    .support-info__body { grid-template-columns: 1fr; gap: 20px; }
+    .support-unified__info { grid-template-columns: 1fr; gap: 24px; }
   }
   .support-info__sublabel {
     font-family: 'IBM Plex Mono', monospace;
@@ -1563,11 +1572,19 @@
       url('assets/home-cta.jpg');
     background-size: cover;
     background-position: center 22%;
+    /* Aspect-locked (with bounds) so the photo holds a consistent crop across
+       the desktop range instead of zooming with width; content stays centered. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1600 / 500;
+    min-height: 400px;
+    max-height: 600px;
   }
   .cta-banner--centered .cta-banner__inner {
     grid-template-columns: 1fr;
     max-width: 720px;
-    padding: 96px 40px;
+    padding: 48px 40px;
     gap: 0;
     text-align: center;
     justify-items: center;
@@ -1815,7 +1832,7 @@
   .footer-bottom {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding-top: 32px;
     gap: 40px;
   }
@@ -2198,6 +2215,7 @@
     .reviews__rating { flex-wrap: wrap; gap: 16px; padding: 16px 20px; }
     .faq-split__inner { grid-template-columns: 1fr; gap: 32px; }
     .cta-banner__inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 32px; }
+    .cta-banner--centered { aspect-ratio: auto; min-height: auto; max-height: none; }
     .cta-banner--centered .cta-banner__inner { padding: 64px 20px; }
     .cta-banner__actions { flex-direction: column; gap: 14px; width: 100%; }
     .cta-banner__actions .btn { width: 100%; justify-content: center; }
