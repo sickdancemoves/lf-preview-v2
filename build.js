@@ -13,6 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { baseUrl, defaultLang, pages } = require('./pages.config.js');
 
 const ROOT = __dirname;
@@ -114,6 +115,15 @@ copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 const cssOut = path.join(DIST, 'assets/css/site.css');
 fs.writeFileSync(cssOut, rewriteCssUrls(fs.readFileSync(cssOut, 'utf8'), basePath));
 
+// Content-hash cache-busting: the CSS/JS query string changes whenever the
+// file content changes, so browsers/CDN fetch the new asset after each deploy
+// instead of serving a stale cached copy.
+const assetHash = (p) => fs.existsSync(p)
+  ? crypto.createHash('md5').update(fs.readFileSync(p)).digest('hex').slice(0, 8)
+  : '1';
+const cssHash = assetHash(cssOut);
+const jsHash = assetHash(path.join(DIST, 'assets/js/site.js'));
+
 // .nojekyll prevents GitHub Pages from running Jekyll on the output.
 fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
 
@@ -135,6 +145,8 @@ ${footerTpl}
 `;
 
   html = rewriteHtmlUrls(html, basePath);
+  html = html.replace('/assets/css/site.css"', `/assets/css/site.css?v=${cssHash}"`);
+  html = html.replace('/assets/js/site.js"', `/assets/js/site.js?v=${jsHash}"`);
 
   const outDir = page.route === '/' ? DIST : path.join(DIST, page.route);
   ensureDir(outDir);
