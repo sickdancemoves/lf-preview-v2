@@ -898,8 +898,10 @@
   .support-unified {
     max-width: 1080px;
     margin: 0 auto;
-    background: linear-gradient(160deg, var(--dark-2) 0%, #1f1f23 100%);
-    border: 1px solid var(--gray-line);
+    background:
+      radial-gradient(110% 75% at 50% 0%, rgba(195, 171, 255, 0.09) 0%, rgba(195, 171, 255, 0) 52%),
+      linear-gradient(160deg, var(--dark-2) 0%, #1b1b1f 100%);
+    border: 1px solid rgba(195, 171, 255, 0.12);
     border-radius: 20px;
     padding: 48px 56px;
     box-shadow: 0 24px 70px rgba(0,0,0,0.28);
@@ -923,19 +925,20 @@
     padding-left: 56px;
   }
   .support-channel__title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 1.4px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--green);
     margin: 0;
   }
   .support-channel__hours {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 13px;
-    line-height: 1.6;
-    color: var(--gray-text);
+    line-height: 1.28;
+    letter-spacing: 0.02em;
+    color: #c2c6cc;
     margin: 0;
     max-width: 42ch;
   }
@@ -951,19 +954,20 @@
     gap: 2px;
   }
   .support-channel__phone {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: -0.4px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
     color: var(--white);
     text-decoration: none;
     transition: color 0.15s;
   }
   .support-channel__phone:hover { color: var(--green); }
   .support-channel__phone-area {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 11px;
-    color: var(--gray-text);
+    letter-spacing: 0.02em;
+    color: #c2c6cc;
   }
   .support-channel__email {
     align-self: flex-start;
@@ -972,15 +976,16 @@
     gap: 10px;
     margin-top: 4px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    color: var(--white);
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    color: var(--green);
     text-decoration: none;
-    padding: 11px 18px;
+    padding: 10px 18px;
     border-radius: 999px;
-    border: 1px solid var(--gray-line);
-    transition: border-color 0.15s, color 0.15s;
+    border: 1px solid rgba(191, 254, 67, 0.45);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
   }
-  .support-channel__email:hover { border-color: var(--green); color: var(--green); }
+  .support-channel__email:hover { border-color: var(--green); background: rgba(191, 254, 67, 0.08); }
   /* General-information row sits below both channels, separated by a
      full-width hairline: legal entity, CNPJ, address, info@ email + social. */
   /* Two columns: title + legal/address on the left, email + social on the
@@ -1024,13 +1029,14 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    line-height: 1.6;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.36;
+    letter-spacing: 0.02em;
     font-style: normal;
-    color: var(--gray-text);
+    color: #c2c6cc;
   }
-  .support-info__company { color: var(--white); font-weight: 500; }
+  .support-info__company { color: var(--white); font-weight: 400; font-size: 13px; }
   .support-info__social {
     display: flex;
     flex-direction: column;
@@ -1040,12 +1046,12 @@
     .support-unified__info { grid-template-columns: 1fr; gap: 24px; }
   }
   .support-info__sublabel {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 600;
+    color: #909091;
+    font-weight: 500;
   }
   @media (max-width: 880px) {
     .support-unified { padding: 32px 24px; border-radius: 16px; }
@@ -1057,21 +1063,27 @@
     }
   }
 
-  .contact-hero__title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-size: clamp(34px, 5vw, 56px);
-    line-height: 1.05;
-    letter-spacing: -1.4px;
-    text-transform: uppercase;
+  .hero .contact-hero__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-transform: none;
     color: var(--white);
     margin: 0 0 18px;
   }
+  .contact-hero__title .home-block__accent {
+    background: var(--grad-lime);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
   .contact-hero__sub {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 14px;
-    line-height: 1.6;
-    color: var(--gray-text);
+    line-height: 1.36;
+    letter-spacing: 0.02em;
+    color: #c2c6cc;
     max-width: 640px;
     margin: 0 auto;
   }
@@ -2830,13 +2842,31 @@
     max-width: 1440px;
     margin: 0 auto;
   }
+  /* Policy Center page title — Plex Sans Light 44 with a green accent.
+     Scoped under .hero to outrank the base `.hero h1` mono/uppercase rule. */
+  .hero .policy-page-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4.2vw, 44px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--white);
+    margin: 12px 0 0;
+    max-width: 1000px;
+  }
+  .policy-page-title .home-block__accent {
+    background: var(--grad-lime);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
   .policy-section__title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gray-text);
+    color: #a2a5aa;
     margin: 0 0 20px;
     padding-bottom: 14px;
     border-bottom: 1px solid var(--gray-line);
@@ -2851,49 +2881,55 @@
     flex-direction: column;
     gap: 12px;
     padding: 24px;
-    background: var(--dark-2);
-    border: 1px solid var(--gray-line);
+    background:
+      radial-gradient(130% 90% at 50% 0%, rgba(195, 171, 255, 0.10) 0%, rgba(195, 171, 255, 0) 55%),
+      linear-gradient(180deg, var(--dark-2) 0%, #191919 100%);
+    border: 1px solid rgba(195, 171, 255, 0.12);
     border-radius: 14px;
     text-decoration: none;
     color: var(--white);
-    transition: border-color 0.18s, transform 0.18s, background 0.18s;
+    transition: border-color 0.18s, transform 0.18s;
     min-height: 180px;
   }
   .policy-card:hover {
-    border-color: var(--green);
-    background: var(--dark-3);
+    border-color: rgba(195, 171, 255, 0.4);
     transform: translateY(-2px);
   }
   .policy-card__icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    background: rgba(191, 254, 67, 0.12);
-    color: var(--green);
+    border-radius: 12px;
+    background: rgba(195, 171, 255, 0.16);
+    color: var(--white);
     margin-bottom: 4px;
   }
   .policy-card__title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 16px;
-    font-weight: 500;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
     margin: 0;
     color: var(--white);
-    line-height: 1.35;
+    line-height: 1.28;
   }
   .policy-card__desc {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 13px;
-    color: var(--gray-text);
-    line-height: 1.55;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #c2c6cc;
+    line-height: 1.28;
     margin: 0;
     flex: 1;
   }
   .policy-card__cta {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--green);
     display: inline-flex;
     align-items: center;
