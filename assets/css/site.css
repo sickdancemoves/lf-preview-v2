@@ -1404,6 +1404,21 @@
     grid-row: 2;
     margin-top: 14px;
   }
+  /* New violet-gradient boxes for the Conta PJ feature grid; the pricing card
+     keeps its green highlight. Icons are self-contained SVG tiles. */
+  #contapj-features .intro-card:not(.intro-card--pricing) {
+    background:
+      radial-gradient(130% 90% at 50% 0%, rgba(195,171,255,0.13) 0%, rgba(195,171,255,0) 55%),
+      linear-gradient(180deg, var(--dark-2) 0%, #191919 100%);
+    border-color: rgba(195,171,255,0.14);
+  }
+  #contapj-features .intro-card:not(.intro-card--pricing)::before { display: none; }
+  #contapj-features .intro-card:not(.intro-card--pricing) .intro-card__icon {
+    width: 44px; height: 44px;
+    background: none;
+    border-radius: 0;
+  }
+  #contapj-features .intro-card__icon img { width: 44px; height: 44px; display: block; }
 
   /* Conta PJ page — adopt the Plex Sans display style (existing sizes/hierarchy
      kept; mono links, tags and badges unchanged for now). */
@@ -1489,15 +1504,17 @@
     margin: 0 auto;
   }
   .forwho-card {
-    background: var(--dark-2);
-    border: 1px solid var(--gray-line);
+    background:
+      radial-gradient(130% 90% at 50% 0%, rgba(195,171,255,0.13) 0%, rgba(195,171,255,0) 55%),
+      linear-gradient(180deg, var(--dark-2) 0%, #191919 100%);
+    border: 1px solid rgba(195,171,255,0.14);
     border-radius: 14px;
     padding: 22px 20px;
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .forwho-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(191,254,67,0.4);
+    border-color: rgba(195,171,255,0.4);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   /* Icon slot stacked above the audience label. */
@@ -1510,8 +1527,8 @@
   }
   .forwho-card__icon {
     width: 28px; height: 28px;
-    background: rgba(191,254,67,0.14);
-    color: var(--green);
+    background: rgba(195,171,255,0.18);
+    color: var(--white);
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
@@ -1619,30 +1636,26 @@
     text-align: left;
   }
   .security-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(191, 254, 67, 0.18);
-    border-left: 3px solid var(--green);
-    border-radius: 6px 16px 16px 6px;
+    background:
+      radial-gradient(130% 90% at 50% 0%, rgba(195,171,255,0.13) 0%, rgba(195,171,255,0) 55%),
+      linear-gradient(180deg, var(--dark-2) 0%, #191919 100%);
+    border: 1px solid rgba(195,171,255,0.14);
+    border-radius: 14px;
     padding: 28px 26px;
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
   .security-card:hover {
-    border-color: rgba(191, 254, 67, 0.4);
-    border-left-color: var(--green);
+    border-color: rgba(195,171,255,0.4);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
   .security-card__icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: rgba(191, 254, 67, 0.12);
-    color: var(--green);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: 48px;
+    height: 48px;
     margin-bottom: 16px;
+    display: inline-flex;
   }
+  .security-card__icon img { width: 48px; height: 48px; display: block; }
   .security-card__title {
     font-size: 18px;
     font-weight: 500;
@@ -2932,14 +2945,9 @@
   .policy-card__icon {
     width: 44px;
     height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(195, 171, 255, 0.16);
-    color: var(--white);
     margin-bottom: 4px;
   }
+  .policy-card__icon img { width: 44px; height: 44px; display: block; }
   .policy-card__title {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 20px;
@@ -3604,6 +3612,32 @@
     border-radius: 999px;
   }
   .intro-card--pricing .intro-card__icon { background: rgba(191, 254, 67, 0.22); }
+
+  /* === Remaining pages (About, Abrir Conta, FAQs, policy docs) + footer:
+     convert mono display & body text to IBM Plex Sans. Clickable links,
+     buttons, eyebrows, tags and badges intentionally stay mono. === */
+  .home-block__title, .cta-inset__title,
+  .faqs-hero h1, .abrir-head h1, .policy-hero h1 {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+    text-transform: none !important;
+  }
+  .home-block__sub, .intro-card__title, .intro-card__body, .cta-inset__sub,
+  .faq-item__head, .faq-item__content,
+  .faqs-hero__sub, .faqs-empty,
+  .abrir-head__sub, .abrir-field, .abrir-field label, .abrir-help, .abrir-consent,
+  .abrir-success__title, .abrir-success__body, .abrir-docs__legend, .abrir-doc,
+  .about-prose, .about-prose p, .mv-item__label, .mv-item__text,
+  .policy-content, .policy-content h2, .policy-content h3, .policy-content p, .policy-content li,
+  .policy-toc, .policy-toc__label, .policy-meta, .policy-back, .policy-list,
+  .footer-brand p, .footer-col h2,
+  .footer-contact .contact-block .label, .footer-contact .contact-block .lines,
+  .footer-bottom .legal, .footer-bottom .copy {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+  }
+  /* Keep clickable links mono inside the converted prose/scopes. */
+  .policy-content a, .about-prose a, .faqs-list a, .abrir-form a {
+    font-family: 'IBM Plex Mono', monospace !important;
+  }
 
   /* ---- Emphasized section headline (item 7c) ---- */
   .home-block__title--emphasis {
