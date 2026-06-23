@@ -1405,6 +1405,40 @@
     margin-top: 14px;
   }
 
+  /* Conta PJ page — adopt the Plex Sans display style (existing sizes/hierarchy
+     kept; mono links, tags and badges unchanged for now). */
+  #page-contapj .home-block__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    text-transform: none;
+  }
+  #page-contapj .home-block__sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 0.01em;
+  }
+  #page-contapj .intro-card__title,
+  #page-contapj .security-card__title,
+  #page-contapj .forwho-card h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+  #page-contapj .intro-card__body,
+  #page-contapj .security-card__body,
+  #page-contapj .forwho-card p,
+  #page-contapj .cta-inset__sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 0.02em;
+  }
+  #page-contapj .cta-inset__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
   .steps-list {
     list-style: none;
     padding: 0;
