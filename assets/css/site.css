@@ -315,6 +315,14 @@
     border: 1px solid var(--green);
   }
   .btn-green:hover { background: var(--white); border-color: var(--white); color: var(--dark); }
+  /* Lilac CTA — used on the home "Tudo para mover..." section, per the design comp.
+     Rounded corners (the base .btn is square); the rest of the site keeps square CTAs. */
+  .btn-purple {
+    background: var(--purple); color: var(--black);
+    border: 1px solid var(--purple);
+    border-radius: 8px;
+  }
+  .btn-purple:hover { background: var(--white); border-color: var(--white); color: var(--dark); }
   .btn-ghost {
     background: transparent; color: var(--white);
     border: 1px solid var(--white);
@@ -777,6 +785,17 @@
     text-transform: uppercase;
     margin: 0 0 20px;
   }
+  /* Lilac variant of the eyebrow chip — brand stamp on the home features section.
+     A compact 5px-radius rounded rectangle (not the default pill), per chip.svg. */
+  .home-eyebrow--purple {
+    background: rgba(195, 171, 255, 0.2);
+    color: var(--purple);
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 5px 9px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
   /* Logo variant of the eyebrow chip: the LaFinteca wordmark sits inside the
      pill in place of text (used on the About hero). */
   .home-eyebrow--logo {
@@ -805,6 +824,8 @@
     background-clip: text;
     color: transparent;
   }
+  /* Inline lime accent for a trailing phrase inside a section title. */
+  .home-block__accent { color: var(--green); }
   /* One-line heading: slightly smaller measure so a longer line holds to a
      single row on desktop. Falls back to natural wrap on narrow viewports. */
   .home-block__title--oneline {
@@ -1142,6 +1163,73 @@
     margin: 0;
   }
   .intro-cta { margin-top: 48px; }
+
+  /* Home "Tudo para mover..." feature section, per the design comp.
+     Scoped to #features so the shared .intro-card component and section
+     title styles are untouched on the Conta PJ page.
+     Typography here is IBM Plex Sans (the rest of the site uses Plex Mono). */
+
+  /* Section heading: IBM Plex Sans Light 38 / 104% / -1%, white, with the
+     trailing "com clareza." span carrying a lime gradient. */
+  #features .home-block__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(30px, 5vw, 38px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
+  }
+  #features .home-block__accent {
+    background: linear-gradient(180deg, #d8ff8c 0%, var(--green) 52%, #a4e22b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Cards: lilac glow gradient concentrated at the top fading to dark,
+     flat (no top accent bar). */
+  #features .intro-card::before { display: none; }
+  #features .intro-card {
+    background:
+      radial-gradient(130% 92% at 50% 0%, rgba(195, 171, 255, 0.17) 0%, rgba(195, 171, 255, 0) 52%),
+      linear-gradient(180deg, var(--dark-2) 0%, #191919 100%);
+    border-color: rgba(195, 171, 255, 0.14);
+  }
+
+  /* Self-contained SVG icon tiles (lilac bg + white glyph baked into the file). */
+  #features .intro-card__icon {
+    width: 56px; height: 56px;
+    background: none;
+    border-radius: 0;
+  }
+  #features .intro-card__icon img { width: 56px; height: 56px; display: block; }
+
+  /* Card copy: IBM Plex Sans — title Regular 24 / 128% / 2%, body Regular 14 / 22px / 2%. */
+  #features .intro-card__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.28;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  #features .intro-card__body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+  }
+  #features .intro-card__stat {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: var(--white);
+  }
 
   /* ==== Conta PJ page ==== */
   .contapj-hero {
