@@ -10,6 +10,8 @@
     --purple: #C3ABFF;
     --purple-2: #A58FDB;
     --green: #BFFE43;
+    /* Lime→deep-green text gradient used on display titles and accents (Home sections.fig). */
+    --grad-lime: linear-gradient(180deg, #d8ff8c 0%, #bffe43 55%, #a4e22b 100%);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -291,12 +293,13 @@
   .hero__buttons { display: flex; gap: 12px; }
   .btn {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px; font-weight: 500;
-    text-transform: uppercase; letter-spacing: 1.2px;
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.11em;
     padding: 0 32px; height: 50px;
     cursor: pointer; border: none;
     display: inline-flex; align-items: center; gap: 10px;
     transition: all 0.2s;
+    border-radius: 6px;
   }
   /* Submitting / disabled state (e.g. Abrir Conta while the request is sending) */
   .btn:disabled, .btn.is-loading {
@@ -316,11 +319,10 @@
   }
   .btn-green:hover { background: var(--white); border-color: var(--white); color: var(--dark); }
   /* Lilac CTA — used on the home "Tudo para mover..." section, per the design comp.
-     Rounded corners (the base .btn is square); the rest of the site keeps square CTAs. */
+     Corner radius inherited from the base .btn (6px, per the Button Variants spec). */
   .btn-purple {
     background: var(--purple); color: var(--black);
     border: 1px solid var(--purple);
-    border-radius: 8px;
   }
   .btn-purple:hover { background: var(--white); border-color: var(--white); color: var(--dark); }
   .btn-ghost {
@@ -723,16 +725,21 @@
     text-align: center;
   }
   .laptop-cta__title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-size: clamp(24px, 3.8vw, 40px);
-    line-height: 1.12;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(24px, 3.2vw, 32px);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    text-transform: none;
     color: var(--white);
     margin: 0 0 28px;
   }
-  .laptop-cta__accent { color: var(--green); }
+  .laptop-cta__accent {
+    font-weight: 400;
+    background: var(--grad-lime);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
   .laptop-cta__actions {
     display: flex;
     align-items: center;
@@ -794,7 +801,7 @@
     border-radius: 5px;
     padding: 5px 9px;
     font-size: 10px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.08em;
   }
   /* Logo variant of the eyebrow chip: the LaFinteca wordmark sits inside the
      pill in place of text (used on the About hero). */
@@ -1623,6 +1630,53 @@
   .faq-split__intro { max-width: 360px; }
   .faq-split__intro .home-block__sub { margin-bottom: 24px; }
 
+  /* Home FAQ split — exact type from Home sections.fig.
+     Scoped to .faq-split so the /faqs page accordion is untouched. */
+  .faq-split .home-block__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 38px);
+    line-height: 1.24;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    background: var(--grad-lime);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .faq-split .home-block__sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #c2c6cc;
+  }
+  .faq-split .faq-item {
+    background: #28282d;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .faq-split .faq-item__head {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .faq-split .faq-item__plus { color: var(--purple); font-size: 12px; }
+  .faq-split .faq-item__content {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.28;
+    letter-spacing: 0.02em;
+    color: #c2c6cc;
+  }
+
   /* CTA banner */
   .cta-banner { padding: 0; background: var(--dark); }
   .cta-banner__inner {
@@ -1659,7 +1713,7 @@
       linear-gradient(180deg, rgba(13, 13, 15, 0.70) 0%, rgba(13, 13, 15, 0.55) 50%, rgba(13, 13, 15, 0.72) 100%),
       url('assets/home-cta.jpg');
     background-size: cover;
-    background-position: center 22%;
+    background-position: center 38%;
     /* Aspect-locked (with bounds) so the photo holds a consistent crop across
        the desktop range instead of zooming with width; content stays centered. */
     display: flex;
@@ -1678,6 +1732,77 @@
     justify-items: center;
   }
   .cta-banner--centered .home-eyebrow { margin-bottom: 22px; }
+  /* === Home section display type — exact values from Home sections.fig === */
+  /* Closing CTA banner: Plex Sans Light 38 / 104% / -1% title (white, green
+     "com controle." accent); Plex Sans 14 / 22px / 3% body (white). */
+  .cta-banner--centered .cta-banner__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
+  }
+  .cta-banner--centered .cta-banner__title .home-block__accent {
+    background: var(--grad-lime);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .cta-banner--centered .cta-banner__sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+  /* MEI section title: Plex Sans Light 38 / 124% / -1%, white with a green
+     "impecável." accent. */
+  .home-split .home-block__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.24;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
+  }
+  .home-split .home-block__title .home-block__accent {
+    background: var(--grad-lime);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  /* Laptop ("Computers") title: Plex Sans Light 38 / 104% / -1%, white with a
+     green "em uma tela." accent (Regular weight). */
+  .home-block--laptop .home-block__title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
+  }
+  .home-block--laptop .home-block__title .home-block__accent {
+    font-weight: 400;
+    background: var(--grad-lime);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  /* MEI + laptop bodies: Plex Sans Regular 14 / 22px / 3%, light gray. */
+  .home-split .home-block__sub,
+  .home-block--laptop .home-block__sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #c2c6cc;
+  }
   .cta-banner--centered .cta-banner__sub {
     max-width: 560px;
     margin-left: auto;
@@ -3343,12 +3468,13 @@
   }
   .cta-inset__link {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.11em;
     color: var(--white);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
     transition: color 0.15s ease, border-color 0.15s ease;
   }
   .cta-inset__link:not(.is-placeholder):hover { color: var(--green); border-bottom-color: var(--green); }
