@@ -1285,25 +1285,10 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(60% 60% at 70% 40%, rgba(195,171,255,0.22) 0%, rgba(26,6,55,0) 65%),
-      radial-gradient(45% 60% at 20% 90%, rgba(191,254,67,0.18) 0%, rgba(26,6,55,0) 70%),
-      linear-gradient(135deg, var(--dark) 0%, #1f1023 55%, var(--dark) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      linear-gradient(180deg, rgba(13,13,15,0.74) 0%, rgba(13,13,15,0.58) 45%, rgba(13,13,15,0.82) 100%),
+      url('assets/contapj-hero.jpg') center / cover no-repeat;
   }
-  .contapj-hero__bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 90%);
-    -webkit-mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 90%);
-    pointer-events: none;
-  }
+  .contapj-hero__bg-label { display: none; }
   .contapj-hero__bg-label {
     position: relative;
     z-index: 1;
